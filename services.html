@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin dashboard</title>
+    <!-- custom link -->
+    <link rel="stylesheet" href="css/style.css">
+    <!-- bootstarp -->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
+    <!-- fontawsome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- box icons -->
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <!-- google font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600&family=Mulish:wght@300;400;700;800&family=Playfair+Display:wght@400;500;600;700&family=Poppins:wght@100;200;300;400;600;700" rel="stylesheet">
+</head>
+<body>
+<!-- start sidebar -->
+<div class="sidebar">
+  <div class="logo-details">
+    <i class='bx bxs-home-smile'></i>
+    <span class="logo-name">Home Care</span>
+  </div>
+
+    <ul class="nav-links">
+      <li><a href="index.html"><i class='bx bx-grid-small'></i><span>Dashboard</span></a></li>
+      <li class="active"><a href="#"><i class="fa-solid fa-briefcase"></i><span>Services</span></a></li>
+      <li><a href="jobs.html"><i class="fa-solid fa-list-ul"></i><span>Job list</span></a></li>
+      <li><a href="users.html"><i class="fa-solid fa-user"></i><span>Users</span></a></li>
+      <li><a href="workers.html"><i class="fa-solid fa-user-gear"></i><span>Workers</span></a></li>
+      <li><a href="#"><i class='bx bx-log-out'></i><span>Logout</span></a></li>
+    </ul>
+</div>
+<!-- end sidebar -->
+
+<!-- home content -->
+<div class="content">
+  <!-- start navbar -->
+  <nav class="navbar navbar-expand-lg bg-body-tertiary">
+    <div class="container mx-2">
+      <div class="sidebar-btn">
+        <i class="fa-solid fa-bars"></i>
+        <span>Dashboard</span>
+      </div>
+      <!-- <a class="navbar-brand" href="#">Navbar</a> -->
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavDropdown">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+              <a href="#"><i class="fa-solid fa-bell"></i></a>
+          </li>
+          <li class="nav-item">
+            <div class="d-flex align-items-center">
+                <i class="fa-solid fa-circle-user"></i>
+                <span>Admin</span>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <!-- end navbar -->
+    
+        <!-- start main content -->
+        <div class="main">
+            <div class="container">
+              <h1>Services</h1>
+              <div class="row my-4 align-items-center">
+                <div class="col-auto">
+                  <form class="row g-3">
+                    <div class="input-group">
+                      <label for="" class="input-group-text">Show</label>
+
+                      <select name="" id="" class="form-select px-5">
+                        <option value="0">...</option>
+                        <option value="10">10</option>
+                        <option value="50">50</option>
+                        <option value="100">100</option>
+                        <option value="200">200</option>
+                      </select>
+                    </div>
+                  </form>
+                </div>
+                
+                <div class="col-auto ms-auto me-5">
+                  <a href="" class="btn btn-primary px-4">Add</a>
+                </div>
+              </div>
+              <div class="table-container">
+                <table class="table table-bordered">
+                  <thead>
+                    <tr>
+                      <th scope="col">#</th>
+                      <th scope="col">Name</th>
+                      <th scope="col">Img</th>
+                      <th scope="col">Description</th>
+                      <th scope="col">Actions</th>
+                    </tr>
+                  </thead>
+                  <tbody class="table-group-divider">
+                    <tr>
+                      <th scope="row">1</th>
+                      <td>Cleaning</td>
+                      <td><img src="images/clipart3016093.png" alt="" class="img-service"></td>
+                      <td>Otto</td>
+                      <td>
+                        <a href="#" class="btn btn-outline-success">Edit</a>
+                        <a href="#" class="btn btn-outline-danger">Delete</a>
+                      </td>
+                    </tr>
+                    <tr>
+                      <th scope="row">2</th>
+                      <td>Bride preparation</td>
+                      <td><img src="images/imageedit_7_9083734316.png" alt="" class="img-service"></td>
+                      <td>Thornton</td>
+                      <td>
+                        <a href="#" class="btn btn-outline-success">Edit</a>
+                        <a href="#" class="btn btn-outline-danger">Delete</a>
+                      </td>
+                    </tr>
+                    <tr>
+                      <th scope="row">3</th>
+                      <td>Old men</td>
+                      <td><img src="images/pngkit_elderly-png_9824596.png" alt="" class="img-service old-men"></td>
+                      <td>Thornton</td>
+                      <td>
+                        <a href="#" class="btn btn-outline-success">Edit</a>
+                        <a href="#" class="btn btn-outline-danger">Delete</a>
+                      </td>
+                    </tr>
+                    <tr>
+                      <th scope="row">4</th>
+                      <td>Guesting</td>
+                      <td><img src="images/imageedit_5_9875877452.png" alt="" class="img-service"></td>
+                      <td>Thornton</td>
+                      <td>
+                        <a href="#" class="btn btn-outline-success">Edit</a>
+                        <a href="#" class="btn btn-outline-danger">Delete</a>
+                      </td>
+                    </tr>
+                    <tr>
+                      <th scope="row">5</th>
+                      <td>Baby sitting</td>
+                      <td><img src="images/pngaaa.com-3093272.png" alt="" class="img-service"></td>
+                      <td>Thornton</td>
+                      <td>
+                        <a href="#" class="btn btn-outline-success">Edit</a>
+                        <a href="#" class="btn btn-outline-danger">Delete</a>
+                      </td>
+                    </tr>
+                    <tr>
+                      <th scope="row">6</th>
+                      <td>Security</td>
+                      <td><img src="images/imageedit_9_6666212186.png" alt="" class="img-service"></td>
+                      <td>Thornton</td>
+                      <td>
+                        <a href="#" class="btn btn-outline-success">Edit</a>
+                        <a href="#" class="btn btn-outline-danger">Delete</a>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+        </div>
+        <!-- end main contnet -->
+    </div>
+</body>
+</html>
