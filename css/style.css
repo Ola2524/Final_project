@@ -41,8 +41,9 @@ h2{
     transition: all 0.5s ease;
 }
 
-.sidebar.active{
-    width: 60px;
+.sidebar .active{
+    /* width: 60px; */
+    background-color: #081D45;
 }
 
 .sidebar .logo-details{
