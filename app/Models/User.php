@@ -25,6 +25,7 @@ class User extends Authenticatable
         'street',
         'email',
         'user_role',
+        'points'
        
 
     ];

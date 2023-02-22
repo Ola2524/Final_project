@@ -5,6 +5,7 @@ use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\JobController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\OfferController;
 
 /*
 |--------------------------------------------------------------------------
@@ -31,3 +32,7 @@ Route::delete('/services/{services}', [ServiceController::class, 'destroy'])->na
 
 //jobs list 
 Route::get('/jobs', [JobController::class, 'index'])->name('jobs');
+
+// offers
+Route::get('/offers', [OfferController::class,"index"])->name("offers");
+Route::get('/offers/{user}', [OfferController::class,"remove"])->name("offers.remove");
