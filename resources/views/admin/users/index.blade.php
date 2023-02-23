@@ -1,4 +1,4 @@
-@extends('layout.app')
+@extends('layout.admin')
 @section('content')
 <!-- start main content -->
       <div class="main">
@@ -36,6 +36,7 @@
                   <th scope="col">Street</th>
                   <th scope="col">Email</th>
                   <th scope="col">User role</th>
+                  <th scope="col">Points</th>
                   <th scope="col">Actions</th>
                 </tr>
               </thead>
@@ -51,10 +52,12 @@
                                         <td>{{ $user->street }}</td>
                                         <td>{{ $user->email }}</td>
                                         <td>{{ $user->user_role }}</td>
+                                        <td>{{ $user->points }}</td>
                                         <td>
               
-                    <a href="#" class="btn btn-outline-success">Add points</a>
-                    <a href="#" class="btn btn-outline-danger">Remove points</a>
+                        @if ($user->points > 0)
+                          <a href="#" class="btn btn-outline-danger">Remove points</a> 
+                        @endif
                     <a href="{{ url('/user/' . $user->id . '/edit') }}" class="btn btn-outline-success">Edit</a>
                     <form method="POST" action="{{ url('/user' . '/' . $user->id) }}" accept-charset="UTF-8" style="display:inline">
                       {{ method_field('DELETE') }}

@@ -1,4 +1,4 @@
-@extends('layout.app')
+@extends('layout.admin')
 @section('content')    
     <!-- start main content -->
         <div class="main">
@@ -50,7 +50,24 @@
                           
                       <td>
                         @if ($user ['points'] > 0)
-                          <a href="{{route('offers.remove',['user'=>$user->id])}}" class="btn btn-outline-danger">Remove discount</a> 
+                          <a href="{{route('offers.removeUser',['user'=>$user->id])}}" class="btn btn-outline-danger">Remove discount</a> 
+                        @endif
+                      
+                      </td>
+                    @endforeach
+
+                    @foreach ($workers as $worker )
+                    <tr>
+                      <th scope="row">{{$worker['id']}}</th>
+                      <td>{{$user ['name']}}</td>
+                      
+                      <td> WORKER </td>
+                      <td>{{$worker ['points']}} </td>
+
+                          
+                      <td>
+                        @if ($worker ['points'] > 0)
+                          <a href="{{route('offers.removeWorker',['worker'=>$worker->id])}}" class="btn btn-outline-danger">Remove discount</a> 
                         @endif
                       
                       </td>

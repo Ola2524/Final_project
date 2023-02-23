@@ -6,6 +6,10 @@ use App\Http\Controllers\JobController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\OfferController;
+use App\Http\Controllers\WorkerController;
+
+use App\Http\Controllers\ProfileController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -18,6 +22,7 @@ use App\Http\Controllers\OfferController;
 |
 */
 
+// start admin routes
 Route::get('/', [HomeController :: class, "index"])->name('index');
 // users
 Route::resource('/user',UserController ::class);
@@ -35,4 +40,18 @@ Route::get('/jobs', [JobController::class, 'index'])->name('jobs');
 
 // offers
 Route::get('/offers', [OfferController::class,"index"])->name("offers");
-Route::get('/offers/{user}', [OfferController::class,"remove"])->name("offers.remove");
+Route::get('/offers/removeUser/{user}', [OfferController::class,"removeUser"])->name("offers.removeUser");
+Route::get('/offers/removeWorker/{worker}', [OfferController::class,"removeWorker"])->name("offers.removeWorker");
+// worker
+Route::get('/workers', [WorkerController::class, 'index'])->name('workers');
+Route::get('workers/create', [WorkerController::class, 'create'])->name('workers.create');
+Route::post('workers/store/', [WorkerController::class, 'store'])->name('workers.store');
+Route::get('workers/edit/{worker}', [WorkerController::class, 'edit'])->name('workers.edit');
+Route::put('workers/update/{worker}',[WorkerController::class, 'update'])->name('workers.update');
+Route::delete('delete/{worker}',[WorkerController::class, 'destroy'])->name('workers.destroy');
+// end admin routes
+
+// start worker routes
+// profile
+Route::get('/worker-profile', [ProfileController::class,"index"])->name("worker.profile");
+// end worker routes

@@ -6,7 +6,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use App\Models\Job;
 use App\Models\User;
-// use App\Models\Worker;
+use App\Models\Worker;
 
 class HomeController extends Controller
 {
@@ -14,8 +14,8 @@ class HomeController extends Controller
         $users = User::all();
         $users = count($users);
 
-        // $workers = Worker::all();
-        // $workers = count($workers);
+        $workers = Worker::all();
+        $workers_count = count($workers);
 
         $jobs = DB::table('users')
         ->join('jobs', 'jobs.user_id', '=', 'users.id')
@@ -31,6 +31,6 @@ class HomeController extends Controller
         }
 
         $job_count = count($jobs);
-        return view("admin.index", ["jobs" => $jobs,"job_count" => $job_count, "profits" => $profits, 'users' => $users]);
+        return view("admin.index", ["jobs" => $jobs,"job_count" => $job_count, "profits" => $profits, 'users' => $users, 'workers' => $workers,'workers_count'=>$workers_count]);
     }
 }

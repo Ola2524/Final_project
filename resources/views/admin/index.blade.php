@@ -1,4 +1,4 @@
-@extends('layout.app')
+@extends('layout.admin')
 @section('content')
  <!-- start main content -->
  <section class="main">
@@ -20,7 +20,7 @@
         </div>
         <div class="card-detail">
           <h4>Total workers</h4>
-          <h2>2000</h2>
+          <h2>{{ $workers_count }}</h2>
         </div>
       </div>
     </div>
@@ -89,101 +89,27 @@
     <div class="col-4">
       <section class="top-worker">
         <h2>Workers</h2>
+        @foreach ($workers as $worker)
         <div class="worker">
           <div class="row align-items-center">
             <div class="col-3">
               <div class="worker-img">
-                <i class="fa-solid fa-user"></i>
+                <img src="{{ asset('images/' . $worker->img) }}" alt="" width="30px">
               </div>
             </div>
             <div class="col-6">
               <div class="worker-name">
-                <span>Worker Name</span>
+                <span>{{ $worker['name'] }}</span>
               </div>
             </div>
             <div class="col-3">
               <div class="worker-profit">
-                <span>10 pts</span>
+                <span>{{ $worker['points'] }} pts</span>
               </div>
             </div>
           </div>
         </div>
-        <div class="worker">
-          <div class="row align-items-center">
-            <div class="col-3">
-              <div class="worker-img">
-                <i class="fa-solid fa-user"></i>
-              </div>
-            </div>
-            <div class="col-6">
-              <div class="worker-name">
-                <span>Worker Name</span>
-              </div>
-            </div>
-            <div class="col-3">
-              <div class="worker-profit">
-                <span>10 pts</span>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="worker">
-          <div class="row align-items-center">
-            <div class="col-3">
-              <div class="worker-img">
-                <i class="fa-solid fa-user"></i>
-              </div>
-            </div>
-            <div class="col-6">
-              <div class="worker-name">
-                <span>Worker Name</span>
-              </div>
-            </div>
-            <div class="col-3">
-              <div class="worker-profit">
-                <span>10 pts</span>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="worker">
-          <div class="row align-items-center">
-            <div class="col-3">
-              <div class="worker-img">
-                <i class="fa-solid fa-user"></i>
-              </div>
-            </div>
-            <div class="col-6">
-              <div class="worker-name">
-                <span>Worker Name</span>
-              </div>
-            </div>
-            <div class="col-3">
-              <div class="worker-profit">
-                <span>10 pts</span>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="worker">
-          <div class="row align-items-center">
-            <div class="col-3">
-              <div class="worker-img">
-                <i class="fa-solid fa-user"></i>
-              </div>
-            </div>
-            <div class="col-6">
-              <div class="worker-name">
-                <span>Worker Name</span>
-              </div>
-            </div>
-            <div class="col-3">
-              <div class="worker-profit">
-                <span>10 pts</span>
-              </div>
-            </div>
-          </div>
-        </div>
+        @endforeach
       </section>
     </div>
   </div>
