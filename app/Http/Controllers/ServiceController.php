@@ -11,7 +11,7 @@ class ServiceController extends Controller
   public function index()
   {
     $services = Service::all();
-    return view('services.services', ['services' => $services]);
+    return view('admin.services.services', ['services' => $services]);
   }
 
 
@@ -40,7 +40,7 @@ $name = $request->name;
   public function edit($service)
   {
     $Service = Service::findOrFail($service);
-    return view('services.edit', ['services' => $Service]);
+    return view('admin.services.edit', ['services' => $Service]);
     // dd($service);
   }
 

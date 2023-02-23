@@ -12,7 +12,7 @@ class OfferController extends Controller
         // dd($users);
         // $workers = Worker::all();
         // return view('offers.index',['users'=>$users,'workers'=>$workers]);
-        return view('offers.index',['users'=>$users]);
+        return view('admin.offers.index',['users'=>$users]);
     }
 
     public function remove($id){

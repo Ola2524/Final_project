@@ -31,6 +31,6 @@ class HomeController extends Controller
         }
 
         $job_count = count($jobs);
-        return view("index", ["jobs" => $jobs,"job_count" => $job_count, "profits" => $profits, 'users' => $users]);
+        return view("admin.index", ["jobs" => $jobs,"job_count" => $job_count, "profits" => $profits, 'users' => $users]);
     }
 }
