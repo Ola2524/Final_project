@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin dashboard</title>
     <!-- custom link -->
-    <link rel="stylesheet" href="{{asset('css/style.css')}}">
+    <link rel="stylesheet" href="{{asset('css/dashboard_style.css')}}">
     <!-- bootstarp -->
     <link rel="stylesheet" href="{{asset('css/bootstrap.min.css')}}">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
@@ -28,7 +28,7 @@
     </div>
 
         <ul class="nav-links">
-            <li class="active"><a href="/"><i class='bx bx-grid-small'></i><span>Dashboard</span></a></li>
+            <li class="active"><a href="{{ route('admin') }}"><i class='bx bx-grid-small'></i><span>Dashboard</span></a></li>
             <li><a href="{{ route('services') }}"><i class="fa-solid fa-briefcase"></i><span>Services</span></a></li>
             <li><a href="{{ route('jobs') }}"><i class="fa-solid fa-list-ul"></i><span>Job list</span></a></li>
             <li><a href="/user"><i class="fa-solid fa-users"></i><span>Users</span></a></li>

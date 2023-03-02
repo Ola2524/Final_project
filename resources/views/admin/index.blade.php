@@ -72,8 +72,8 @@
                 @foreach ($jobs as $job)
                 <tr>
                     <th scope="row">{{ $job->id }}</th>
-                    <td>{{$job->worker}}</td>
-                    <td>{{$job->user}}</td>
+                    {{-- <td>{{$job->}}</td> --}}
+                    <td>{{$job->name}}</td>
                     <td>{{$job->service}}</td>
                     <td>{{$job->price}}</td>
                     <td>{{$job->rate}}</td>
@@ -88,7 +88,7 @@
     </div>
     <div class="col-4">
       <section class="top-worker">
-        <h2>Workers</h2>
+        <h2>Last Workers</h2>
         @foreach ($workers as $worker)
         <div class="worker">
           <div class="row align-items-center">

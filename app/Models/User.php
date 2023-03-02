@@ -1,12 +1,14 @@
 <?php
 
 namespace App\Models;
-
+use App\Models\Worker;
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
+use Illuminate\Database\Eloquent\Relations\HasOne;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class User extends Authenticatable
 {
@@ -20,15 +22,27 @@ class User extends Authenticatable
     protected $fillable = [
         'id',
         'name',
+        'password',
         'city',
         'country',
         'street',
         'email',
         'user_role',
-        'points'
-       
+        'points',
+        'img',
+        'bio'
 
     ];
+
+    public function workers()
+    {
+        return $this->hasOne(Worker::class);
+    }
+
+    public function jobs()
+    {
+        return $this->hasMany(Job::class);
+    }
 
     /**
      * The attributes that should be hidden for serialization.

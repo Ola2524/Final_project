@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin dashboard</title>
     <!-- custom link -->
-    <link rel="stylesheet" href="{{asset('css/style.css')}}">
+    <link rel="stylesheet" href="{{asset('css/dashboard_style.css')}}">
     <!-- bootstarp -->
     <link rel="stylesheet" href="{{asset('css/bootstrap.min.css')}}">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
@@ -29,10 +29,10 @@
 
         <ul class="nav-links">
             <li class="active"><a href="/"><i class='bx bx-grid-small'></i><span>Dashboard</span></a></li>
-            <li><a href="{{ route('jobs') }}"><i class="fa-solid fa-list-ul"></i><span>Job list</span></a></li>
-            <li><a href="{{ route('services') }}"><i class="fa-solid fa-briefcase"></i><span>Services</span></a></li>
-            <li><a href="/user"><i class="fa-solid fa-users"></i><span>Users</span></a></li>
-            <li><a href="#"><i class='bx bx-log-out'></i><span>Logout</span></a></li>
+            <li><a href="{{ route('req') }}"><i class="fa-solid fa-users"></i><span>Requests</span></a></li>
+            <li><a href="{{ route('worker.services') }}"><i class="fa-solid fa-briefcase"></i><span>Services</span></a></li>
+            <li><a href="{{ route('jobHistorty') }}"><i class="fa-solid fa-list-ul"></i><span>Jobs History</span></a></li>
+            <li><a href="{{ route('logout') }}"><i class='bx bx-log-out'></i><span>Logout</span></a></li>
         </ul>
     </div>
     <!-- end sidebar -->
@@ -52,13 +52,24 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNavDropdown">
             <ul class="navbar-nav ms-auto">
-            <li class="nav-item">
+            <li class="nav-item mt-2">
                 <a href="#"><i class="fa-solid fa-bell"></i></a>
             </li>
             <li class="nav-item">
                 <div class="d-flex align-items-center">
-                    <i class="fa-solid fa-circle-user"></i>
-                    <span>Admin</span>
+                    <div class="btn-group">
+                        <button type="button" class="btn btn-secondary dropdown-toggle d-flex justify-content-between align-items-center" data-bs-toggle="dropdown" aria-expanded="false">
+                            <div><i class="fa-solid fa-circle-user"></i></div>
+                            <span class="ms-2 me-1">{{ auth()->user()->name }}</span>
+                        </button>
+                        <ul class="dropdown-menu dropdown-menu-end">
+                          <li><a href="{{ route('worker.profile') }}" class="dropdown-item" type="button">Profile</a></li>
+                          <li><form action="{{ route("logout") }}" method="POST">
+                            @csrf
+                            <input type="submit" class="form-control" value="logout">
+                          </form></li>
+                        </ul>
+                      </div>
                 </div>
             </li>
             </ul>
