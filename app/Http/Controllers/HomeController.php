@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\Job;
 use App\Models\User;
 use App\Models\Worker;
+use App\Models\Service;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 
@@ -29,7 +30,7 @@ class HomeController extends Controller
      */
     public function index(){
         $role = Auth::User()->role;
-
+        $services = Service::all();
         if ($role == 'admin'){
             $users = User::all();
         $users = count($users);
@@ -37,12 +38,15 @@ class HomeController extends Controller
         $workers = Worker::all();
         $workers_count = count($workers);
 
-        $jobs = DB::table('users')
-        ->join('jobs', 'jobs.user_id', '=', 'users.id')
-        ->join('services', 'services.id', '=', 'jobs.service_id')
-        ->join('workers', 'workers.id', '=', 'jobs.worker_id')
-        ->select('jobs.id as id','users.name','services.name as service','jobs.rate','jobs.price','jobs.date','jobs.status')
-        ->get();
+        // $jobs = DB::table('users')
+        // ->join('jobs', 'jobs.user_id', '=', 'users.id')
+        // ->join('services', 'services.id', '=', 'jobs.service_id')
+        // ->join('workers', 'workers.id', '=', 'jobs.worker_id')
+        // ->select('jobs.id as id','users.name','services.name as service','jobs.rate','jobs.price','jobs.date','jobs.status')
+        // ->get();
+        $jobs = Job :: all();
+
+        // dd($jobs);
 
         // dd($jobs);
         $profits = 0;
@@ -85,7 +89,14 @@ class HomeController extends Controller
             return view('worker.index', ["jobs" => $jobs,"job_count" => $job_count, "profits" => $profits]);
         }
         else{
-            return view('user.index');
+            return view('user.index',['services'=>$services]);
         }  
+        // $services = Service::all();
+        // return view('user.index',['services'=>$services]);
+    }
+
+    public function homePage(){
+        $services = Service :: all();
+        return view('user.index',['services'=>$services]);
     }
 }

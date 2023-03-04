@@ -2,7 +2,7 @@
 @section('content')
 <section class="main">
     <div class="info-card">
-      <div class="card">
+      <div class="cards">
         <div class="card-icon">
           <i class="fa-solid fa-money-check-dollar"></i>
         </div>
@@ -25,7 +25,7 @@
       </div>
     </div> --}}
     <div class="info-card">
-      <div class="card">
+      <div class="cards">
         <div class="card-icon">
           <i class="fa-solid fa-briefcase"></i>
         </div>
@@ -37,7 +37,7 @@
     </div>
   </section>
   <div class="col-12 col-md-6 col-xxl-3 d-flex order-1 order-xxl-1">
-    <div class="card flex-fill">
+    <div class="cards flex-fill">
         <div class="card-header">
 
             <h5 class="card-title mb-0">Calendar</h5>

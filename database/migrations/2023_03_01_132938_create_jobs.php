@@ -20,6 +20,7 @@ return new class extends Migration
                 $table->float('rate')->default(0);
                 $table->date('date')->nullable();
                 $table->float('price')->default(0);
+                $table->text('desc');
                 $table->foreign('service_id')->references('id')->on('services')->onDelete('cascade')->onUpdate('cascade');
                 $table->foreign('worker_id')->references('id')->on('workers')->onDelete('cascade')->onUpdate('cascade');
                 $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');

@@ -14,6 +14,14 @@ use App\Http\Controllers\worker\ReqController;
 use App\Http\Controllers\worker\WorkerdashbordController;
 use App\Http\Controllers\worker\WorkerJobHistortyController;
 
+use App\Http\Controllers\user\ProfileController;
+use App\Http\Controllers\user\ContactController;
+use App\Http\Controllers\user\AboutController;
+use App\Http\Controllers\user\ServicesController;
+use App\Http\Controllers\user\OrderController;
+
+use App\Http\Controllers\HomeController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -29,9 +37,18 @@ Route::get('/',function(){return view("welcome");});
 
 // general routes for guests
 Route::get('/home', [HomeController::class,"show"])->name("index");
-Route::get('/contact-us', function(){return view('user.contact Us');})->name('contact');
-Route::get('/about-us', function(){return view('user.About Us');})->name('about');
+Route::get('/homepage', [HomeController::class,"homePage"])->name("homepage");
+Route::get('/contact-us', [ContactController::class,'index'])->name('contact');
+Route::get('/about-us', [AboutController::class,'index'])->name('about');
 Route::get('/login', function(){return view('user.login');})->name('login');
+Route::get('/profile', [ProfileController::class,'index'])->name('user.profile');
+Route::get('/our-services', [ServicesController::class, 'index'])->name('ourservices');
+Route::get('/our-services/{id}', [ServicesController::class, 'show'])->name('services.show');
+
+Route::get('/worker/profile/{id}', [ProfileController::class, 'show'])->name('profile.show');
+Route::get('/order/{id}', [OrderController::class, 'create'])->name('order.create');
+Route::post('/order/store', [OrderController::class, 'store'])->name('order.store');
+Route::get('/order-details/{id}', [OrderController::class, 'show'])->name('order.show');
 
 // start admin routes
 Route::get('/admin', [AdminController :: class, "index"])->name('admin');

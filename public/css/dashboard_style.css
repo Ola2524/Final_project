@@ -156,7 +156,7 @@ h2{
     /* width: calc(25%-240px); */
 }
 
-.main .card{
+.main .cards{
     /* width: calc(25%-240px); */
     min-width: 260px;
     padding: 20px;
@@ -170,20 +170,20 @@ h2{
 
 }
 
-.main .info-card:nth-child(2) .card{
+.main .info-card:nth-child(2) .cards{
     background: linear-gradient(to left,#6AA5E3,#6466E9);
 }
 
-.main .info-card:nth-child(3) .card{
+.main .info-card:nth-child(3) .cards{
     background: linear-gradient(to left,#FF8993,#FEB683);
 }
 
-.main .info-card:last-child .card{
+.main .info-card:last-child .cards{
     background: linear-gradient(to left,#fe8383,#ff9b89);
 }
 
-.main .card::before,
-.main .card::after{
+.main .cards::before,
+.main .cards::after{
     content: '';
     position: absolute;
     top: -20%;
@@ -194,7 +194,7 @@ h2{
     border-radius: 100%;
 }
 
-.main .card::after{
+.main .cards::after{
     /* top: auto; */
     top: -20%;
     right: -6%;
@@ -202,7 +202,7 @@ h2{
     height: 80px;
 }
 
-.main .card .card-icon{
+.main .cards .card-icon{
     margin-bottom: 15px;
     width: 60px;
     height: 60px;
@@ -214,11 +214,11 @@ h2{
     box-shadow: 0 0 8px #fff;
 }
 
-.main .card .card-icon i{
+.main .cards .card-icon i{
     font-size: 26px;
 }
 
-.main .card .card-detail{
+.main .cards .card-detail{
     /* margin-bottom: 10px; */
     margin-top: 10px;
 }

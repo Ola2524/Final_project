@@ -36,6 +36,7 @@
                    <tr>
                      <th scope="col">#</th>
                      <th scope="col">Service name</th>
+                     <th scope="col">Fixed price</th>
                      <th scope="col">Actions</th>
                    </tr>
                  </thead>
@@ -44,6 +45,7 @@
                    <tr>
                      <th scope="row">{{$service->id}}</th>
                      <td>{{ $service->services->name }}</td>                     
+                     <td>{{ $service->fixed_price }}</td>                     
                      <td>
                        <a href="{{route('worker.services.edit',['service'=>$service->id])}}" class="btn btn-outline-success">Edit</a>
                        <form style="display: inline" method="POST" action="{{route('worker.services.destroy',['service'=>$service->id])}}" >

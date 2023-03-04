@@ -3,7 +3,7 @@
  <!-- start main content -->
  <section class="main">
     <div class="info-card">
-      <div class="card">
+      <div class="cards">
         <div class="card-icon">
           <i class="fa-solid fa-money-check-dollar"></i>
         </div>
@@ -14,7 +14,7 @@
       </div>
     </div>
     <div class="info-card">
-      <div class="card">
+      <div class="cards">
         <div class="card-icon">
           <i class="fa-solid fa-users-gear"></i>
         </div>
@@ -25,7 +25,7 @@
       </div>
     </div>
     <div class="info-card">
-      <div class="card">
+      <div class="cards">
         <div class="card-icon">
           <i class="fa-solid fa-users"></i>
         </div>
@@ -36,7 +36,7 @@
       </div>
     </div>
     <div class="info-card">
-      <div class="card">
+      <div class="cards">
         <div class="card-icon">
           <i class="fa-solid fa-briefcase"></i>
         </div>
@@ -72,9 +72,9 @@
                 @foreach ($jobs as $job)
                 <tr>
                     <th scope="row">{{ $job->id }}</th>
-                    {{-- <td>{{$job->}}</td> --}}
-                    <td>{{$job->name}}</td>
-                    <td>{{$job->service}}</td>
+                    <td>{{$job->workers->users->name}}</td>
+                    <td>{{$job->users->name}}</td>
+                    <td>{{$job->services->name}}</td>
                     <td>{{$job->price}}</td>
                     <td>{{$job->rate}}</td>
                     <td>{{$job->date}}</td>

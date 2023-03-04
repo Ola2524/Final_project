@@ -17,12 +17,13 @@ class AdminController extends Controller
         $workers = Worker::all();
         $workers_count = count($workers);
 
-        $jobs = DB::table('users')
-        ->join('jobs', 'jobs.user_id', '=', 'users.id')
-        ->join('services', 'services.id', '=', 'jobs.service_id')
-        ->join('workers', 'workers.id', '=', 'jobs.worker_id')
-        ->select('jobs.id as id','users.name','services.name as service','jobs.rate','jobs.price','jobs.date','jobs.status')
-        ->get();
+        // $jobs = DB::table('users')
+        // ->join('jobs', 'jobs.user_id', '=', 'users.id')
+        // ->join('services', 'services.id', '=', 'jobs.service_id')
+        // ->join('workers', 'workers.id', '=', 'jobs.worker_id')
+        // ->select('jobs.id as id','users.name','services.name as service','jobs.rate','jobs.price','jobs.date','jobs.status')
+        // ->get();
+        $jobs = Job :: all();
 
         // dd($jobs);
         $profits = 0;

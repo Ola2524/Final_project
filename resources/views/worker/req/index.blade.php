@@ -28,7 +28,7 @@
                       <td>
                       <a href="{{route('reg.add',['add'=>$job->id])}}" class="btn btn-success">Accept</a>
                       <a href="{{route('reg.remove',['job'=>$job->id])}}" class="btn btn-danger ms-3">Reject</a>
-                       <button type="button" class="btn btn-secondary ms-3">Contact Me</button></td>
+                      <a href="{{ route('order.show',['id'=>$job->id]) }}" class="btn btn-secondary ms-3">Show details</a></td>
                       
                       @endforeach
                     </tr>

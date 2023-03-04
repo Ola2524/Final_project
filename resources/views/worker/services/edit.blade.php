@@ -15,7 +15,10 @@
             @endif      
             @endforeach
         </select>
-
+        <div class="mb-5">
+            <label for="exampleFormControlInput1" class="form-label">Fixed price</label>
+            <input type="number" class="form-control" name="price" placeholder="Enter your price for service">
+        </div>
           <button type="submit" class="btn btn-primary px-3">Edit</button>
       </form>
 </div>

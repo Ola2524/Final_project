@@ -47,7 +47,7 @@
                     <tr>
                       <th scope="row">{{$service['id']}}</th>
                       <td>{{$service ['name']}}</td>
-                      <td><img src="Storage/img/{{$service['img']}}" alt="" class="img-service"></td>
+                      <td><img src="{{ asset('storage/img/'.$service->img) }}" alt="" class="img-service"></td>
                       <td>{{$service['description']}}</td>                      
                       <td>
                         <a href="{{route('services.edit',['services'=>$service->id])}}" class="btn btn-outline-success">Edit</a>

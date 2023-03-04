@@ -25,9 +25,11 @@ class WorkerServiceController extends Controller
   {
     $service_id = $request->service_id;
     $worker_id = $request->worker_id;
+    $price = $request->price;
     $service = WorkerService::create([
       'service_id' => $service_id,
-      'worker_id' => $worker_id
+      'worker_id' => $worker_id,
+      'fixed_price'=> $price
     ]);
     return redirect('/worker-services');
   }
@@ -44,6 +46,7 @@ class WorkerServiceController extends Controller
     $Service = WorkerService::findOrFail($service);
     $Service->update([
       'service_id' => $request->service_id,
+      'fixed_price' => $request->price,
     ]);
     return redirect('/worker-services');
   }

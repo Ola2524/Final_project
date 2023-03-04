@@ -34,13 +34,17 @@
             <li><a href="/user"><i class="fa-solid fa-users"></i><span>Users</span></a></li>
             <li><a href="{{ route('workers') }}"><i class="fa-solid fa-users-gear"></i><span>Workers</span></a></li>
             <li><a href="{{ route('offers') }}"><i class="fa-solid fa-gift"></i><span>Offers</span></a></li>
-            <li><a href="#"><i class='bx bx-log-out'></i><span>Logout</span></a></li>
+            <li><a href="#"><i class='bx bx-log-out'></i><span>
+                <form action="{{ route("logout") }}" method="POST">
+                    @csrf
+                <input type="submit" class="dropdown-item" value="logout">
+                 </form></span></a></li>
         </ul>
     </div>
     <!-- end sidebar -->
 
     <!-- home content -->
-    <div class="content">
+  <div class="content">
     <!-- start navbar -->
     <nav class="navbar navbar-expand-lg bg-body-tertiary">
         <div class="container mx-2">
@@ -54,19 +58,31 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNavDropdown">
             <ul class="navbar-nav ms-auto">
-            <li class="nav-item">
+            <li class="nav-item mt-2">
                 <a href="#"><i class="fa-solid fa-bell"></i></a>
             </li>
             <li class="nav-item">
                 <div class="d-flex align-items-center">
-                    <i class="fa-solid fa-circle-user"></i>
-                    <span>Admin</span>
+                    <div class="btn-group">
+                        <button type="button" class="btn btn-secondary dropdown-toggle d-flex justify-content-between align-items-center" data-bs-toggle="dropdown" aria-expanded="false">
+                            <div><i class="fa-solid fa-circle-user"></i></div>
+                            <span class="ms-2 me-1">{{ auth()->user()->name }}</span>
+                        </button>
+                        <ul class="dropdown-menu dropdown-menu-end">
+                          <li><a href="{{ route('homepage') }}" class="dropdown-item" type="button">Visit site</a></li>
+                          <li><a href="{{ route('worker.profile') }}" class="dropdown-item" type="button">Profile</a></li>
+                          <li><form action="{{ route("logout") }}" method="POST">
+                            @csrf
+                            <input type="submit" class="dropdown-item" value="logout">
+                          </form></li>
+                        </ul>
+                      </div>
                 </div>
             </li>
             </ul>
         </div>
         </div>
     </nav>
-    <!-- end navbar -->
+     <!-- end navbar -->
 
     @yield('content')

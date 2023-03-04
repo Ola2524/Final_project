@@ -32,7 +32,12 @@
             <li><a href="{{ route('req') }}"><i class="fa-solid fa-users"></i><span>Requests</span></a></li>
             <li><a href="{{ route('worker.services') }}"><i class="fa-solid fa-briefcase"></i><span>Services</span></a></li>
             <li><a href="{{ route('jobHistorty') }}"><i class="fa-solid fa-list-ul"></i><span>Jobs History</span></a></li>
-            <li><a href="{{ route('logout') }}"><i class='bx bx-log-out'></i><span>Logout</span></a></li>
+            <li><a class="text-white"><i class='bx bx-log-out'></i>
+                <form action="{{ route("logout") }}" method="POST">
+                    @csrf
+                <input type="submit" class="dropdown-item" value="logout">
+                 </form>    
+            </a></li>
         </ul>
     </div>
     <!-- end sidebar -->
@@ -63,10 +68,11 @@
                             <span class="ms-2 me-1">{{ auth()->user()->name }}</span>
                         </button>
                         <ul class="dropdown-menu dropdown-menu-end">
+                          <li><a href="{{ route('homepage') }}" class="dropdown-item" type="button">Visit site</a></li>
                           <li><a href="{{ route('worker.profile') }}" class="dropdown-item" type="button">Profile</a></li>
                           <li><form action="{{ route("logout") }}" method="POST">
                             @csrf
-                            <input type="submit" class="form-control" value="logout">
+                            <input type="submit" class="dropdown-item" value="Logout">
                           </form></li>
                         </ul>
                       </div>
