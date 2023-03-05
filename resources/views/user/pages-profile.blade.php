@@ -53,7 +53,13 @@
                             <div class="card-body profile-card">
                                 <center class="mt-4"> <img src="../assets/images/users/5.jpg"
                                         class="rounded-circle" width="150" />
-                                    <h4 class="card-title mt-2">{{ auth()->user()->name }}</h4>
+                                        @if ($user == 0)
+                                            <h4 class="card-title mt-2">{{ $workers->workers->users->name }}</h4>                                            
+                                        @endif
+
+                                        @if ($user == 1)
+                                            <h4 class="card-title mt-2">{{ auth()->user()->name }}</h4>                                            
+                                        @endif
                                     @if (auth()->user()->role == 'worker' && auth()->user()->role != 'user')
                                     <?php $i = 0 ?>
                                     <h6 class="card-subtitle">
@@ -79,7 +85,7 @@
                             <div class="card-body profile-card">
                                 <div class="mt-4 mx-5"> 
                                     <div class="row">
-                                        @if (auth()->user()->role == 'worker')
+                                        @if (auth()->user()->role == 'worker' || $user == 0)
                                             
                                         <div class="col-md-6">
                                             <h6>Jobs</h6>
@@ -160,7 +166,13 @@
                         <div class="card">
                             <div class="card-body">
                                 <h4>Bio</h4>
-                                {{ auth()->user()->bio }}
+                                @if ($user == 0)
+                                    {{ $workers->workers->users->bio }}                                    
+                                @endif
+
+                                @if ($user == 1)
+                                    {{ auth()->user()->bio }}
+                                @endif
                             </div>
                         </div>
                     </div>

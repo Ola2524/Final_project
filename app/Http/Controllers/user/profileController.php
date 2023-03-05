@@ -21,7 +21,8 @@ class profileController extends Controller
         if($role == 'worker'){
             $worker_id = Auth :: user()->workers->id;
             $workers = WorkerService :: where('worker_id',$worker_id)->get();
-            $job_counts = count($services);
+            $worker_services = WorkerService :: where('worker_id',$worker_id)->where('status','Done')->get();
+            $job_counts = count($worker_services);
             $user = 0;
             return view("user.pages-profile",['workers'=>$workers,'job_count'=>$job_counts,'services'=>$services,'user'=>$user]);
         }
@@ -34,7 +35,7 @@ class profileController extends Controller
     public function show($id){
         $services = Service::all();
         $jobs = Job :: where('worker_id',$id)->get();
-        $workers = WorkerService :: where('worker_id',$id)->firstOrFail();
+        $workers = WorkerService :: where('id',$id)->firstOrFail();
         $job_counts = count($jobs);
         $user = 0;
         return view("user.pages-profile",['services'=>$services,'workers'=>$workers,'job_count'=>$job_counts,'user'=>$user]);

@@ -58,9 +58,9 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNavDropdown">
             <ul class="navbar-nav ms-auto">
-            <li class="nav-item mt-2">
+            {{-- <li class="nav-item mt-2">
                 <a href="#"><i class="fa-solid fa-bell"></i></a>
-            </li>
+            </li> --}}
             <li class="nav-item">
                 <div class="d-flex align-items-center">
                     <div class="btn-group">

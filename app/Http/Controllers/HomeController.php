@@ -95,8 +95,8 @@ class HomeController extends Controller
         // return view('user.index',['services'=>$services]);
     }
 
-    public function homePage(){
-        $services = Service :: all();
-        return view('user.index',['services'=>$services]);
-    }
+    // public function homePage(){
+    //     $services = Service :: all();
+    //     return view('user.index',['services'=>$services]);
+    // }
 }

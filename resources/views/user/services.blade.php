@@ -1,7 +1,97 @@
 @extends('layout.user')
 @section('content')
 
+<style>
+    /* New Card */
 
+  
+  
+.column
+{
+    width:25%;
+    float:left;
+    padding:100px 10px;
+}
+
+.row:after{
+    content:"";
+    display:table;
+    clear:both;
+}
+
+
+
+@media screen and (max-width:600px)
+{
+    .column
+    {
+        width:100%;
+        display:block;
+        margin-bottom: 20px;
+    }
+}
+
+.card
+{
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    max-width:300px;
+    margin:auto;
+    background-color:white;
+    text-align:center;
+    border-radius:40px;
+    padding-bottom:15px;
+}
+
+.title
+{
+    color:gray;
+    font-size:18px;
+}
+
+button
+{
+    border:none;
+    padding:8px;
+    display: inline-block;
+    color:white;
+    background-color:rgb(35, 46, 125);
+    cursor:pointer;
+    width:70%;
+    border-radius:20px;
+    font-size:18px;
+    text-align:center;
+}
+
+a{
+    text-decoration: none;
+    font-size:22px;
+    color:rgb(255, 239, 239);
+}
+
+a:hover,button:hover{
+    opacity: 0.6;
+}
+.card:hover
+{
+  opacity: 0.8;
+  box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.2);
+  width:300px;
+  margin:auto;
+  background-color:white;
+  text-align:center;
+  border-radius:40px;
+  padding-bottom:15px;
+  
+}
+
+/* .center{
+  border-radius:100x;
+} */
+
+/* #pic{
+  border-radius: 100px;
+} */
+</style>
             <!-- Carousel Start -->
 
             <div class="container-fluid px-0 mb-5">
@@ -48,10 +138,16 @@
             </header>
         </section>
 
-                
+         
+        @if (session('success'))
+            <div class="alert alert success">
+                {{ session('success') }}                
+            </div>
+        @endif
+
 <!-- start card services -->
 <div class="container">
-
+<div class="row">
 @foreach ($user as $users )
 {{-- @dd($users) --}}
     <div class="column">
@@ -107,11 +203,12 @@
         <!-- ///////////////////////////////////////////// -->
     </span> --}}
 
-        <p><a href="{{route('profile.show',['id'=>$users->worker_id])}}" class="btn btn-outline-primary">Show More </a></p>
+        <p><a href="{{route('profile.show',['id'=>$users->id])}}" class="btn btn-outline-primary">Show More </a></p>
 
       </div>
     </div>
     @endforeach
+</div>
 </div>
     {{-- <div class="column">
       <div class="card">
@@ -262,7 +359,6 @@
     <!-- <a href="#" class="btn btn-lg btn-primary btn-lg-square rounded-circle back-to-top"><i
             class="bi bi-arrow-up"></i></a> -->
 
-</body>
+            @include('sweetalert::alert')
 
-</html>
 @endsection

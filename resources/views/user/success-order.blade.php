@@ -6,7 +6,7 @@
         <h2 class="text-success text-center">Your Order Have Been Done Successfully</h2>
     </div>
     </div>
-    <div class="text-center">
+    <div>
         <a href="{{route('homepage')}}" class="btn btn-outline-success">Back</a>
     </div>
 </div>

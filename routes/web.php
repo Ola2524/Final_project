@@ -8,6 +8,9 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\OfferController;
 use App\Http\Controllers\WorkerController;
 
+use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\WorkerRegistrationController;
+
 use App\Http\Controllers\worker\WorkerProfileController;
 use App\Http\Controllers\worker\WorkerServiceController;
 use App\Http\Controllers\worker\ReqController;
@@ -22,6 +25,8 @@ use App\Http\Controllers\user\OrderController;
 
 use App\Http\Controllers\HomeController;
 
+use RealRashid\SweetAlert\Facades\Alert;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -33,11 +38,21 @@ use App\Http\Controllers\HomeController;
 |
 */
 
-Route::get('/',function(){return view("welcome");});
+// Route::get('/',function(){return view("welcome");});
+Route::get('/', [RegisterController::class,"index"])->name("homepage");
+Route::get('/regist', [RegisterController::class,"show"])->name("registeration");
+Route::get('/user-regist', [RegisterController::class, 'create'])->name('createUser');
+Route::post('/registeration', [RegisterController::class, 'store'])->name('user.registration');
+
+Route::get('/homepage', [RegisterController::class,"index"]);
+
+
+Route::get('/workerregistration', [WorkerRegistrationController::class, 'create'])->name('worker.registeration');
+Route::post('/worker-register', [WorkerRegistrationController::class, 'store'])->name('worker.register');
 
 // general routes for guests
 Route::get('/home', [HomeController::class,"show"])->name("index");
-Route::get('/homepage', [HomeController::class,"homePage"])->name("homepage");
+// Route::get('/homepage', [HomeController::class,"homePage"])->name("homepage");
 Route::get('/contact-us', [ContactController::class,'index'])->name('contact');
 Route::get('/about-us', [AboutController::class,'index'])->name('about');
 Route::get('/login', function(){return view('user.login');})->name('login');

@@ -122,7 +122,8 @@
                           </div>
                     </div>
                     @else
-                    <a href="{{ route('login') }}" class="btn btn-sm btn-light rounded-pill py-2 px-4 d-none d-lg-block">Login</a>
+                    <a href="{{ route('login') }}" class="btn btn-sm btn-light rounded-pill py-2 px-4 d-none d-lg-block me-3">Login</a>
+                    <a href="{{ route('registeration') }}" class="btn btn-sm btn-light rounded-pill py-2 px-4 d-none d-lg-block">Register</a>
 
                     @endauth
 
@@ -189,6 +190,7 @@
     </div>
     
 </div>
+
 <!-- Footer End -->
 
         <!-- JavaScript Libraries -->

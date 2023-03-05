@@ -10,7 +10,7 @@ class Job extends Model
 {
     use HasFactory;
     protected $table = 'jobs';
-    protected $fillable = ['service_id', 'worker_id' , 'user_id','status','rate','date','price'];
+    protected $fillable = ['service_id', 'worker_id' , 'user_id','status','rate','date','price','desc'];
 
     public function services()
     {

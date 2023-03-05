@@ -24,7 +24,7 @@ class ServicesController extends Controller
         ->join('users', 'users.id', '=', 'workers.user_id')
         ->join('services', 'services.id', '=', 'worker_service.service_id')
         ->where('users.role','=','worker')
-        ->select('worker_service.id' ,'worker_service.fixed_price','users.name as name','services.name as service_name','services.description')
+        ->select('worker_service.id as id' ,'worker_service.fixed_price','worker_id' ,'users.name as name','services.name as service_name','services.description')
         ->get();
 
         // $users = WorkerService :: all();
