@@ -28,7 +28,12 @@ class RegisterController extends Controller
     public function store(Request $request)
     {
        $input = $request->all();
-       $request->img->storeAs("public/img", $request->img->getClientOriginalName());
+       if ($img = $request->file('img')) {
+        $destinationPath = 'img/';
+        $profileImage = date('YmdHis') . "." . $img->getClientOriginalExtension();
+        $img->move($destinationPath, $profileImage);
+        $input['img'] = "$profileImage";
+    }
 
        User::create([
         'name' => $input['name'],
@@ -37,11 +42,15 @@ class RegisterController extends Controller
         'street' => $input['street'],
         'country' => $input['country'],
         'bio' => $input['bio'],
-        'img'=>$request->img->getClientOriginalName(),
+        'img'=>$input['img'],
         'password' => Hash::make($input['password'])
       ]);
-       return view('login');
+       $services = Service :: all();
+       return view('login',['services'=>$services]);
     }
         
-
+    public function login(){
+        $services = Service :: all();
+        return view('login',['services'=>$services]);
+    }
 }

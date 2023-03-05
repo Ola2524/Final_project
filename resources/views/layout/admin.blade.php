@@ -33,7 +33,9 @@
             <li><a href="{{ route('jobs') }}"><i class="fa-solid fa-list-ul"></i><span>Job list</span></a></li>
             <li><a href="/user"><i class="fa-solid fa-users"></i><span>Users</span></a></li>
             <li><a href="{{ route('workers') }}"><i class="fa-solid fa-users-gear"></i><span>Workers</span></a></li>
+            <li><a href="{{ route('workerreq') }}"><i class="fa-solid fa-check-to-slot"></i><span>Verification</span></a></li>
             <li><a href="{{ route('offers') }}"><i class="fa-solid fa-gift"></i><span>Offers</span></a></li>
+            <li><a href="{{ route('contact.us') }}"><i class="fa-solid fa-envelope"></i><span>Contact Us</span></a></li>
             <li><a href="#"><i class='bx bx-log-out'></i><span>
                 <form action="{{ route("logout") }}" method="POST">
                     @csrf

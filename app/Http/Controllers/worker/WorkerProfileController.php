@@ -14,7 +14,7 @@ class WorkerProfileController extends Controller
     public function index(){
         $worker = Auth :: User();
         $verified = $worker->workers->criminal_record_certificate!=NULL?$worker->workers->criminal_record_certificate:0;
-        $job = Job :: where('worker_id',$worker->workers->id)->get();
+        $job = Job :: where('worker_id',$worker->workers->id)->where('status','Done')->get();
         $job_count = count($job); 
         $services = WorkerService :: where('worker_id',$worker->id)->get();
         return view("worker.profile.index",['services' => $services,'verified'=>$verified,'job_count'=>$job_count]);
@@ -49,6 +49,7 @@ class WorkerProfileController extends Controller
         
         $Worker = Worker::findOrFail($worker);
         $Worker->update([
+          'verify'=>0,
         'criminal_record_certificate'=>$request->criminal_record_certificate->getClientOriginalName(),
         ]);
         return redirect('/worker-profile');

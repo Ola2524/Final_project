@@ -22,10 +22,15 @@ use App\Http\Controllers\user\ContactController;
 use App\Http\Controllers\user\AboutController;
 use App\Http\Controllers\user\ServicesController;
 use App\Http\Controllers\user\OrderController;
-
+use App\Http\Controllers\MessagesController;
 use App\Http\Controllers\HomeController;
 
 use RealRashid\SweetAlert\Facades\Alert;
+
+use App\Http\Controllers\PayPalController;
+use App\Http\Controllers\StripePaymentlController;
+use App\Http\Controllers\WorkerreqController;
+use App\Models\Service;
 
 /*
 |--------------------------------------------------------------------------
@@ -43,6 +48,7 @@ Route::get('/', [RegisterController::class,"index"])->name("homepage");
 Route::get('/regist', [RegisterController::class,"show"])->name("registeration");
 Route::get('/user-regist', [RegisterController::class, 'create'])->name('createUser');
 Route::post('/registeration', [RegisterController::class, 'store'])->name('user.registration');
+Route::get('/user-login', [RegisterController::class,"login"])->name("user.login");
 
 Route::get('/homepage', [RegisterController::class,"index"]);
 
@@ -64,6 +70,10 @@ Route::get('/worker/profile/{id}', [ProfileController::class, 'show'])->name('pr
 Route::get('/order/{id}', [OrderController::class, 'create'])->name('order.create');
 Route::post('/order/store', [OrderController::class, 'store'])->name('order.store');
 Route::get('/order-details/{id}', [OrderController::class, 'show'])->name('order.show');
+
+
+Route::get('/chat', [MessagesController :: class,'index'])->name('chat');
+
 
 // start admin routes
 Route::get('/admin', [AdminController :: class, "index"])->name('admin');
@@ -92,6 +102,13 @@ Route::post('workers/store/', [WorkerController::class, 'store'])->name('workers
 Route::get('workers/edit/{worker}', [WorkerController::class, 'edit'])->name('workers.edit');
 Route::put('workers/update/{worker}',[WorkerController::class, 'update'])->name('workers.update');
 Route::delete('delete/{worker}',[WorkerController::class, 'destroy'])->name('workers.destroy');
+// verification
+Route::get('/workerreq', [WorkerreqController::class,"index"])->name("workerreq");
+Route::get('/workerreq/{worker}', [WorkerreqController::class,"remove"])->name("workerreq.remove");
+Route::get('/workerreq-add/{worker}', [WorkerreqController::class,"add"])->name("workerreq.add");
+
+//contact us
+Route::get('/contact-us', [ContactController::class,"adminContacts"])->name("contact.us");
 // end admin routes
 
 // start worker routes
@@ -134,3 +151,27 @@ Auth::routes();
 // Auth::routes();
 
 // Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+//payment:
+
+
+Route::get('go-payment', [PayPalController::class, 'goPayment'])->name('payment.go');
+
+Route::get('payment',[PayPalController::class, 'payment'])->name('payment');
+Route::get('cancel',[PayPalController::class, 'cancel'])->name('payment.cancel');
+Route::get('payment/success', [PayPalController::class, 'success'])->name('payment.success');
+
+
+//paymentstripe:
+
+Route::get('stripe/{id}', [StripePaymentlController::class , 'stripe']);
+Route::post('stripe/{id}', [StripePaymentlController::class, 'stripePost'])->name('stripe.post');
+
+// contact us
+Route::get('/contact', function () {
+    return view('user.contact',['services'=>Service::all()]);})->name("contact");
+
+Route::post('/contact_us', [ContactController::class, 'contact_us'])->name("contact_us");
+
+Route::get('/get_messages', [ContactController::class, 'get_messages'] )
+->name("get_messages");

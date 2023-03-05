@@ -28,7 +28,7 @@
                     </div>
                     <div class="col-md-6 col-4">
                         @if ($user == 0)
-                            <a href="" class="btn btn-outline-success float-end" style="margin:0 13px">Contact me</a>
+                            <a href="/chatify/{{$workers->workers->users->id}}" class="btn btn-outline-success float-end" style="margin:0 13px">Contact me</a>
                             <a href="{{route('order.create',['id'=>$workers->id])}}" class="btn btn-outline-primary float-end">Order service</a>
                         @endif
                     </div>
@@ -51,8 +51,15 @@
                     <div class="col-lg-4 col-xlg-3 col-md-5">
                         <div class="card">
                             <div class="card-body profile-card">
-                                <center class="mt-4"> <img src="../assets/images/users/5.jpg"
-                                        class="rounded-circle" width="150" />
+                                <center class="mt-4"> 
+                                    @if ($user == 1)    
+                                        <img src="{{asset('img/'.auth()->user()->img)}}"class="rounded-circle" width="150"/>
+                                    @endif
+                                    @if ($user == 0)      
+                                        <img src="{{asset('img/'.$workers->workers->users->img)}}"class="rounded-circle" width="150"/>
+                                    @endif
+
+                                        
                                         @if ($user == 0)
                                             <h4 class="card-title mt-2">{{ $workers->workers->users->name }}</h4>                                            
                                         @endif

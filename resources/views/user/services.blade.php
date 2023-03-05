@@ -138,12 +138,19 @@ a:hover,button:hover{
             </header>
         </section>
 
+        <?php
+        if(isset($success)){
+            if($success == 1){
+                Alert::success('Order Success', 'Your order has been done successfully');
+            }
+        } 
+        ?>
          
-        @if (session('success'))
+        {{-- @if (session()->has('success'))
             <div class="alert alert success">
-                {{ session('success') }}                
+                {{ session()->get('success') }}                
             </div>
-        @endif
+        @endif --}}
 
 <!-- start card services -->
 <div class="container">
@@ -153,7 +160,7 @@ a:hover,button:hover{
     <div class="column">
       <div class="card">
         <div class="center">
-            <img src="" style="width:150px;height:auto;padding-top:10px; border-radius: 100px;">
+            <img src="{{asset('img/'.$users->img)}}" style="width:150px;height:auto;padding-top:10px; border-radius: 100px;">
         </div>
             
         <h1>{{$users->name}}</h1>

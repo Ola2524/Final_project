@@ -50,7 +50,7 @@
                           
                       <td>
                         @if ($user ['points'] > 0)
-                          <a href="{{route('offers.removeUser',['user'=>$user->id])}}" class="btn btn-outline-danger">Remove discount</a> 
+                          <a href="{{route('offers.removeUser',['user'=>$user->id])}}" class="btn btn-outline-danger">Remove Points</a> 
                         @endif
                       
                       </td>

@@ -122,7 +122,7 @@
                           </div>
                     </div>
                     @else
-                    <a href="{{ route('login') }}" class="btn btn-sm btn-light rounded-pill py-2 px-4 d-none d-lg-block me-3">Login</a>
+                    <a href="{{ route('user.login') }}" class="btn btn-sm btn-light rounded-pill py-2 px-4 d-none d-lg-block me-3">Login</a>
                     <a href="{{ route('registeration') }}" class="btn btn-sm btn-light rounded-pill py-2 px-4 d-none d-lg-block">Register</a>
 
                     @endauth
@@ -158,24 +158,27 @@
             <div class="col-lg-3 col-md-6">
                 <h5 class="text-light mb-4">Gallery</h5>
                 <div class="row g-2">
+                    @foreach ($services as $service)
                     <div class="col-4">
-                        <img class="img-fluid rounded" src="images/babysitter (2).jpg" alt="Image">
+                        <img class="img-fluid rounded" src="{{asset('img/'.$service->img)}}" alt="Image">
+                    </div>                        
+                    @endforeach
+
+                    {{-- <div class="col-4">
+                        <img class="img-fluid rounded" src="{{asset('img/cleaning (2).jpg')}}" alt="Image">
                     </div>
                     <div class="col-4">
-                        <img class="img-fluid rounded" src="images/cleaning (2).jpg" alt="Image">
+                        <img class="img-fluid rounded" src="{{asset('img/elder care (2).jpg')}}" alt="Image">
                     </div>
                     <div class="col-4">
-                        <img class="img-fluid rounded" src="images/elder care (2).jpg" alt="Image">
+                        <img class="img-fluid rounded" src="{{('img/Bride Preparing.jpeg')}}" alt="Image">
                     </div>
                     <div class="col-4">
-                        <img class="img-fluid rounded" src="images/Bride Preparing.jpeg" alt="Image">
+                        <img class="img-fluid rounded" src="{{asset('img/waiter (1).jpg')}}" alt="Image">
                     </div>
                     <div class="col-4">
-                        <img class="img-fluid rounded" src="images/waiter (1).jpg" alt="Image">
-                    </div>
-                    <div class="col-4">
-                        <img class="img-fluid rounded" src="images/security.jpg" alt="Image">
-                    </div>
+                        <img class="img-fluid rounded" src="{{asset('img/security.jpg')}}" alt="Image">
+                    </div> --}}
                 </div>
             </div>
             <div class="col-lg-3 col-md-6">

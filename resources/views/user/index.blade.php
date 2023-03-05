@@ -5,18 +5,18 @@
         <div id="header-carousel" class="carousel slide" data-bs-ride="carousel">
             <div class="carousel-indicators">
                 <button type="button" data-bs-target="#header-carousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1">
-                    <img class="img-fluid" src="{{asset('images/cleaning (1).jpg')}}" alt="Image">
+                    <img class="img-fluid" src="{{asset('img/cleaning (1).jpg')}}" alt="Image">
                 </button>
                 <button type="button" data-bs-target="#header-carousel" data-bs-slide-to="1" aria-label="Slide 2">
-                    <img class="img-fluid" src="images/elder care (1).jpg" alt="Image">
+                    <img class="img-fluid" src="img/elder care (1).jpg" alt="Image">
                 </button>
                 <button type="button" data-bs-target="#header-carousel" data-bs-slide-to="2" aria-label="Slide 3">
-                    <img class="img-fluid" src="images/babysitter (1).jpg" alt="Image">
+                    <img class="img-fluid" src="img/babysitter (1).jpg" alt="Image">
                 </button>
             </div>
             <div class="carousel-inner">
                 <div class="carousel-item active">
-                    <img class="w-100" src="images/cleaning (1).jpg" alt="Image">
+                    <img class="w-100" src="img/cleaning (1).jpg" alt="Image">
                     <div class="carousel-caption">
                         <div class="p-3" style="max-width: 900px;">
                             <h4 class="text-white text-uppercase mb-4 animated zoomIn">Lorem ipsum dolor sit amet consectetur adipisicing elit.</h4>
@@ -25,7 +25,7 @@
                     </div>
                 </div>
                 <div class="carousel-item">
-                    <img class="w-100" src="images/elder care (1).jpg" alt="Image">
+                    <img class="w-100" src="img/elder care (1).jpg" alt="Image">
                     <div class="carousel-caption">
                         <div class="p-3" style="max-width: 900px;">
                             <h4 class="text-white text-uppercase mb-4 animated zoomIn">Lorem ipsum dolor sit amet consectetur adipisicing elit.</h4>
@@ -34,7 +34,7 @@
                     </div>
                 </div>
                 <div class="carousel-item">
-                    <img class="w-100" src="images/babysitter (1).jpg" alt="Image">
+                    <img class="w-100" src="img/babysitter (1).jpg" alt="Image">
                     <div class="carousel-caption">
                         <div class="p-3" style="max-width: 900px;">
                             <h4 class="text-white text-uppercase mb-4 animated zoomIn">Lorem ipsum dolor sit amet consectetur adipisicing elit.</h4>
@@ -69,7 +69,7 @@
             @foreach ($services as $service)
                 <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
                     <a class="service-item d-block rounded text-center h-100 p-4 text-decoration-none" href="">
-                        <img class="img-fluid rounded mb-4" src="{{asset('images/'.$service->img)}}" alt="">
+                        <img class="img-fluid rounded mb-4" src="{{asset('img/'.$service->img)}}" alt="">
                         <h4 class="mb-0 text-dark fw-bold">{{ $service->name }} Service</h4>
                     </a>
                 </div>
@@ -116,7 +116,7 @@
             <div class="row g-5">
                 <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.1s">
                     <div class="img-border">
-                        <img class="img-fluid" src="images/waiter.jpg" alt="">
+                        <img class="img-fluid" src="img/waiter.jpg" alt="">
                     </div>
                 </div>
                 <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.5s">
@@ -144,7 +144,7 @@
             <div class="owl-carousel testimonial-carousel wow fadeInUp" data-wow-delay="0.1s">
                 <div class="testimonial-item bg-light rounded p-4">
                     <div class="d-flex align-items-center mb-4">
-                        <img class="flex-shrink-0 rounded-circle border p-1" src="images/testimonial-1.jpg" alt="">
+                        <img class="flex-shrink-0 rounded-circle border p-1" src="img/testimonial-1.jpg" alt="">
                         <div class="ms-4">
                             <h5 class="mb-1">Client Name</h5>
                             <span><i class="fa-solid fa-star"></i></span>
@@ -157,7 +157,7 @@
                 </div>
                 <div class="testimonial-item bg-light rounded p-4">
                     <div class="d-flex align-items-center mb-4">
-                        <img class="flex-shrink-0 rounded-circle border p-1" src="images/testimonial-2.jpg" alt="">
+                        <img class="flex-shrink-0 rounded-circle border p-1" src="img/testimonial-2.jpg" alt="">
                         <div class="ms-4">
                             <h5 class="mb-1">Client Name</h5>
                             <span><i class="fa-solid fa-star"></i></span>
@@ -170,7 +170,7 @@
                 </div>
                 <div class="testimonial-item bg-light rounded p-4">
                     <div class="d-flex align-items-center mb-4">
-                        <img class="flex-shrink-0 rounded-circle border p-1" src="images/testimonial-3.jpg" alt="">
+                        <img class="flex-shrink-0 rounded-circle border p-1" src="img/testimonial-3.jpg" alt="">
                         <div class="ms-4">
                             <h5 class="mb-1">Client Name</h5>
                             <span><i class="fa-solid fa-star"></i></span>
@@ -183,7 +183,7 @@
                 </div>
                 <div class="testimonial-item bg-light rounded p-4">
                     <div class="d-flex align-items-center mb-4">
-                        <img class="flex-shrink-0 rounded-circle border p-1" src="images/testimonial-4.jpg" alt="">
+                        <img class="flex-shrink-0 rounded-circle border p-1" src="img/testimonial-4.jpg" alt="">
                         <div class="ms-4">
                             <h5 class="mb-1">Client Name</h5>
                             <span><i class="fa-solid fa-star"></i></span>

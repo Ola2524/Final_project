@@ -50,7 +50,9 @@ class OrderController extends Controller
         ->join('services', 'services.id', '=', 'worker_service.service_id')
         ->select('worker_service.id as id','worker_service.worker_id','worker_service.fixed_price','users.name as name','services.name as service_name','services.description')
         ->get();
-        return view('user.services',['services'=>$services,'user'=>$users])->with('success', 'Your Order Have Been Done Successfully');
+
+        $success = 1;
+        return view('user.services',['services'=>$services,'user'=>$users,'success'=>$success]);
     }
 
     public function show($id){

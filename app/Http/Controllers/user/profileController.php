@@ -34,7 +34,7 @@ class profileController extends Controller
 
     public function show($id){
         $services = Service::all();
-        $jobs = Job :: where('worker_id',$id)->get();
+        $jobs = Job :: where('worker_id',$id)->where('status','Done')->get();
         $workers = WorkerService :: where('id',$id)->firstOrFail();
         $job_counts = count($jobs);
         $user = 0;

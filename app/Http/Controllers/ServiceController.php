@@ -20,20 +20,43 @@ class ServiceController extends Controller
     return view('admin.services.create');
   }
 
-  public function store(Request $request)
-  {
 
-$request->img->storeAs("public/img", $request->img->getClientOriginalName());
-$name = $request->name;
-    $description = $request->description;
-    $service = Service::create([
-      'name' => $name,
-      'img' => $request->img->getClientOriginalName(),
-      'description' => $description,
-    ]);
-    // dd($service);
-    return redirect('/services');
-  }
+
+  public function store(Request $request)
+    {
+        $request->validate([
+            'name' => 'required',
+            'img' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'description' => 'required',
+        ]);
+        $input = $request->all();
+   
+        if ($img = $request->file('img')) {
+            $destinationPath = 'img/';
+            $profileImage = date('YmdHis') . "." . $img->getClientOriginalExtension();
+            $img->move($destinationPath, $profileImage);
+            $input['img'] = "$profileImage";
+        }
+
+        Service::create($input);
+      
+        return redirect('/services')->with('success','Service created successfully.');
+    }
+
+//   public function store(Request $request)
+//   {
+
+// $request->img->storeAs("public/img", $request->img->getClientOriginalName());
+// $name = $request->name;
+//     $description = $request->description;
+//     $service = Service::create([
+//       'name' => $name,
+//       'img' => $request->img->getClientOriginalName(),
+//       'description' => $description,
+//     ]);
+//     // dd($service);
+//     return redirect('/services');
+//   }
 
 
 
@@ -46,17 +69,39 @@ $name = $request->name;
 
   public function update($service, Request $request)
   {
-$request->img->storeAs("public/img", $request->img->getClientOriginalName());
 
     $Service = Service::findOrFail($service);
-    $Service->update([
-      'name' => $request->name,
-      'img'=>$request->img->getClientOriginalName(),
+    $request->validate([
+      'name' => 'required',
+      'img' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+      'description' => 'required',
+  ]);
+  $input = $request->all();
 
-      'description' => $request->description,
-    ]);
-    return redirect('/services');
-    // dd($service);
+  if ($img = $request->file('img')) {
+      $destinationPath = 'img/';
+      $profileImage = date('YmdHis') . "." . $img->getClientOriginalExtension();
+      $img->move($destinationPath, $profileImage);
+      $input['img'] = "$profileImage";
+  }else{
+      unset($input['img']);
+  }
+     
+  $Service->update($input);
+
+  return redirect('/services')
+                  ->with('success','Service updated successfully');
+// $request->img->storeAs("public/img", $request->img->getClientOriginalName());
+
+//     $Service = Service::findOrFail($service);
+//     $Service->update([
+//       'name' => $request->name,
+//       'img'=>$request->img->getClientOriginalName(),
+
+//       'description' => $request->description,
+//     ]);
+//     return redirect('/services');
+//     // dd($service);
   }
 
 

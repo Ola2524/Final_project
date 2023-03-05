@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\Service;
 use App\Models\WorkerService;
 use Illuminate\Support\Facades\DB;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class ServicesController extends Controller
 {
@@ -23,7 +24,6 @@ class ServicesController extends Controller
         ->join('worker_service', 'worker_service.worker_id', '=', 'workers.id')
         ->join('users', 'users.id', '=', 'workers.user_id')
         ->join('services', 'services.id', '=', 'worker_service.service_id')
-        ->where('users.role','=','worker')
         ->select('worker_service.id as id' ,'worker_service.fixed_price','worker_id' ,'users.name as name','services.name as service_name','services.description')
         ->get();
 
@@ -39,7 +39,7 @@ class ServicesController extends Controller
         ->join('users', 'users.id', '=', 'workers.user_id')
         ->join('services', 'services.id', '=', 'worker_service.service_id')
         ->where('worker_service.service_id','=',$id)
-        ->select('worker_service.id as id','worker_service.worker_id','worker_service.fixed_price','users.name as name','services.name as service_name','services.description')
+        ->select('worker_service.id as id','worker_service.worker_id','users.img as img','worker_service.fixed_price','users.name as name','services.name as service_name','services.description')
         ->get();
 
         // $users = WorkerService::where('service_id',$id)->get();
