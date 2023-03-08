@@ -36,7 +36,7 @@
       </div>
     </div>
   </section>
-  <div class="col-12 col-md-6 col-xxl-3 d-flex order-1 order-xxl-1">
+  {{-- <div class="col-12 col-md-6 col-xxl-3 d-flex order-1 order-xxl-1">
     <div class="cards flex-fill">
         <div class="card-header">
 
@@ -50,11 +50,11 @@
             </div>
         </div>
     </div>
-</div>
+</div> --}}
 </div>
 
       <script src="js/script.js"></script>
-      <script>
+      {{-- <script>
 		document.addEventListener("DOMContentLoaded", function() {
 			var ctx = document.getElementById("chartjs-dashboard-line").getContext("2d");
 			var gradient = ctx.createLinearGradient(0, 0, 0, 225);
@@ -274,7 +274,7 @@
 				defaultDate: defaultDate
 			});
 		});
-	</script>
+	</script> --}}
 </body>
 </html>
 @endsection

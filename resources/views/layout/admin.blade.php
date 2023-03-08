@@ -17,11 +17,12 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600&family=Mulish:wght@300;400;700;800&family=Playfair+Display:wght@400;500;600;700&family=Poppins:wght@100;200;300;400;600;700" rel="stylesheet">
-
+    {{-- search --}}
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
 </head>
 <body> 
   <!-- start sidebar -->
-    <div class="sidebar">
+    <div class="sidebar"style="ba">
     <div class="logo-details">
         <i class='bx bxs-home-smile'></i>
         <span class="logo-name">Home Care</span>
@@ -35,6 +36,7 @@
             <li><a href="{{ route('workers') }}"><i class="fa-solid fa-users-gear"></i><span>Workers</span></a></li>
             <li><a href="{{ route('workerreq') }}"><i class="fa-solid fa-check-to-slot"></i><span>Verification</span></a></li>
             <li><a href="{{ route('offers') }}"><i class="fa-solid fa-gift"></i><span>Offers</span></a></li>
+            <li><a href="{{ route('AdminWorkerserv') }}"><i class="fa-solid fa-gift"></i><span>worker services</span></a></li>
             <li><a href="{{ route('contact.us') }}"><i class="fa-solid fa-envelope"></i><span>Contact Us</span></a></li>
             <li><a href="#"><i class='bx bx-log-out'></i><span>
                 <form action="{{ route("logout") }}" method="POST">

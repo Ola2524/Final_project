@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\worker;
 
 use App\Http\Controllers\Controller;
+use App\Models\Job;
 use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Support\Facades\DB;
@@ -24,5 +25,34 @@ class WorkerJobHistortyController extends Controller
 
       return view('worker.jobHistory', ['user' => $users]);
     }
+
+    public function search(Request $request){
+      {
+          $output="";
+           
+           $users = Job::where('date','like', '%' .$request->search. '%')->orWhere('status','like', '%' .$request->search. '%')->get();
+  
+           foreach($users as $users)
+           {
+              $output.=
+              '<tr>
+           
+              <td> '.$users->name.' </td>
+              <td> '.$users->status.' </td>
+            
+              <td>
+               '.' 
+              <a href="" class="btn btn-outline-success">'.'Edit</a>
+              '.'
+              <a href="" class="btn btn-outline-success">'.'Delete</a>
+              '.' </td>
+              
+              </tr>';
+           }
+  
+           return response($output);
+          }
+           
+   }
 
 }

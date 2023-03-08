@@ -52,7 +52,7 @@ class OrderController extends Controller
         ->get();
 
         $success = 1;
-        return view('user.services',['services'=>$services,'user'=>$users,'success'=>$success]);
+        return redirect('homepage')->with('success',$success);
     }
 
     public function show($id){

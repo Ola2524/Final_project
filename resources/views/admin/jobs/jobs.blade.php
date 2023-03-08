@@ -6,7 +6,7 @@
               <h1>Jobs</h1>
               <div class="row my-4 align-items-center">
                 <div class="col-auto">
-                  <form class="row g-3">
+                  {{-- <form class="row g-3">
                     <div class="input-group">
                       <label for="" class="input-group-text">Show</label>
 
@@ -18,7 +18,15 @@
                         <option value="200">200</option>
                       </select>
                     </div>
-                  </form>
+                  </form> --}}
+
+                  <div class="search-container">
+                    <div align="left">
+                    <ul class="pagination justify-content-center" >
+                       <input type="text" placeholder="Search.." name="search" id="search" class="form-control">
+                     </ul>
+                   </div>
+                </div>
                 </div>
                 
                 <div class="col-auto ms-auto me-5">
@@ -26,12 +34,13 @@
                 </div>
               </div>
 
-              <table class="table table-bordered">
+                  <tbody class="table-group-divider"class="alldata" id="Content">
+                    <table class="table table-bordered">
                 <thead>
                   <tr>
                     <th scope="col">#</th>
-                    <th scope="col">Worker Name</th>
-                    <th scope="col">User Name</th>
+                    {{-- <th scope="col">Worker Name</th>
+                    <th scope="col">User Name</th> --}}
                     <th scope="col">Service Name</th>
                     <th scope="col">Rate</th>
                     <th scope="col">Price</th>
@@ -43,16 +52,31 @@
                   @foreach ($jobs as $job)
                     <tr>
                       <th scope="row">{{ $job->id}}</th>
-                      <td>{{$job->worker}}</td>
-                      <td>{{$job->user}}</td>
+                      {{-- <td>{{$job->worker}}</td>
+                      <td>{{$job->user}}</td> --}}
                       <td>{{$job->service}}</td>
-                      <td>{{$job->price}}</td>
                       <td>{{$job->rate}}</td>
+                      <td>{{$job->price}}</td>
+                    
                       <td>{{$job->date}}</td>
-                      <td><div class="bg-success status text-center py-1">{{$job->status}}</div></td>
+                      @if($job->status == 'Rejected')
+                      <td><span class="badge bg-danger ">{{$job->status}}</span></td>
+        
+        @elseif($job->status  == 'In progress')
+        <td><div class="badge bg-warning">{{$job->status}}</div></td>
+
+        @elseif($job->status  == 'Pending')
+        <td><div class="badge bg-secondary">{{$job->status}}</div></td>
+        
+        @elseif($job->status  == 'Done')
+        <td><div class="badge bg-success ms-1 me-1 ps-2 pe-2">{{$job->status}}</div></td>
+    
+        @endif
+                      {{-- <td><div class="bg-success status text-center py-1">{{$job->status}}</div></td> --}}
                     </tr>
                   @endforeach
                 </tbody>
+                <tbody  class="searchdata"></tbody>
 
               </table>
             </div>
@@ -62,4 +86,29 @@
     </div>
 </body>
 </html>
+<script>
+  $('#search').on('keyup',function(){
+
+$value=$(this).val();
+if($value){
+$('.alldata').hide();
+$('.searchdata').show();
+
+}
+else{
+  $('.alldata').show();
+$('.searchdata').hide();
+}
+$.ajax({
+type:'get',
+url:'{{URL::to('search')}}',
+data:{'search':$value},
+success:function(data)
+{
+  console.log(data);
+  $('#Content').html(data)
+}
+});
+  })
+   </script>
 @endsection

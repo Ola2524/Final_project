@@ -32,6 +32,15 @@ use App\Http\Controllers\StripePaymentlController;
 use App\Http\Controllers\WorkerreqController;
 use App\Models\Service;
 
+use App\Http\Controllers\WorkerServController;
+// use App\Models\ReviewController;
+use App\Http\Controllers\ReviewController;
+
+
+use App\Http\Controllers\RequestController;
+
+
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -164,7 +173,7 @@ Route::get('payment/success', [PayPalController::class, 'success'])->name('payme
 
 //paymentstripe:
 
-Route::get('stripe/{id}', [StripePaymentlController::class , 'stripe']);
+Route::get('stripe/{id}', [StripePaymentlController::class , 'stripe'])->name('stripe');
 Route::post('stripe/{id}', [StripePaymentlController::class, 'stripePost'])->name('stripe.post');
 
 // contact us
@@ -175,3 +184,36 @@ Route::post('/contact_us', [ContactController::class, 'contact_us'])->name("cont
 
 Route::get('/get_messages', [ContactController::class, 'get_messages'] )
 ->name("get_messages");
+
+
+
+//review:
+Route::get('/indexrev', [ReviewController::class, 'index'])->name('rev');
+Route::get('/review-edit/{id}', [ReviewController::class, 'edit'])->name('review.edit');
+Route::post('/review-update/{id}', [ReviewController::class, 'update'])->name('review.update');
+// Route::get('/our-services', [ServicesController::class, 'index'])->name('ourservices');
+// Route::get('/Review', function(){return view('user.Review',['services'=>Service::all()]);})->name('Review');
+
+
+
+//req dashbord worker 
+Route::get('AdminWorkerserv', [WorkerServController::class,'index'])->name('AdminWorkerserv');
+Route::get('workers-services/{id}', [WorkerServController::class,'delete'])->name('worker.services.delete');
+
+
+
+//search:
+Route::get('/search', [UserController::class, 'search']);
+Route::get('/search', [ServiceController::class, 'search']);
+Route::get('/search', [OfferController::class, 'search']);
+Route::get('/search', [ContactController::class, 'search']);
+Route::get('/search', [JobController::class, 'search']);
+Route::get('/search', [WorkerServiceController::class, 'search']);
+Route::get('/search', [ReqController::class, 'search']);
+Route::get('/search', [WorkerJobHistortyController::class, 'search']);
+
+
+
+Route::get('/requset', [RequestController::class, 'index'])->name('requset');
+Route::get('/requset/{id}', [RequestController::class,"show"])->name("requset.show");
+// Route::get('/order-details/{id}', [OrderController::class, 'show'])->name('order.show');

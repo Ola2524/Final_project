@@ -90,4 +90,37 @@ class UserController extends Controller
         User::destroy($id);
         return redirect('user')->with('flash_message', 'User deleted!');  
     }
-}
+
+    public function search(Request $request){
+        {
+            $output="";
+             
+             $users = User::where('name','like', '%' .$request->search. '%')->orWhere('email','like', '%' .$request->search. '%')->get();
+    
+             foreach($users as $users)
+             {
+                $output.=
+                '<tr>
+                <td> '.$users->id.' </td>
+                <td> '.$users->name.' </td>
+                <td> '.$users->city.' </td>
+                <td> '.$users->country.' </td>
+                <td> '.$users->street.' </td>
+                <td> '.$users->email.' </td>
+                <td> '.$users->role.' </td>
+                <td>
+                 '.' 
+                <a href="" class="btn btn-outline-success">'.'Edit</a>
+                '.'
+                <a href="" class="btn btn-outline-success">'.'Delete</a>
+                '.' </td>
+                
+                </tr>';
+             }
+    
+             return response($output);
+            }
+             
+     }
+    
+    }

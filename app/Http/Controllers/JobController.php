@@ -21,4 +21,30 @@ class JobController extends Controller
 
         return view('admin.jobs.jobs', ['jobs' => $jobs]);
     }
+    public function search(Request $request){
+        {
+            $output="";
+             
+             $users = DB::where('service','like', '%' .$request->search. '%')->orWhere('rate','like', '%' .$request->search. '%')->orWhere('status','like', '%' .$request->search. '%')->get();
+    
+             foreach($users as $users)
+             {
+                $output.=
+                '<tr>
+                <td> '.$users->id.' </td>
+                <td> '.$users->service.' </td>
+                <td> '.$users->rate.' </td>
+                <td> '.$users->price.' </td>
+                <td> '.$users->date.' </td>
+                <td> '.$users->status.' </td>
+               
+               
+                
+                </tr>';
+             }
+    
+             return response($output);
+            }
+             
+     }
 }

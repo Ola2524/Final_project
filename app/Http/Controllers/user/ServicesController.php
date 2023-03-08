@@ -39,10 +39,14 @@ class ServicesController extends Controller
         ->join('users', 'users.id', '=', 'workers.user_id')
         ->join('services', 'services.id', '=', 'worker_service.service_id')
         ->where('worker_service.service_id','=',$id)
-        ->select('worker_service.id as id','worker_service.worker_id','users.img as img','worker_service.fixed_price','users.name as name','services.name as service_name','services.description')
+        ->select('worker_service.id as id','worker_service.worker_id as worker_id','users.img as img','worker_service.fixed_price','users.name as name','services.name as service_name','services.description')
         ->get();
 
         // $users = WorkerService::where('service_id',$id)->get();
         return view("user.services",['services'=>$services,'user' => $users]);
     }
+
+
+
+
 }

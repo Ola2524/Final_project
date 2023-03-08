@@ -34,7 +34,30 @@ class OfferController extends Controller
         return redirect('/offers');
      }
 
-   
+     public function search(Request $request){
+      {
+          $output="";
+           
+           $users = User::where('name','like', '%' .$request->search. '%')->orWhere('Role','like', '%' .$request->search. '%')->orWhere('points','like', '%' .$request->search. '%')->get();
+  
+           foreach($users as $users)
+           {
+              $output.=
+              '<tr>
+              <td> '.$users->id.' </td>
+              <td> '.$users->name.' </td>
+              <td> '.$users->Role.' </td>
+              <td> '.$users->points.' </td>
+             
+             
+              
+              </tr>';
+           }
+  
+           return response($output);
+          }
+           
+   }
 
 //   public function update($service, Request $request)
 //   {

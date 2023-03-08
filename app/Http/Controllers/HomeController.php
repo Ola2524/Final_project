@@ -89,7 +89,8 @@ class HomeController extends Controller
             return view('worker.index', ["jobs" => $jobs,"job_count" => $job_count, "profits" => $profits]);
         }
         else{
-            return view('user.index',['services'=>$services]);
+            $jobs = Job::all();
+            return view('user.index',['services'=>$services,'jobs'=>$jobs]);
         }  
         // $services = Service::all();
         // return view('user.index',['services'=>$services]);

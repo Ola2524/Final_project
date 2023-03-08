@@ -38,7 +38,8 @@ class WorkerRegistrationController extends Controller
         'img'=>$input['img'],
         'bio' => $input['bio'],
         'password' => Hash::make($input['password']),
-        'role' => 'worker'
+        'role' => '                    {{ auth()->user()->bio }}
+        '
       ]);
 
       $user_id = DB::getPdo()->lastInsertId();

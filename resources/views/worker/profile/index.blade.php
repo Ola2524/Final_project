@@ -47,6 +47,14 @@
                         </div>
                         <div class="row mt-3">
                             <div class="col-md-6">
+                                <h6>Points</h6>
+                            </div>
+                            <div class="col-md-6 text-end">
+                                <h6>( {{auth()->user()->workers->points}} )</h6>
+                            </div>
+                        </div>
+                        <div class="row mt-3">
+                            <div class="col-md-6">
                                 <h6>Last seen</h6>
                             </div>
                             <div class="col-md-6 text-end">
@@ -71,10 +79,22 @@
         <div class="col-lg-8 col-xlg-9 col-md-7">
             <div class="card">
                 <div class="card-body">
+                    <h4>Bio</h4>
                     {{ auth()->user()->bio }}
                 </div>
             </div>
+            <div class="card mt-3">
+                <div class="card-body">
+                    <h4>Reviews</h4>
+                    @foreach ($reviews as $review)
+                        {{ $review->rate }}                        
+                        {{ $review->review }}                        
+                        {{ $review->users->name }}                        
+                    @endforeach
+                </div>
+            </div>
         </div>
+        
         <!-- Column -->
     </div>
     <!-- Row -->

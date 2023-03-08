@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Job;
 use App\Models\Worker;
+use App\Models\Service;
 use App\Models\User;
 
 use Session;
@@ -16,12 +17,14 @@ class StripePaymentlController extends Controller
 {
     public function stripe($id)
     {
+        $services = Service::all();
         $job = Job :: findOrFail($id);
-        return view('stripe',['job'=>$job]);
+        return view('stripe',['job'=>$job,'services'=>$services]);
     }
 
     public function stripePost(Request $request,$id)
     {
+        $services = Service::all();
 
         $job = Job::findOrFail($id);
         $user = User::findOrFail($job->users->id);
@@ -43,6 +46,6 @@ class StripePaymentlController extends Controller
           ]);
 
      Session::flash('success','Payment has been successfully');
-        return back();
+        return redirect("indexrev");
     }
 }

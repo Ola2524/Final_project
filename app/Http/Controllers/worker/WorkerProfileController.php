@@ -16,8 +16,9 @@ class WorkerProfileController extends Controller
         $verified = $worker->workers->criminal_record_certificate!=NULL?$worker->workers->criminal_record_certificate:0;
         $job = Job :: where('worker_id',$worker->workers->id)->where('status','Done')->get();
         $job_count = count($job); 
+        $reviews = Job :: where('worker_id',$worker->workers->id)->get();
         $services = WorkerService :: where('worker_id',$worker->id)->get();
-        return view("worker.profile.index",['services' => $services,'verified'=>$verified,'job_count'=>$job_count]);
+        return view("worker.profile.index",['services' => $services,'verified'=>$verified,'job_count'=>$job_count,'reviews'=>$reviews]);
     }
     
     public function edit($id)

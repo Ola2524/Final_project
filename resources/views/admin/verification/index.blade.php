@@ -6,7 +6,7 @@
           <h1>Users Requests</h1>
           <div class="row my-4 align-items-center">
             <div class="col-auto">
-              <form class="row g-3">
+              {{-- <form class="row g-3">
                 <div class="input-group">
                   <label for="" class="input-group-text">Show</label>
 
@@ -18,7 +18,14 @@
                     <option value="200">200</option>
                   </select>
                 </div>
-              </form>
+              </form> --}}
+              <div class="search-container">
+                <div align="left">
+                <ul class="pagination justify-content-center" >
+                   <input type="text" placeholder="Search.." name="search" id="search" class="form-control">
+                 </ul>
+               </div>
+            </div>
             </div>
             <br><br>
             <br><br>

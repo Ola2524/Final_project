@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin dashboard</title>
+    <title>worker dashboard</title>
     <!-- custom link -->
     <link rel="stylesheet" href="{{asset('css/dashboard_style.css')}}">
     <!-- bootstarp -->
@@ -17,7 +17,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600&family=Mulish:wght@300;400;700;800&family=Playfair+Display:wght@400;500;600;700&family=Poppins:wght@100;200;300;400;600;700" rel="stylesheet">
-
+ {{-- search --}}
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
 </head>
 <body> 
   <!-- start sidebar -->
@@ -28,7 +29,7 @@
     </div>
 
         <ul class="nav-links">
-            <li class="active"><a href="/"><i class='bx bx-grid-small'></i><span>Dashboard</span></a></li>
+            <li class="active"><a href="dashbordWorker"><i class='bx bx-grid-small'></i><span>Dashboard</span></a></li>
             <li><a href="{{ route('req') }}"><i class="fa-solid fa-users"></i><span>Requests</span></a></li>
             <li><a href="{{ route('worker.services') }}"><i class="fa-solid fa-briefcase"></i><span>Services</span></a></li>
             <li><a href="{{ route('jobHistorty') }}"><i class="fa-solid fa-list-ul"></i><span>Jobs History</span></a></li>

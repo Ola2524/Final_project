@@ -2,6 +2,7 @@
 @section('content')
     
 <div class="container my-5">
+
         <!-- ============================================================== -->
         <!-- End Left Sidebar - style you can find in sidebar.scss  -->
         <!-- ============================================================== -->
@@ -28,8 +29,8 @@
                     </div>
                     <div class="col-md-6 col-4">
                         @if ($user == 0)
-                            <a href="/chatify/{{$workers->workers->users->id}}" class="btn btn-outline-success float-end" style="margin:0 13px">Contact me</a>
-                            <a href="{{route('order.create',['id'=>$workers->id])}}" class="btn btn-outline-primary float-end">Order service</a>
+                            <a href="/chatify/{{$workers->id}}" class="btn btn-outline-success float-end" style="margin:0 13px">Contact me</a>
+                            <a href="{{route('order.create',['id'=>$workers->worker_service->id])}}" class="btn btn-outline-primary float-end">Order service</a>
                         @endif
                     </div>
                     
@@ -56,34 +57,25 @@
                                         <img src="{{asset('img/'.auth()->user()->img)}}"class="rounded-circle" width="150"/>
                                     @endif
                                     @if ($user == 0)      
-                                        <img src="{{asset('img/'.$workers->workers->users->img)}}"class="rounded-circle" width="150"/>
+                                        <img src="{{asset('img/'.$workers->users->img)}}"class="rounded-circle" width="150"/>
                                     @endif
 
                                         
                                         @if ($user == 0)
-                                            <h4 class="card-title mt-2">{{ $workers->workers->users->name }}</h4>                                            
+                                            <h4 class="card-title mt-2">{{ $workers->users->name }}</h4>                                            
                                         @endif
 
                                         @if ($user == 1)
                                             <h4 class="card-title mt-2">{{ auth()->user()->name }}</h4>                                            
                                         @endif
-                                    @if (auth()->user()->role == 'worker' && auth()->user()->role != 'user')
-                                    <?php $i = 0 ?>
-                                    <h6 class="card-subtitle">
-                                    @foreach ($workers as $worker)
-                                        {{ $worker->services->name }}    
-                                        <?php  
-                                        if($i < count($workers)-1){
-                                            echo '/';
-                                        }
-                                        $i++;
-                                        ?>
-                                    @endforeach
-                                    </h6>  
-                                    @endif
+                                  
+ 
                                     
                                     @if ($user == 0)
-                                    <h6 class="card-subtitle">{{$workers->services->name}}</h6>
+                                    <h6 class="card-subtitle">
+                                        {{$workers->worker_service->services->name}}
+
+                                    </h6>
                                     @endif
                                 </center>
                             </div>
@@ -123,7 +115,7 @@
                                 </div>
                             </div>
                         </div>
-                        @if (auth()->user()->role == 'worker')
+                        {{-- @if (auth()->user()->role == 'worker')
                             
                         <div class="card mt-4">
                             <div class="card-body profile-card">
@@ -144,7 +136,7 @@
                                 </div>
                             </div>
                         </div>
-                        @endif
+                        @endif --}}
 
                         @if ($user == 0)
                         <div class="card mt-4">
@@ -155,10 +147,13 @@
 
                                     <div class="row mt-3">
                                         <div class="col-md-6">
-                                            <h6>{{ $workers->services->name }}</h6>
+                                            <h6>
+
+                                                {{$workers->worker_service->services->name}}
+                                            </h6>
                                         </div>
                                         <div class="col-md-6 text-end">
-                                            <h6>( ${{ $workers->fixed_price }} )</h6>
+                                            <h6>( ${{ $workers->worker_service->fixed_price }} )</h6>
                                         </div>
                                 </div>
                             </div>
@@ -170,11 +165,11 @@
                     <!-- Column -->
                     <!-- Column -->
                     <div class="col-lg-8 col-xlg-9 col-md-7">
-                        <div class="card">
+                        <div class="card mb-3">
                             <div class="card-body">
                                 <h4>Bio</h4>
                                 @if ($user == 0)
-                                    {{ $workers->workers->users->bio }}                                    
+                                    {{ $workers->users->bio }}                                    
                                 @endif
 
                                 @if ($user == 1)
@@ -182,6 +177,17 @@
                                 @endif
                             </div>
                         </div>
+
+                        @foreach ($reviews as $review)
+                        <div class="card">
+                            <div class="card-body">
+                                <h4>Reviews</h4>
+                                {{$review->rate}}                                  
+                                {{$review->review}}                                  
+                                {{$review->users->name}}                                  
+                            </div>
+                        </div>
+                        @endforeach
                     </div>
                     <!-- Column -->
                 </div>

@@ -78,7 +78,7 @@
                     <td>{{$job->price}}</td>
                     <td>{{$job->rate}}</td>
                     <td>{{$job->date}}</td>
-                    <td><div class="bg-success status px-2 ps-1">{{$job->status}}</div></td>
+                    <td><div class="badge bg-success status px-2 ps-1">{{$job->status}}</div></td>
                 </tr>
               @endforeach
             </tbody>

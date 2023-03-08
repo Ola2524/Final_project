@@ -52,7 +52,7 @@ class WorkerController extends Controller
         // dd($input); 
    
         if ($img = $request->file('img')) {
-            $destinationPath = 'images/';
+            $destinationPath = 'img/';
             $profileImage = date('YmdHis') . "." . $img->getClientOriginalExtension();
             $img->move($destinationPath, $profileImage);
             $input['img'] = "$profileImage";

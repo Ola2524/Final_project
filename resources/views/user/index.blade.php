@@ -56,7 +56,14 @@
         </div>
     </div>
     <!-- Carousel End -->
-    
+    <?php
+    if(isset($success)){
+        if($success == 1){
+            Alert::success('Order Success', 'Your order has been done successfully');
+        }
+    } 
+
+    ?>   
     <!-- Service Start -->
     <div class="container-xxl py-5">
         <div class="container">
@@ -126,7 +133,7 @@
                         <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ad veritatis inventore iure ipsam laboriosam nemo, aspernatur totam ducimus adipisci, mollitia hic quod, officia aliquam. Necessitatibus quaerat dolore unde quos repellendus?</p>
                         <p class="mb-4">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi iure hic fugiat aperiam, minima delectus. Odit laboriosam similique adipisci ratione facere corrupti veniam aliquam magni, excepturi placeat! Iusto, quod cum!</p>
                         
-                        <a class="btn btn-primary rounded-pill py-3 px-5" href="">Read More</a>
+                        <a class="btn rounded-pill py-3 px-5" style="background-color: rgb(74, 74, 150)" href="{{ route('about') }}">Read More</a>
                     </div>
                 </div>
             </div>
@@ -141,21 +148,65 @@
                 <h6 class="section-title bg-white text-center text-primary px-3">Testimonial</h6>
                 <h1 class="display-6 mb-4">What Our Clients Say!</h1>
             </div>
-            <div class="owl-carousel testimonial-carousel wow fadeInUp" data-wow-delay="0.1s">
-                <div class="testimonial-item bg-light rounded p-4">
-                    <div class="d-flex align-items-center mb-4">
+            <div class="owl-carousel testimonial-carousel wow fadeInUp" data-wow-delay="0.1s" >
+                @foreach ($jobs as $job)                    
+                <div class="testimonial-item bg-light rounded p-4" >
+                    <div class="d-flex align-items-center mb-4" >
                         <img class="flex-shrink-0 rounded-circle border p-1" src="img/testimonial-1.jpg" alt="">
                         <div class="ms-4">
-                            <h5 class="mb-1">Client Name</h5>
-                            <span><i class="fa-solid fa-star"></i></span>
-                            <span><i class="fa-solid fa-star"></i></span>
-                            <span><i class="fa-solid fa-star"></i></span>
-                            <span><i class="fa-solid fa-star"></i></span>
+                            <h5 class="mb-1">{{$job->users->name}}</h5>
+                            <span class="review-stars mb-5" style="color: yellow;">
+                                <!-- ////////////// STAR RATE CHECKER ////////////// -->
+                                    @if($job->rate <= 0.00)
+                                        <i class="fa fa-star-o" aria-hidden="true"></i>
+                                        <i class="fa fa-star-o" aria-hidden="true"></i>
+                                        <i class="fa fa-star-o" aria-hidden="true"></i>
+                                        <i class="fa fa-star-o" aria-hidden="true"></i>
+                                        <i class="fa fa-star-o" aria-hidden="true"></i>
+                                    @elseif($job->rate === 1.00)
+                                        <i class="fa fa-star" aria-hidden="true"></i>
+                                        <i class="fa fa-star-o" aria-hidden="true"></i>
+                                        <i class="fa fa-star-o" aria-hidden="true"></i>
+                                        <i class="fa fa-star-o" aria-hidden="true"></i>
+                                        <i class="fa fa-star-o" aria-hidden="true"></i>
+                                    @elseif($job->rate === 2.00)
+                                        <i class="fa fa-star" aria-hidden="true"></i>
+                                        <i class="fa fa-star" aria-hidden="true"></i>
+                                        <i class="fa fa-star-o" aria-hidden="true"></i>
+                                        <i class="fa fa-star-o" aria-hidden="true"></i>
+                                        <i class="fa fa-star-o" aria-hidden="true"></i>
+                                    @elseif($job->rate === 3.00)
+                                        <i class="fa fa-star" aria-hidden="true"></i>
+                                        <i class="fa fa-star" aria-hidden="true"></i>
+                                        <i class="fa fa-star" aria-hidden="true"></i>
+                                        <i class="fa fa-star-o" aria-hidden="true"></i>
+                                        <i class="fa fa-star-o" aria-hidden="true"></i>
+                                    @elseif($job->rate === 4.00)
+                                        <i class="fa fa-star" aria-hidden="true"></i>
+                                        <i class="fa fa-star" aria-hidden="true"></i>
+                                        <i class="fa fa-star" aria-hidden="true"></i>
+                                        <i class="fa fa-star" aria-hidden="true"></i>
+                                        <i class="fa fa-star-o" aria-hidden="true"></i>
+                                    @elseif($job->rate >= 5.00)
+                                        <i class="fa fa-star" aria-hidden="true"></i>
+                                        <i class="fa fa-star" aria-hidden="true"></i>
+                                        <i class="fa fa-star" aria-hidden="true"></i>
+                                        <i class="fa fa-star" aria-hidden="true"></i>
+                                        <i class="fa fa-star" aria-hidden="true"></i>
+                                    @endif
+                                    <!-- ///////////////////////////////////////////// -->
+                                </span>
+                            {{-- <span class="review-stars mb-5" style="color: yellow;"><i class="fa-solid fa-star" ></i></span>
+                            <span class="review-stars mb-5" style="color: yellow;"><i class="fa-solid fa-star"></i></span>
+                            <span class="review-stars mb-5" style="color: yellow;"><i class="fa-solid fa-star"></i></span>
+                            <span class="review-stars mb-5" style="color: yellow;"><i class="fa-solid fa-star"></i></span> --}}
                         </div>
                     </div>
-                    <p class="mb-0">Tempor erat elitr rebum at clita. Diam dolor diam ipsum sit diam amet diam et eos. Clita erat ipsum et lorem et sit.</p>
+                    <p class="mb-0">{{$job->review}}</p>
                 </div>
-                <div class="testimonial-item bg-light rounded p-4">
+                @endforeach
+
+                {{-- <div class="testimonial-item bg-light rounded p-4">
                     <div class="d-flex align-items-center mb-4">
                         <img class="flex-shrink-0 rounded-circle border p-1" src="img/testimonial-2.jpg" alt="">
                         <div class="ms-4">
@@ -193,7 +244,7 @@
                         </div>
                     </div>
                     <p class="mb-0">Tempor erat elitr rebum at clita. Diam dolor diam ipsum sit diam amet diam et eos. Clita erat ipsum et lorem et sit.</p>
-                </div>
+                </div> --}}
             </div>
         </div>
     </div>

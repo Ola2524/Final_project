@@ -9,7 +9,8 @@
   <div class="card-body">
        
       <form action="{{ url('user') }}" method="post">
-        {!! csrf_field() !!}
+        @csrf
+        {{-- {!! csrf_field() !!} --}}
         <label>Name</label></br>
         <input type="text" name="name" id="name" class="form-control"></br>
         <label>City</label></br>
@@ -20,8 +21,10 @@
         <input type="text" name="street" id="street" class="form-control"></br>
         <label>Email</label></br>
         <input type="text" name="email" id="email" class="form-control"></br>
+        <input type="password" name="password" id="password" class="form-control"></br>
+        <label>password</label></br>
         <label for="title">Select User:</label>
-        <select name="user_role" id="state" class="form-control">
+        <select name="role" id="state" class="form-control">
             <option value="user" >User</option>
               <option value="admin" >Admin</option>
         </select>

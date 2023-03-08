@@ -58,5 +58,35 @@ class WorkerServiceController extends Controller
     return redirect('/worker-services');
   }
 
+  public function search(Request $request){
+    {
+        $output="";
+         
+         $users = Service::where('name','like', '%' .$request->search. '%')->orWhere('description','like', '%' .$request->search. '%')->get();
+
+         foreach($users as $users)
+         {
+            $output.=
+            '<tr>
+            <td> '.$users->id.' </td>
+            <td> '.$users->name.' </td>
+            <td> '.$users->description.' </td>
+          
+            <td>
+             '.' 
+            <a href="" class="btn btn-outline-success">'.'Edit</a>
+            '.'
+            <a href="" class="btn btn-outline-success">'.'Delete</a>
+            '.' </td>
+            
+            </tr>';
+         }
+
+         return response($output);
+        }
+         
+ }
+
+
 
 }

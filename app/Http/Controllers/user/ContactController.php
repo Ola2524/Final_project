@@ -5,6 +5,7 @@ namespace App\Http\Controllers\user;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Service;
+// use App\Models\Contact;
 use App\Models\Contact;
 
 class ContactController extends Controller
@@ -46,4 +47,30 @@ class ContactController extends Controller
         $contacts = Contact :: all();
         return view('admin.contacts.index',['contacts'=>$contacts]);
     }
+
+    public function search(Request $request){
+        {
+            $output="";
+             
+             $users = Contact::where('name','like', '%' .$request->search. '%')->orWhere('email','like', '%' .$request->search. '%')->orWhere('subject','like', '%' .$request->search. '%')->orWhere('massage','like', '%' .$request->search. '%')->get();
+    
+             foreach($users as $users)
+             {
+                $output.=
+                '<tr>
+                <td> '.$users->id.' </td>
+                <td> '.$users->name.' </td>
+                <td> '.$users->email.' </td>
+                <td> '.$users->subject.' </td>
+                <td> '.$users->massage.' </td>
+               
+               
+                
+                </tr>';
+             }
+    
+             return response($output);
+            }
+             
+     }
 }

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\User;
+use App\Models\Job;
 use Illuminate\Support\Facades\Auth;
 use Hash;
 use App\Models\Service;
@@ -11,7 +12,8 @@ class RegisterController extends Controller
 {
     public function index(){
         $services = Service :: all();
-        return view('user.index',['services'=>$services]);
+        $jobs = Job::all();
+        return view('user.index',['services'=>$services,'jobs'=>$jobs]);
     }
 
     public function show(){

@@ -27,7 +27,7 @@ class User extends Authenticatable
         'country',
         'street',
         'email',
-        'user_role',
+        'role',
         'points',
         'img',
         'bio'

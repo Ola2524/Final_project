@@ -4,7 +4,11 @@
 
 
   <form method="POST" action="{{route('services.store')}}" enctype="multipart/form-data">
-    <div class="card-header">create service</div>
+    <div class="card-header ">create service</div>
+    {{-- <div class="text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 600px;">
+    <h6 class="section-title bg-white text-center text-primary px-3">create service</h6>
+    </div> --}}
+
     @csrf
     <div class="mb-3 mt-5">
         <label for="exampleFormControlInput1" class="form-label">name</label>
@@ -19,7 +23,7 @@
         <textarea class="form-control" name="description" rows="3"></textarea>
       </div>
 
-      <button type="submit" class="btn btn-primary px-3">Add</button>
+      <button type="submit" class="btn btn-primary px-3" >Add</button>
   </form>
     </div>
 </body>

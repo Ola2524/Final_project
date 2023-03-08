@@ -7,6 +7,17 @@
     
     <!-- start main content -->
     {{-- <div class="container"> --}}
+      <div class="row my-4 align-items-center ms-5">
+        <div class="col-auto">
+      <div class="search-container">
+        <div align="left">
+        <ul class="pagination justify-content-center" >
+           <input type="text" placeholder="Search.." name="search" id="search" class="form-control">
+         </ul>
+       </div>
+    </div>
+    </div>
+  </div>
         <table class="table w-75  p-3 m-5">
         <thead>
           <tr>
@@ -17,7 +28,9 @@
             <th scope="col">Action</th>
           </tr>
         </thead>
-        <tbody>
+        <tbody class="table-group-divider"class="alldata" id="Content">
+        
+        {{-- <tbody> --}}
         <tr>
                     @foreach ($jobs as $job)
                     <tr>
@@ -36,6 +49,8 @@
                       @endforeach
                     </tr>
         </tbody>
+        <tbody  class="searchdata"></tbody>
+
       </table>
     </div>
     <!-- end main contnet -->
@@ -45,4 +60,29 @@
 </body>
 
 </html>
+<script>
+  $('#search').on('keyup',function(){
+
+$value=$(this).val();
+if($value){
+$('.alldata').hide();
+$('.searchdata').show();
+
+}
+else{
+  $('.alldata').show();
+$('.searchdata').hide();
+}
+$.ajax({
+type:'get',
+url:'{{URL::to('search')}}',
+data:{'search':$value},
+success:function(data)
+{
+  console.log(data);
+  $('#Content').html(data)
+}
+});
+  })
+   </script>
 @endsection

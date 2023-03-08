@@ -36,4 +36,35 @@ class ReqController extends Controller
         return redirect('/req');
      }
 
+
+     public function search(Request $request){
+      {
+          $output="";
+           
+           $users = Job::where('service_id','like', '%' .$request->search. '%')->orWhere('price','like', '%' .$request->search. '%')->get();
+  
+           foreach($users as $users)
+           {
+              $output.=
+              '<tr>
+              <td> '.$users->id.' </td>
+              <td> '.$users->name.' </td>
+              <td> '.$users->price.' </td>
+            
+              <td>
+               '.' 
+              <a href="" class="btn btn-outline-success">'.'Edit</a>
+              '.'
+              <a href="" class="btn btn-outline-success">'.'Delete</a>
+              '.' </td>
+              
+              </tr>';
+           }
+  
+           return response($output);
+          }
+           
+   }
+  
+
 }
