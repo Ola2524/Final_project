@@ -9,7 +9,7 @@
         </div>
         <div class="card-detail">
           <h4>Total profit</h4>
-          <h2>{{ $profits }}</h2>
+          <h2>${{ $profits }}</h2>
         </div>
       </div>
     </div>
@@ -48,12 +48,13 @@
     </div>
   </section>
   <!-- end main contnet -->
+
   <!-- start table -->
   <div class="container">
     <div class="row">
       <div class="col-8">
         <section class="services">
-          <h2>Jobs</h2>
+          <h2>Latest Jobs</h2>
           <div class="table-responsive">
             <table class="table table-bordered text-center">
               <thead>
@@ -69,7 +70,7 @@
                 </tr>
               </thead>
             <tbody class="table-group-divider">
-                @foreach ($jobs as $job)
+                @foreach ($jobs->reverse() as $job)
                 <tr>
                     <th scope="row">{{ $job->id }}</th>
                     <td>{{$job->workers->users->name}}</td>
@@ -88,18 +89,18 @@
     </div>
     <div class="col-4">
       <section class="top-worker">
-        <h2>Last Workers</h2>
-        @foreach ($workers as $worker)
+        <h2>Latest Workers</h2>
+        @foreach ($workers->reverse() as $worker)
         <div class="worker">
           <div class="row align-items-center">
             <div class="col-3">
               <div class="worker-img">
-                <img src="{{ asset('images/' . $worker->img) }}" alt="" width="30px">
+                <img src="{{ asset('img/' . $worker->users->img) }}" alt="" width="30px">
               </div>
             </div>
             <div class="col-6">
               <div class="worker-name">
-                <span>{{ $worker['name'] }}</span>
+                <span>{{ $worker->users['name'] }}</span>
               </div>
             </div>
             <div class="col-3">
@@ -117,7 +118,93 @@
 
   
   <!-- end table -->
+  <div class="container mt-5">
+    <div class="card flex-fill w-100">
+      <div class="card-header">
+
+        <h5 class="card-title mb-0">Monthly Profits</h5>
+      </div>
+      <div class="card-body py-3">
+        <div class="chart chart-sm">
+          <canvas id="chartjs-dashboard-line"></canvas>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
+</div>
+
+
+
+<script src="js/app.js"></script>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    var ctx = document.getElementById("chartjs-dashboard-line").getContext("2d");
+    var gradient = ctx.createLinearGradient(0, 0, 0, 225);
+    gradient.addColorStop(0, "rgba(215, 227, 244, 1)");
+    gradient.addColorStop(1, "rgba(215, 227, 244, 0)");
+    // Line chart
+    var chart =  <?php echo $chart ?>;
+    console.log(chart[0]['data'][0]['price']);
+    console.log(chart[0]['data'].length);
+    var price = []
+    for(var i = 0; i < chart[0]['data'].length;i++){
+      price.push(chart[0]['data'][i]['price'])
+    }
+    console.log(price);
+    new Chart(document.getElementById("chartjs-dashboard-line"), {
+      type: "line",
+      data: {
+        labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+        datasets: [{
+          label: "Sales ($)",
+          fill: true,
+          backgroundColor: gradient,
+          borderColor: window.theme.primary,
+          data: price
+        }]
+      },
+      options: {
+        maintainAspectRatio: false,
+        legend: {
+          display: false
+        },
+        tooltips: {
+          intersect: false
+        },
+        hover: {
+          intersect: true
+        },
+        plugins: {
+          filler: {
+            propagate: false
+          }
+        },
+        scales: {
+          xAxes: [{
+            reverse: true,
+            gridLines: {
+              color: "rgba(0,0,0,0.0)"
+            }
+          }],
+          yAxes: [{
+            ticks: {
+              stepSize: 1000
+            },
+            display: true,
+            borderDash: [3, 3],
+            gridLines: {
+              color: "rgba(0,0,0,0.0)"
+            }
+          }]
+        }
+      }
+    });
+  });
+</script>
+
+
 
 <script src="js/script.js"></script>
 </body>

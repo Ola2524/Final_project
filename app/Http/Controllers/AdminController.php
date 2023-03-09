@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\Job;
 use App\Models\User;
 use App\Models\Worker;
+use App\Charts\UserLineChart;
 
 class AdminController extends Controller
 {
@@ -14,8 +15,9 @@ class AdminController extends Controller
         $users = User::all();
         $users = count($users);
 
-        $workers = Worker::all();
-        $workers_count = count($workers);
+        $workers = Worker::all()->take(5);
+        $worker = Worker::all();
+        $workers_count = count($worker);
 
         // $jobs = DB::table('users')
         // ->join('jobs', 'jobs.user_id', '=', 'users.id')
@@ -23,15 +25,27 @@ class AdminController extends Controller
         // ->join('workers', 'workers.id', '=', 'jobs.worker_id')
         // ->select('jobs.id as id','users.name','services.name as service','jobs.rate','jobs.price','jobs.date','jobs.status')
         // ->get();
-        $jobs = Job :: all();
+        $jobs = Job :: all()->take(5);
+        $job = Job :: where('status','Done')->get();
 
         // dd($jobs);
         $profits = 0;
-        foreach ($jobs as $job) {
-            $profits += $job->price;
+        foreach ($job as $j) {
+            $profits += $j->price;
         }
 
         $job_count = count($jobs);
-        return view("admin.index", ["jobs" => $jobs,"job_count" => $job_count, "profits" => $profits, 'users' => $users, 'workers' => $workers,'workers_count'=>$workers_count]);
+
+        // chart
+        $profits_chart = Job::where('status','Done')->get('price');
+  
+        $chart = new UserLineChart;
+  
+        $chart->dataset('New User Register Chart', 'line', $profits_chart)->options([
+                    'fill' => 'true',
+                    'borderColor' => '#51C1C0'
+                ]);
+
+        return view("admin.index", ['chart'=>$chart->api(),"jobs" => $jobs,"job_count" => $job_count, "profits" => $profits, 'users' => $users, 'workers' => $workers,'workers_count'=>$workers_count]);
     }
 }

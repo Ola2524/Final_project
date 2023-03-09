@@ -58,6 +58,12 @@
         </div>
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
+                <strong>Password:</strong>
+                <input type="password" name="password" class="form-control" placeholder="password">
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-12">
+            <div class="form-group">
                 <strong>Age:</strong>
                 <input type="text" name="age" class="form-control" placeholder="age">
             </div>
@@ -78,6 +84,12 @@
             <div class="form-group">
                 <strong>Street:</strong>
                 <input type="text" name="street" class="form-control" placeholder="street">
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-12">
+            <strong>Bio:</strong>
+            <div class="form-group input-group">
+                <textarea name="bio" class="form-control" placeholder="Bio" type="text" id="bio"></textarea>
             </div>
         </div>
         <div class="col-xs-12 col-sm-12 col-md-12 text-center">

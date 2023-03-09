@@ -55,7 +55,17 @@ class HomeController extends Controller
         }
 
         $job_count = count($jobs);
-        return view("admin.index", ["jobs" => $jobs,"job_count" => $job_count, "profits" => $profits, 'users' => $users, 'workers' => $workers,'workers_count'=>$workers_count]);
+                // chart
+                $profits_chart = Job::where('status','Done')->get('price');
+  
+                $chart = new UserLineChart;
+          
+                $chart->dataset('New User Register Chart', 'line', $profits_chart)->options([
+                            'fill' => 'true',
+                            'borderColor' => '#51C1C0'
+                        ]);
+
+        return view("admin.index", ['chart'=>$chart->api(),"jobs" => $jobs,"job_count" => $job_count, "profits" => $profits, 'users' => $users, 'workers' => $workers,'workers_count'=>$workers_count]);
         }
         elseif($role == 'worker'){
             

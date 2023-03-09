@@ -38,6 +38,7 @@
                 <tr>
                   <th scope="col">#</th>
                   <th scope="col">Name</th>
+                  <th scope="col">Img</th>
                   <th scope="col">City</th>
                   <th scope="col">Country</th>
                   <th scope="col">Street</th>
@@ -52,8 +53,8 @@
               @foreach ($users as $user)
                                     <tr>
                                       <td>{{ $user->id }}</td>
-                                      
                                         <td>{{ $user->name }}</td>
+                                        <td><img src="{{asset('img/'.$user->img )}}" width="75" alt=""></td>
                                         <td>{{ $user->city }}</td>
                                         <td>{{ $user->country }}</td>
                                         <td>{{ $user->street }}</td>

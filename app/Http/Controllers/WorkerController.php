@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\Worker;
 use Illuminate\Http\Request;
+use App\Models\User;
+use Hash;
+use Illuminate\Support\Facades\DB;
 
 class WorkerController extends Controller
 {
@@ -58,7 +61,25 @@ class WorkerController extends Controller
             $input['img'] = "$profileImage";
         }
 
-        Worker::create($input);
+        User::create([
+            'name' => $input['name'],
+            'email' => $input['email'],
+            'street' => $input['street'],
+            'country' => $input['country'],
+            'city' => $input['city'],
+            'img'=>$input['img'],
+            'bio' => $input['bio'],
+            'password' => Hash::make($input['password']),
+            'role' => 'worker'
+          ]);
+    
+          $user_id = DB::getPdo()->lastInsertId();
+           Worker::create([
+            'user_id' => $user_id,
+            'national_id'=> $input['national_id'],
+            'age'=> $input['age'],
+            'phone_number'=> $input['phone_number'],
+          ]);
       
         return redirect()->route('workers')->with('success','Worker created successfully.');
     }

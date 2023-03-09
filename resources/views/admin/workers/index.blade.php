@@ -57,14 +57,14 @@
                   @foreach ($workers as $worker)
                                     <tr>
                                       <td>{{ $worker->id }}</td>
-                                        <td>{{ $worker->name }}</td>
-                                        <td><img src="{{ asset('img/' . $worker->img) }}" width="75" /></td>
+                                        <td>{{ $worker->users->name }}</td>
+                                        <td><img src="{{ asset('img/' . $worker->users->img) }}" width="75" /></td>
                                         <td>{{ $worker->phone_number }}</td>
-                                        <td>{{ $worker->email }}</td>
+                                        <td>{{ $worker->users->email }}</td>
                                         <td>{{ $worker->age }}</td>
-                                        <td>{{ $worker->city }}</td>
-                                        <td>{{ $worker->country }}</td>
-                                        <td>{{ $worker->street }}</td>
+                                        <td>{{ $worker->users->city }}</td>
+                                        <td>{{ $worker->users->country }}</td>
+                                        <td>{{ $worker->users->street }}</td>
                                         <td>{{ $worker->points }}</td>
                                         <td>
                                           @if ($worker->points > 0)

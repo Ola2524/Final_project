@@ -95,6 +95,18 @@
                                         @endif
                                     </div>
 
+                                    @if ($user == 0)
+                                    <div class="row mt-3">
+                                        <div class="col-md-6">
+                                            <h6>Points</h6>
+                                        </div>
+                                        <div class="col-md-6 text-end">
+                                            <h6>( {{ $workers->users->points }} )</h6>
+                                        </div>
+                                    </div>
+                                    @endif
+
+                                    @if ($user == 1)
                                     <div class="row mt-3">
                                         <div class="col-md-6">
                                             <h6>Points</h6>
@@ -103,6 +115,8 @@
                                             <h6>( {{ auth()->user()->points }} )</h6>
                                         </div>
                                     </div>
+                                    @endif
+                                    
 
                                     <div class="row mt-3">
                                         <div class="col-md-6">
@@ -112,6 +126,17 @@
                                             <h6>Today</h6>
                                         </div>
                                     </div>
+                                    @if ($workers->verified == 1)                                        
+                                    <div class="row mt-3">
+                                        <div class="col-md-6 mt-3 text-end">
+                                            <h6 class="fs-4">Verified</h6>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <h6><img src="{{asset('img/verified.png')}}" alt="" width="60px"></h6>
+                                        </div>
+                                    </div>
+                                    @endif
+
                                 </div>
                             </div>
                         </div>

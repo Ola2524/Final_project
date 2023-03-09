@@ -99,8 +99,8 @@ a:hover,button:hover{
                     <h1 class="display-4  animated slideInDown mb-3">services</h1>
                     <nav aria-label="breadcrumb animated slideInDown">
                         <ol class="breadcrumb justify-content-center mb-0">
-                            <li class="breadcrumb-item"><a class="text-white" href="index.html">Home</a></li>
-                            <li class="breadcrumb-item text-primary active" aria-current="#">About Us</li>
+                            <li class="breadcrumb-item"><a class="text-white" href="{{route('homepage')}}">Home</a></li>
+                            <li class="breadcrumb-item text-primary active" aria-current="#"><a class="text-white" href="/our-services">Services</a></li>
                         </ol>
                     </nav>
                 </div>

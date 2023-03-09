@@ -46,8 +46,7 @@ public function index()
       'review'=> $review,
       'rate'=> $rate,
     ]);
-    $success = 1;
 
-    return view('user.index',['services'=>$services,'success'=>$success,'jobs'=>$jobs]);
+    return redirect('homepage')->with('success','Reviewing has been successfully');
   }
 }

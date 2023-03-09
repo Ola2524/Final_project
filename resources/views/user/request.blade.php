@@ -40,45 +40,52 @@
 @foreach ($user as $users )
 {{-- @dd($users) --}}
     {{-- <div class="column"> --}}
-<div class="row">
 
-      <div class="card">
+      <div class="card mb-4">
+        <div class="row align-items-center justify-content-center">
         
-        <div class="col-md-2">
+        <div class="col-md-3 d-flex flex-column align-items-center justify-content-center">
             {{-- <div class="center"> --}}
-                <img src="img/{{$users->users->img}}" class="img-fluid" style="width:150px;height:auto;padding-top:10px; border-radius: 100px;">
+                <img src="img/{{$users->workers->users->img}}" class="img-fluid" style="width:150px;height:auto;padding-top:10px; border-radius: 100px;">
             {{-- </div> --}}
         </div>
            
-        <div class="col-md-2"><h1>{{$users->workers->users->name}}</h1></div>
+        <div class="col-md-3 d-flex flex-column align-items-center justify-content-center">
+            <h1>{{$users->workers->users->name}}</h1>
+            <p class="title">{{$users->services->name}}</p>
+        </div>
         
-        <div class="col-md-2"><p class="title">{{$users->services->name}}</p></div>
-        <div class="col-md-2"><p class="title">{{$users->services->fixed_price}}</p></div>
-        <div class="col-md-2"><!-- <p>{{$users->status}}</p> --></div>
+        <div class="col-md-3 fs-3 d-flex flex-column align-items-center justify-content-center"><p class="title">${{$users->price}}</p></div>
+        {{-- <div class="col-md-3"><!-- <p>{{$users->status}}</p> --></div> --}}
         @if($users->status == 'Rejected')
-        <p class="bg-danger status text-center py-1 ms-5 me-5">{{$users->status}}</p>
-        
+        <div class="col-md-3"><p class="bg-danger status text-center py-1 ms-5 me-5">{{$users->status}}</p></div>
+       
         @elseif($users->status == 'In progress')
-        <p class="bg-warning status text-center py-1 ms-5 me-5">{{$users->status}}</p>
+        <div class="col-md-3"><p class="bg-warning status text-center py-1 ms-5 me-5">{{$users->status}}</p></div>
 
         @elseif($users->status == 'Pending')
-        <p class="bg-secondary status text-center py-1 ms-5 me-5">{{$users->status}}</p>
+        <div class="col-md-3"><p class="bg-secondary status text-center py-1 ms-5 me-5">{{$users->status}}</p></div>
 
         @elseif($users->status == 'Done')
-        <p class="bg-success status text-center py-1 ms-5 me-5">{{$users->status}}</p>
+        <div class="col-md-3"><p class="bg-success status text-center py-1 ms-5 me-5">{{$users->status}}</p></div>
     
         @endif
           {{-- <p></p> --}}
-       
-          <div class="col-md-2">
-            <p><a href="{{route('stripe',['id'=>$users->id])}}" class="btn btn-outline-primary">Pay</a></p>
-            <p><a href="/chatify/{{$users->workers->id}}" class="btn btn-outline-primary">Contact</a></p>
+        </div>
+
+        <div class="row justify-content-center mt-3">
+            {{-- <div class="col-md-6"> --}}
+                @if ($users->status != 'Done')
+                    <a href="{{route('stripe',['id'=>$users->id])}}" class="btn btn-primary py-2" style="width:49%">Pay</a>                    
+                @endif
+            {{-- </div>
+            <div class="col-md-6"> --}}
+                <a href="/chatify/{{$users->workers->id}}" class="btn btn-success py-2" style="width:49%">Contact</a>
+            {{-- </div> --}}
         </div>
 
       </div>
-    </div>
     @endforeach
-{{-- </div> --}}
 </div>
    
 

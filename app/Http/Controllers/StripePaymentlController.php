@@ -41,11 +41,15 @@ class StripePaymentlController extends Controller
             'points' => $user->points+1,
           ]);
 
-          $worker->update([
-            'points' => $worker->points+1,
-          ]);
+        $worker->update([
+        'points' => $worker->points+1,
+        ]);
+
+        $job->update([
+        'status' => 'Done',
+        ]);
 
      Session::flash('success','Payment has been successfully');
-        return redirect("indexrev");
+        return redirect("review-edit/".$id)->with('success','Payment has been successfully');
     }
 }

@@ -4,15 +4,12 @@
     <div class="container-fluid p-0 mb-5 wow fadeIn" data-wow-delay="0.1s">
         <div id="header-carousel" class="carousel slide" data-bs-ride="carousel">
             <div class="carousel-indicators">
-                <button type="button" data-bs-target="#header-carousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1">
-                    <img class="img-fluid" src="{{asset('img/cleaning (1).jpg')}}" alt="Image">
+                <?php $i=0 ?>
+                @foreach ($services as $service)
+                <button type="button" data-bs-target="#header-carousel" data-bs-slide-to="<?php echo $i?>" class="active" aria-current="true" aria-label="Slide 1">
+                    <img class="img-fluid" src="{{asset('img/'.$service->img)}}" alt="Image">
                 </button>
-                <button type="button" data-bs-target="#header-carousel" data-bs-slide-to="1" aria-label="Slide 2">
-                    <img class="img-fluid" src="img/elder care (1).jpg" alt="Image">
-                </button>
-                <button type="button" data-bs-target="#header-carousel" data-bs-slide-to="2" aria-label="Slide 3">
-                    <img class="img-fluid" src="img/babysitter (1).jpg" alt="Image">
-                </button>
+                @endforeach
             </div>
             <div class="carousel-inner">
                 <div class="carousel-item active">
@@ -24,8 +21,9 @@
                         </div>
                     </div>
                 </div>
+                @foreach ($services as $service)                    
                 <div class="carousel-item">
-                    <img class="w-100" src="img/elder care (1).jpg" alt="Image">
+                    <img class="w-100" src="{{asset('img/'.$service->img)}}" alt="Image">
                     <div class="carousel-caption">
                         <div class="p-3" style="max-width: 900px;">
                             <h4 class="text-white text-uppercase mb-4 animated zoomIn">Lorem ipsum dolor sit amet consectetur adipisicing elit.</h4>
@@ -33,15 +31,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="carousel-item">
-                    <img class="w-100" src="img/babysitter (1).jpg" alt="Image">
-                    <div class="carousel-caption">
-                        <div class="p-3" style="max-width: 900px;">
-                            <h4 class="text-white text-uppercase mb-4 animated zoomIn">Lorem ipsum dolor sit amet consectetur adipisicing elit.</h4>
-                            <h1 class="display-1 text-white mb-0 animated zoomIn">Lorem ipsum dolor sit amet consectetur adipisicing elit.</h1>
-                        </div>
-                    </div>
-                </div>
+                @endforeach
             </div>
             <button class="carousel-control-prev" type="button" data-bs-target="#header-carousel"
                 data-bs-slide="prev">
@@ -56,14 +46,7 @@
         </div>
     </div>
     <!-- Carousel End -->
-    <?php
-    if(isset($success)){
-        if($success == 1){
-            Alert::success('Order Success', 'Your order has been done successfully');
-        }
-    } 
 
-    ?>   
     <!-- Service Start -->
     <div class="container-xxl py-5">
         <div class="container">
@@ -250,7 +233,7 @@
     </div>
     <!-- Testimonial End -->
     
-    
+    @include('sweetalert::alert')
 
 
     

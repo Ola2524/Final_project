@@ -79,7 +79,7 @@
 
                             @else
 
-                        <a href="{{ route('login') }}" class="nav-item nav-link">Services</a>
+                        <a href="{{ route('user.login') }}" class="nav-item nav-link">Services</a>
                             
                             {{-- <a href="#" class="dropdown-item">Cleaning Services</a>
                             <a href="#" class="dropdown-item">Guest Services</a>
@@ -123,7 +123,7 @@
                                 @endif
                               <li><form action="{{ route("logout") }}" method="POST">
                                 @csrf
-                                <input type="submit" class="dropdown-item" value="logout">
+                                <input type="submit" class="dropdown-item" value="Logout">
                               </form></li>
                             </ul>
                           </div>
@@ -168,7 +168,7 @@
                 <div class="row g-2">
                     @foreach ($services as $service)
                     <div class="col-4">
-                        <img class="img-fluid rounded" src="{{asset('img/'.$service->img)}}" alt="Image">
+                        <a href="/our-services/{{$service->id}}"><img class="img-fluid rounded" src="{{asset('img/'.$service->img)}}" alt="Image"></a>
                     </div>                        
                     @endforeach
 

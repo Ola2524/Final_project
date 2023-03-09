@@ -12,13 +12,6 @@
                     
             <form method="POST" action="{{ route('review.update',['id'=>$job->id]) }}">
                 @csrf
-                <?php
-                if(isset($success)){
-                    if($success == 1){
-                        Alert::success('Done', 'Review has been done successfully');
-                    }
-                } 
-                ?>
                         <div class="row g-3">
                             <div class="col-md-6">
                                 <div class="form-floating">
@@ -43,5 +36,7 @@
             </div>
         </div>
     </div>
+    @include('sweetalert::alert')
+
     <!-- Contact End -->
 @endsection

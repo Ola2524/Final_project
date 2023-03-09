@@ -52,7 +52,7 @@ class OrderController extends Controller
         ->get();
 
         $success = 1;
-        return redirect('homepage')->with('success',$success);
+        return redirect('homepage')->with('Order Success', 'Your order has been done successfully');
     }
 
     public function show($id){
