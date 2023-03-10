@@ -228,12 +228,12 @@ button:hover{
                             <i class="fa fa-user icon"></i>
                              </div>
                              </div>
-                             <div class="input-group">
+                             {{-- <div class="input-group">
                                 <div class="input-box">
                                     <input type="email" placeholder="Email Adress" required class="name">
                                     <i class="fa fa-envelope icon"></i>
                                 </div>
-                            </div><br>
+                            </div><br> --}}
                             <h4>Payment Details</h4>
   
                         <div class='form-row row'>

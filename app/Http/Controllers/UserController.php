@@ -95,24 +95,30 @@ class UserController extends Controller
         {
             $output="";
              
-             $users = User::where('name','like', '%' .$request->search. '%')->orWhere('email','like', '%' .$request->search. '%')->get();
-    
+             $users = User::where('name','like', '%' .$request->search. '%')->where('role','user')->orwhere('role','admin')->get();
+             
              foreach($users as $users)
              {
                 $output.=
                 '<tr>
                 <td> '.$users->id.' </td>
                 <td> '.$users->name.' </td>
+                <td> <img src="img/'.$users->img .'" width="75"> </td>
                 <td> '.$users->city.' </td>
                 <td> '.$users->country.' </td>
                 <td> '.$users->street.' </td>
                 <td> '.$users->email.' </td>
                 <td> '.$users->role.' </td>
+                <td> '.$users->points.' </td>
                 <td>
-                 '.' 
-                <a href="" class="btn btn-outline-success">'.'Edit</a>
-                '.'
-                <a href="" class="btn btn-outline-success">'.'Delete</a>
+                 '.'
+                <a href="'.url("/user/" . $users->id . "/edit") .'" class="btn btn-outline-success">'.'Edit</a>
+
+                <form method="POST" action="'.url("/user" . "/" . $users->id).'" accept-charset="UTF-8" style="display:inline">
+                      '.method_field('DELETE') 
+                      .csrf_field().'
+                      <button type="submit" class="btn btn-outline-danger" title="Delete Student" onclick="return confirm("Confirm delete?")"><i class="fa fa-trash-o" aria-hidden="true"></i> Delete</button>
+                  </form>
                 '.' </td>
                 
                 </tr>';
@@ -122,5 +128,13 @@ class UserController extends Controller
             }
              
      }
-    
+     public function removeUser($id){
+        $users= User::findOrFail($id);
+       
+        $users->update([
+          'points' => 0,
+        ]);
+     //    dd($users);
+        return redirect('/user');
+     }
     }

@@ -46,7 +46,7 @@
         
         <div class="col-md-3 d-flex flex-column align-items-center justify-content-center">
             {{-- <div class="center"> --}}
-                <img src="img/{{$users->workers->users->img}}" class="img-fluid" style="width:150px;height:auto;padding-top:10px; border-radius: 100px;">
+                <img src="img/{{$users->workers->users->img}}" class="img-fluid" style="width:150px;height:auto;padding-top:10px; ">
             {{-- </div> --}}
         </div>
            
@@ -75,12 +75,12 @@
 
         <div class="row justify-content-center mt-3">
             {{-- <div class="col-md-6"> --}}
-                @if ($users->status != 'Done')
-                    <a href="{{route('stripe',['id'=>$users->id])}}" class="btn btn-primary py-2" style="width:49%">Pay</a>                    
+                @if ($users->status == 'In progress')
+                    <a href="{{route('stripe',['id'=>$users->id])}}" class="btn btn-primary py-2 me-3" style="width:15%">Pay</a>                    
                 @endif
             {{-- </div>
             <div class="col-md-6"> --}}
-                <a href="/chatify/{{$users->workers->id}}" class="btn btn-success py-2" style="width:49%">Contact</a>
+                <a href="/chatify/{{$users->workers->id}}" class="btn btn-success py-2" style="width:15%">Contact</a>
             {{-- </div> --}}
         </div>
 

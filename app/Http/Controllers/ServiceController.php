@@ -125,7 +125,8 @@ class ServiceController extends Controller
             '<tr>
             <td> '.$users->id.' </td>
             <td> '.$users->name.' </td>
-            <td>  </td>
+            <td> <img src="img/'.$users->img .'" width="75"> </td>
+
             <td> '.$users->description.' </td>
           
             <td>

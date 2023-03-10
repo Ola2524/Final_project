@@ -84,7 +84,7 @@ $('.searchdata').hide();
 }
 $.ajax({
 type:'get',
-url:'{{URL::to('search')}}',
+url:'{{URL::to('search/contacts')}}',
 data:{'search':$value},
 success:function(data)
 {

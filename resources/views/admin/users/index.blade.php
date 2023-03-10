@@ -22,7 +22,9 @@
               <div class="search-container">
                 <div align="left">
                 <ul class="pagination justify-content-center" >
+                  <form action="search/user" method="get">
                    <input type="text" placeholder="Search.." name="search" id="search" class="form-control">
+                  </form>
                  </ul>
                </div>
             </div>
@@ -64,7 +66,7 @@
                                         <td>
               
                         @if ($user->points > 0)
-                          <a href="#" class="btn btn-outline-danger">Remove points</a> 
+                          <a href="{{route('removeOffer',['user'=>$user['id']])}}" class="btn btn-outline-danger">Remove points</a> 
                         @endif
                     <a href="{{ url('/user/' . $user->id . '/edit') }}" class="btn btn-outline-success">Edit</a>
                     <form method="POST" action="{{ url('/user' . '/' . $user->id) }}" accept-charset="UTF-8" style="display:inline">
@@ -77,7 +79,7 @@
                 </tr>
                 @endforeach
               </tbody>
-              <tbody  class="searchdata"></tbody>
+              
             </table>
           </div>
       </div>
@@ -90,18 +92,18 @@
     $('#search').on('keyup',function(){
   
   $value=$(this).val();
-  if($value){
-  $('.alldata').hide();
-  $('.searchdata').show();
+  // if($value){
+  // $('.alldata').hide();
+  // $('.searchdata').show();
   
-  }
-  else{
-    $('.alldata').show();
-  $('.searchdata').hide();
-  }
+  // }
+  // else{
+  //   $('.alldata').show();
+  // $('.searchdata').hide();
+  // }
   $.ajax({
   type:'get',
-  url:'{{URL::to('search')}}',
+  url:'{{URL::to('search/user')}}',
   data:{'search':$value},
   success:function(data)
   {

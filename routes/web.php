@@ -104,6 +104,9 @@ Route::get('/jobs', [JobController::class, 'index'])->name('jobs');
 Route::get('/offers', [OfferController::class,"index"])->name("offers");
 Route::get('/offers/removeUser/{user}', [OfferController::class,"removeUser"])->name("offers.removeUser");
 Route::get('/offers/removeWorker/{worker}', [OfferController::class,"removeWorker"])->name("offers.removeWorker");
+
+Route::get('/user/removeoffer/{user}', [UserController::class,"removeUser"])->name("removeOffer");
+
 // worker
 Route::get('/workers', [WorkerController::class, 'index'])->name('workers');
 Route::get('workers/create', [WorkerController::class, 'create'])->name('workers.create');
@@ -203,11 +206,11 @@ Route::get('workers-services/{id}', [WorkerServController::class,'delete'])->nam
 
 
 //search:
-Route::get('/search', [UserController::class, 'search']);
-Route::get('/search', [ServiceController::class, 'search']);
+Route::get('/search/user', [UserController::class, 'search']);
+Route::get('/search/service', [ServiceController::class, 'search']);
 Route::get('/search', [OfferController::class, 'search']);
-Route::get('/search', [ContactController::class, 'search']);
-Route::get('/search', [JobController::class, 'search']);
+Route::get('/search/contacts', [ContactController::class, 'search']);
+Route::get('/search/job', [JobController::class, 'search']);
 Route::get('/search', [WorkerServiceController::class, 'search']);
 Route::get('/search', [ReqController::class, 'search']);
 Route::get('/search', [WorkerJobHistortyController::class, 'search']);

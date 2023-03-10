@@ -97,7 +97,7 @@ $('.searchdata').hide();
 }
 $.ajax({
 type:'get',
-url:'{{URL::to('search')}}',
+url:'{{URL::to('search/service')}}',
 data:{'search':$value},
 success:function(data)
 {

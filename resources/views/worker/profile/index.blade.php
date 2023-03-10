@@ -52,7 +52,9 @@
                             <div class="col-md-6 text-end">
                                 <h6>( {{auth()->user()->workers->points}} )</h6>
                             </div>
+                            
                         </div>
+                        
                         <div class="row mt-3">
                             <div class="col-md-6">
                                 <h6>Last seen</h6>

@@ -52,7 +52,7 @@ class ContactController extends Controller
         {
             $output="";
              
-             $users = Contact::where('name','like', '%' .$request->search. '%')->orWhere('email','like', '%' .$request->search. '%')->orWhere('subject','like', '%' .$request->search. '%')->orWhere('massage','like', '%' .$request->search. '%')->get();
+             $users = Contact::where('name','like', '%' .$request->search. '%')->get();
     
              foreach($users as $users)
              {

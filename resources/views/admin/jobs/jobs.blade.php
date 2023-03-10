@@ -34,13 +34,13 @@
                 </div>
               </div>
 
-                  <tbody class="table-group-divider"class="alldata" id="Content">
+                  
                     <table class="table table-bordered">
                 <thead>
                   <tr>
                     <th scope="col">#</th>
-                    {{-- <th scope="col">Worker Name</th>
-                    <th scope="col">User Name</th> --}}
+                    <th scope="col">Worker Name</th>
+                    <th scope="col">User Name</th>
                     <th scope="col">Service Name</th>
                     <th scope="col">Rate</th>
                     <th scope="col">Price</th>
@@ -48,13 +48,13 @@
                     <th scope="col">Status</th>
                   </tr>
                 </thead>
-                <tbody class="table-group-divider">
+                <tbody class="table-group-divider" id="Content" >
                   @foreach ($jobs as $job)
                     <tr>
                       <th scope="row">{{ $job->id}}</th>
-                      {{-- <td>{{$job->worker}}</td>
-                      <td>{{$job->user}}</td> --}}
-                      <td>{{$job->service}}</td>
+                      <td>{{$job->workers->users->name}}</td>
+                      <td>{{$job->users->name}}</td>
+                      <td>{{$job->services->name}}</td>
                       <td>{{$job->rate}}</td>
                       <td>{{$job->price}}</td>
                     
@@ -76,8 +76,6 @@
                     </tr>
                   @endforeach
                 </tbody>
-                <tbody  class="searchdata"></tbody>
-
               </table>
             </div>
           </div>
@@ -88,20 +86,20 @@
 </html>
 <script>
   $('#search').on('keyup',function(){
-
+ 
 $value=$(this).val();
-if($value){
-$('.alldata').hide();
-$('.searchdata').show();
-
-}
-else{
-  $('.alldata').show();
-$('.searchdata').hide();
-}
+  // if($value){
+  // $('.alldata').hide();
+  // $('.searchdata').show();
+  
+  // }
+  // else{
+  //   $('.alldata').show();
+  // $('.searchdata').hide();
+  // }
 $.ajax({
 type:'get',
-url:'{{URL::to('search')}}',
+url:'{{URL::to('search/job')}}',
 data:{'search':$value},
 success:function(data)
 {

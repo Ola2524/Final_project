@@ -11,8 +11,7 @@ class OfferController extends Controller
     public function index(){
         $users = User::all();
         // dd($users);
-        $workers = Worker::all();
-        return view('admin.offers.index',['users'=>$users,'workers'=>$workers]);
+        return view('admin.offers.index',['users'=>$users]);
         // return view('admin.offers.index',['users'=>$users]);
     }
 
