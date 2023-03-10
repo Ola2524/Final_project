@@ -34,14 +34,14 @@
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
                 <strong>Name:</strong>
-                <input type="text" name="name" value="{{ $worker->name }}" class="form-control" placeholder="Name">
+                <input type="text" name="name" value="{{ $worker->users->name }}" class="form-control" placeholder="Name">
             </div>
         </div>
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
                 <strong>Image:</strong>
-                <input type="file" name="img"  class="form-control" placeholder="image">
-                <img src="/images/{{ $worker->img }}" width="300px">
+                <input type="file" name="img" value="{{$worker->users->img}}"  class="form-control" placeholder="image">
+                <img src="/img/{{ $worker->users->img }}" width="300px">
             </div>
         </div>
         <div class="col-xs-12 col-sm-12 col-md-12">
@@ -53,7 +53,7 @@
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
                 <strong>Email:</strong>
-                <input type="text" name="email" value="{{ $worker->email }}" class="form-control" placeholder="email">
+                <input type="text" name="email" value="{{ $worker->users->email }}" class="form-control" placeholder="email">
             </div>
         </div>
         <div class="col-xs-12 col-sm-12 col-md-12">
@@ -65,19 +65,25 @@
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
                 <strong>City:</strong>
-                <input type="text" name="city" value="{{ $worker->city }}" class="form-control" placeholder="city">
+                <input type="text" name="city" value="{{ $worker->users->city }}" class="form-control" placeholder="city">
             </div>
         </div>
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
                 <strong>Country:</strong>
-                <input type="text" name="country" value="{{ $worker->country }}" class="form-control" placeholder="country">
+                <input type="text" name="country" value="{{ $worker->users->country }}" class="form-control" placeholder="country">
             </div>
         </div>
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
                 <strong>Street:</strong>
-                <input type="text" name="street" value="{{ $worker->street }}" class="form-control" placeholder="street">
+                <input type="text" name="street" value="{{ $worker->users->street }}" class="form-control" placeholder="street">
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-12">
+            <strong>Bio:</strong>
+            <div class="form-group input-group">
+                <textarea name="bio" class="form-control" placeholder="Bio" type="text" id="bio">{{ $worker->users->bio }}</textarea>
             </div>
         </div>
         <div class="col-xs-12 col-sm-12 col-md-12 text-center">

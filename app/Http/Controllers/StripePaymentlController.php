@@ -8,7 +8,8 @@ use App\Models\Job;
 use App\Models\Worker;
 use App\Models\Service;
 use App\Models\User;
-
+use App\Models\Payment;
+use Carbon\Carbon;
 use Session;
 use Stripe;
 use Stripe\Stripe as StripeStripe;
@@ -27,14 +28,22 @@ class StripePaymentlController extends Controller
         $services = Service::all();
 
         $job = Job::findOrFail($id);
+        $profit = ($job->price*20)/100;
         $user = User::findOrFail($job->users->id);
         $worker = Worker::findOrFail($job->workers->id);
         Stripe\Stripe::setApiKey(env('STRIPE_SECRET'));
         Stripe\Charge::create([
-            'amount' => $job->price*100,
+            'amount' => ($job->price*100)-($profit*100),
             'currency'=>"usd",
             'source'=> $request->stripeToken,
             'description' =>$job->users->name .' payment for ' . $job->workers->name
+        ]);
+
+        Payment::create([
+            'profit' => $profit,
+            'worker_profit' => ($job->price)-($profit),
+            'job_id'=> $job->id,
+            'date'=> Carbon::now(),
         ]);
 
         $user->update([

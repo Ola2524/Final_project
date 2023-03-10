@@ -8,7 +8,7 @@
           <i class="fa-solid fa-money-check-dollar"></i>
         </div>
         <div class="card-detail">
-          <h4>Total profit</h4>
+          <h4>Total profits</h4>
           <h2>${{ $profits }}</h2>
         </div>
       </div>
@@ -48,7 +48,19 @@
     </div>
   </section>
   <!-- end main contnet -->
+  <div class="container my-5">
+    <div class="card flex-fill w-100">
+      <div class="card-header">
 
+        <h5 class="card-title mb-0">Monthly Profits</h5>
+      </div>
+      <div class="card-body py-3">
+        <div class="chart chart-sm">
+          <canvas id="chartjs-dashboard-line"></canvas>
+        </div>
+      </div>
+    </div>
+  </div>
   <!-- start table -->
   <div class="container">
     <div class="row">
@@ -118,19 +130,7 @@
 
   
   <!-- end table -->
-  <div class="container mt-5">
-    <div class="card flex-fill w-100">
-      <div class="card-header">
 
-        <h5 class="card-title mb-0">Monthly Profits</h5>
-      </div>
-      <div class="card-body py-3">
-        <div class="chart chart-sm">
-          <canvas id="chartjs-dashboard-line"></canvas>
-        </div>
-      </div>
-    </div>
-  </div>
 </div>
 </div>
 
@@ -146,12 +146,14 @@
     gradient.addColorStop(1, "rgba(215, 227, 244, 0)");
     // Line chart
     var chart =  <?php echo $chart ?>;
-    console.log(chart[0]['data'][0]['price']);
+    console.log(chart);
+    console.log(chart[0]['data']['Jan']);
     console.log(chart[0]['data'].length);
-    var price = []
-    for(var i = 0; i < chart[0]['data'].length;i++){
-      price.push(chart[0]['data'][i]['price'])
-    }
+    
+    var price = [chart[0]['data']['Jan'],chart[0]['data']['Feb'],chart[0]['data']['Mar'],chart[0]['data']['Apr'],
+    chart[0]['data']['May'],chart[0]['data']['Jun'],chart[0]['data']['Jul'],chart[0]['data']['Aug'],
+    chart[0]['data']['Sep'],chart[0]['data']['Oct'],chart[0]['data']['Nov'],chart[0]['data']['Dec']]
+
     console.log(price);
     new Chart(document.getElementById("chartjs-dashboard-line"), {
       type: "line",

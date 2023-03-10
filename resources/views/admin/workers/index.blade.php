@@ -72,7 +72,7 @@
                                         @endif
                       
                     <form method="POST" action="{{ route('workers.destroy',$worker->id) }}" accept-charset="UTF-8" style="display:inline">
-                      <a href="{{ route('workers.edit',$worker->id) }}" class="btn btn-outline-success">Edit</a>
+                      <a href="{{ route('workers.edit',$worker->id,$worker->users->id) }}" class="btn btn-outline-success">Edit</a>
                       @csrf
                     @method('delete')
                       <button type="submit" class="btn btn-outline-danger" title="Delete Worker"> Delete</button>

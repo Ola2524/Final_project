@@ -58,7 +58,7 @@
             <div class="row g-4">
             @foreach ($services as $service)
                 <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
-                    <a class="service-item d-block rounded text-center h-100 p-4 text-decoration-none" href="">
+                    <a class="service-item d-block rounded text-center h-100 p-4 text-decoration-none" href="our-services/{{$service->id}}">
                         <img class="img-fluid rounded mb-4" src="{{asset('img/'.$service->img)}}" alt="">
                         <h4 class="mb-0 text-dark fw-bold">{{ $service->name }} Service</h4>
                     </a>
@@ -185,7 +185,8 @@
                             <span class="review-stars mb-5" style="color: yellow;"><i class="fa-solid fa-star"></i></span> --}}
                         </div>
                     </div>
-                    <p class="mb-0">{{$job->review}}</p>
+                    
+                    <p class="mb-0"><b class="mb-1">{{$job->workers->users->name}}</b>: {{$job->review}}</p>
                 </div>
                 @endforeach
 

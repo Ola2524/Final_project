@@ -37,6 +37,10 @@
 
 <!-- start card services -->
 <div class="container">
+    @if (empty($user->items))
+        <h2 class="text-center" style="padding: 150px 0">You have not order any service yet</h2>
+    @endif
+
 @foreach ($user as $users )
 {{-- @dd($users) --}}
     {{-- <div class="column"> --}}
@@ -80,7 +84,7 @@
                 @endif
             {{-- </div>
             <div class="col-md-6"> --}}
-                <a href="/chatify/{{$users->workers->id}}" class="btn btn-success py-2" style="width:15%">Contact</a>
+                <a href="/chatify/{{$users->id}}" class="btn btn-success py-2" style="width:15%">Contact</a>
             {{-- </div> --}}
         </div>
 

@@ -75,6 +75,6 @@ class WorkerRegistrationController extends Controller
     //     $record->delete();
 
       $services = Service :: all();
-      return view('login',['services'=>$services]);
+      return redirect('homepage');
     }
 }

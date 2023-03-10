@@ -29,7 +29,7 @@
                     </div>
                     <div class="col-md-6 col-4">
                         @if ($user == 0)
-                            <a href="/chatify/{{$workers->id}}" class="btn btn-outline-success float-end" style="margin:0 13px">Contact me</a>
+                            <a href="/chatify/{{$workers->users->id}}" class="btn btn-outline-success float-end" style="margin:0 13px">Contact me</a>
                             <a href="{{route('order.create',['id'=>$workers->worker_service->id])}}" class="btn btn-outline-primary float-end">Order service</a>
                         @endif
                     </div>
