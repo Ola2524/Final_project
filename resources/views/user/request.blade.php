@@ -37,9 +37,9 @@
 
 <!-- start card services -->
 <div class="container">
-    @if (empty($user->items))
+    {{-- @if (empty($user->items))
         <h2 class="text-center" style="padding: 150px 0">You have not order any service yet</h2>
-    @endif
+    @endif --}}
 
 @foreach ($user as $users )
 {{-- @dd($users) --}}

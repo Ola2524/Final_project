@@ -233,7 +233,6 @@
         </div>
     </div>
     <!-- Testimonial End -->
-    
     @include('sweetalert::alert')
 
 

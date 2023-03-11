@@ -52,10 +52,13 @@
         <i class="fa fa-laptop-code fa-2x text-primary position-absolute top-50 start-50 translate-middle"></i>
     </div>
     <!-- Spinner End -->
+{{-- <nav style="height: 20px; background-color:blue"> --}}
 
+</nav>
     <!-- Navbar Start -->
     <nav  class="navbar navbar-expand-lg navbar-dark sticky-top py-lg-0 px-lg-5 wow fadeIn" data-wow-delay="0.1s" style="background-color: rgb(5, 59, 130)">
         <div>
+            {{-- <img src="{{asset('img/homecare-removebg-preview.png')}}" class="position-absolute top-0 start-0" alt=""> --}}
             <h1 class="fw-bold text-white m-0" style="font-family:Petit Formal Script">Home Care</h1>
         </div>
         <div class="ms-auto">

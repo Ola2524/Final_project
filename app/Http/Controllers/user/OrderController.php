@@ -42,8 +42,8 @@ class OrderController extends Controller
         'status' => $status,
         'desc' => $desc,
         ]);
-        
-        return redirect('homepage')->with('Order Success','Your order has been done successfully');
+
+        return redirect('homepage')->with('success','Your order has been done successfully');
     }
 
     public function show($id){

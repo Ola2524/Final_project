@@ -22,8 +22,4 @@ class Payment extends Model
         return $this->belongsTo(Job::class,'job_id');
     }
 
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 596334d7d8795aebc4512cda33f42b1fcea2425b
