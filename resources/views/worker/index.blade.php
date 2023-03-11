@@ -1,5 +1,7 @@
 @extends('layout.worker')
 @section('content')
+<script src="{{asset('https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js')}}" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
+
 <section class="main">
     <div class="info-card">
       <div class="cards">
@@ -51,9 +53,24 @@
         </div>
     </div>
 </div> --}}
-</div>
+{{-- </div> --}}
+<div class="container">
+    <div class="card flex-fill w-100">
+      <div class="card-header">
 
-      <script src="js/script.js"></script>
+        <h5 class="card-title mb-0">Monthly Profits</h5>
+      </div>
+      <div class="card-body py-3">
+        <div class="chart chart-sm">
+          <canvas id="chartjs-dashboard-line"></canvas>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+      
       {{-- <script>
 		document.addEventListener("DOMContentLoaded", function() {
 			var ctx = document.getElementById("chartjs-dashboard-line").getContext("2d");
@@ -275,6 +292,78 @@
 			});
 		});
 	</script> --}}
+
+	<script src="js/app.js"></script>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    var ctx = document.getElementById("chartjs-dashboard-line").getContext("2d");
+    var gradient = ctx.createLinearGradient(0, 0, 0, 225);
+    gradient.addColorStop(0, "rgba(215, 227, 244, 1)");
+    gradient.addColorStop(1, "rgba(215, 227, 244, 0)");
+    // Line chart
+    var chart =  <?php echo $chart ?>;
+    console.log(chart);
+    console.log(chart[0]['data']['Jan']);
+    console.log(chart[0]['data'].length);
+    
+    var price = [chart[0]['data']['Jan'],chart[0]['data']['Feb'],chart[0]['data']['Mar'],chart[0]['data']['Apr'],
+    chart[0]['data']['May'],chart[0]['data']['Jun'],chart[0]['data']['Jul'],chart[0]['data']['Aug'],
+    chart[0]['data']['Sep'],chart[0]['data']['Oct'],chart[0]['data']['Nov'],chart[0]['data']['Dec']]
+
+    console.log(price);
+    new Chart(document.getElementById("chartjs-dashboard-line"), {
+      type: "line",
+      data: {
+        labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+        datasets: [{
+          label: "Sales ($)",
+          fill: true,
+          backgroundColor: gradient,
+          borderColor: window.theme.primary,
+          data: price
+        }]
+      },
+      options: {
+        maintainAspectRatio: false,
+        legend: {
+          display: false
+        },
+        tooltips: {
+          intersect: false
+        },
+        hover: {
+          intersect: true
+        },
+        plugins: {
+          filler: {
+            propagate: false
+          }
+        },
+        scales: {
+          xAxes: [{
+            reverse: true,
+            gridLines: {
+              color: "rgba(0,0,0,0.0)"
+            }
+          }],
+          yAxes: [{
+            ticks: {
+              stepSize: 1000
+            },
+            display: true,
+            borderDash: [3, 3],
+            gridLines: {
+              color: "rgba(0,0,0,0.0)"
+            }
+          }]
+        }
+      }
+    });
+  });
+</script>
+<script src="js/script.js"></script>
+
 </body>
 </html>
 @endsection

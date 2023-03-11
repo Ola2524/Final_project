@@ -8,6 +8,10 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\OfferController;
 use App\Http\Controllers\WorkerController;
 use App\Http\Controllers\ProfitsController;
+<<<<<<< HEAD
+=======
+
+>>>>>>> 596334d7d8795aebc4512cda33f42b1fcea2425b
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\WorkerRegistrationController;
 
@@ -17,6 +21,10 @@ use App\Http\Controllers\worker\ReqController;
 use App\Http\Controllers\worker\WorkerdashbordController;
 use App\Http\Controllers\worker\WorkerJobHistortyController;
 use App\Http\Controllers\worker\WorkerProfitsController;
+<<<<<<< HEAD
+=======
+
+>>>>>>> 596334d7d8795aebc4512cda33f42b1fcea2425b
 use App\Http\Controllers\user\ProfileController;
 use App\Http\Controllers\user\ContactController;
 use App\Http\Controllers\user\AboutController;
@@ -59,8 +67,14 @@ Route::get('/', [RegisterController::class,"index"])->name("homepage");
 Route::get('/regist', [RegisterController::class,"show"])->name("registeration");
 Route::get('/user-regist', [RegisterController::class, 'create'])->name('createUser');
 Route::post('/registeration', [RegisterController::class, 'store'])->name('user.registration');
+<<<<<<< HEAD
 // Route::get('/user-login', [RegisterController::class,"login"])->name("user.login");
 Route::post('/user-login/loggedin', [HomeController::class,"index"])->name("user.login.index");
+=======
+Route::get('/user-login', [RegisterController::class,"login"])->name("user.login");
+Route::post('/user-login/loggedin', [HomeController::class,"index"])->name("user.login.index");
+
+>>>>>>> 596334d7d8795aebc4512cda33f42b1fcea2425b
 Route::get('/homepage', [RegisterController::class,"index"]);
 
 
@@ -76,6 +90,10 @@ Route::get('/login', [LoginController::class,"login"])->name("login");
 Route::get('/home', [HomeController::class,"show"])->name("index");
 Route::get('/contact-us', [ContactController::class,'index'])->name('contact');
 Route::get('/about-us', [AboutController::class,'index'])->name('about');
+<<<<<<< HEAD
+=======
+// Route::get('/login', function(){return view('user.login');})->name('login');
+>>>>>>> 596334d7d8795aebc4512cda33f42b1fcea2425b
 Route::get('/profile', [ProfileController::class,'index'])->name('user.profile');
 Route::get('/our-services', [ServicesController::class, 'index'])->name('ourservices');
 Route::get('/our-services/{id}', [ServicesController::class, 'show'])->name('services.show');
@@ -112,6 +130,9 @@ Route::get('/offers/removeWorker/{worker}', [OfferController::class,"removeWorke
 
 Route::get('/user/removeoffer/{user}', [UserController::class,"removeUser"])->name("removeOffer");
 
+// profits
+Route::get('/profits', [ProfitsController::class,"index"])->name("profits");
+
 // worker
 Route::get('/workers', [WorkerController::class, 'index'])->name('workers');
 Route::get('workers/create', [WorkerController::class, 'create'])->name('workers.create');
@@ -121,8 +142,8 @@ Route::put('workers/update/{worker}',[WorkerController::class, 'update'])->name(
 Route::delete('delete/{worker}',[WorkerController::class, 'destroy'])->name('workers.destroy');
 // verification
 Route::get('/workerreq', [WorkerreqController::class,"index"])->name("workerreq");
-Route::get('/workerreq/{worker}', [WorkerreqController::class,"remove"])->name("workerreq.remove");
-Route::get('/workerreq-add/{worker}', [WorkerreqController::class,"add"])->name("workerreq.add");
+Route::get('/workerreq/{worker}/{user}', [WorkerreqController::class,"remove"])->name("workerreq.remove");
+Route::get('/workerreq-add/{worker}/{user}', [WorkerreqController::class,"add"])->name("workerreq.add");
 
 Route::get('/workerreq/{worker}/{user}', [WorkerreqController::class,"remove"])->name("workerreq.remove");
 Route::get('/workerreq-add/{worker}/{user}', [WorkerreqController::class,"add"])->name("workerreq.add");
@@ -163,17 +184,20 @@ Route::get('/reg-add/{add}', [ReqController::class,"add"])->name("reg.add");
 // jobs history
 Route::get('/jobHistorty', [WorkerJobHistortyController::class, 'index'])->name('jobHistorty');
 
+// profits
+Route::get('/worker/profits', [WorkerProfitsController::class, 'index'])->name('worker.profits');
+
 // end worker routes
 
-Auth::routes();
+// Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Auth::routes();
+// Auth::routes();
 
 // Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-// Auth::routes();
+Auth::routes();
 
 // Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 

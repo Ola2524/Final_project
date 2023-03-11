@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="{{asset('css/dashboard_style.css')}}">
     <!-- bootstarp -->
     <link rel="stylesheet" href="{{asset('css/bootstrap.min.css')}}">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
+    <script src="{{asset('https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js')}}" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
     <!-- fontawsome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <!-- box icons -->
@@ -32,6 +32,7 @@
             <li class="active"><a href="dashbordWorker"><i class='bx bx-grid-small'></i><span>Dashboard</span></a></li>
             <li><a href="{{ route('req') }}"><i class="fa-solid fa-users"></i><span>Requests</span></a></li>
             <li><a href="{{ route('worker.services') }}"><i class="fa-solid fa-briefcase"></i><span>Services</span></a></li>
+            <li><a href="{{ route('worker.profits') }}"><i class="fa-solid fa-sack-dollar"></i><span>Profits</span></a></li>
             <li><a href="{{ route('jobHistorty') }}"><i class="fa-solid fa-list-ul"></i><span>Jobs History</span></a></li>
             <li><a class="text-white"><i class='bx bx-log-out'></i>
                 <form action="{{ route("logout") }}" method="POST">
@@ -83,6 +84,15 @@
         </div>
         </div>
     </nav>
+
+    <script>
+        let sidebar = document.querySelector(".sidebar");
+        let sidebarbtn = document.querySelector(".sidebar-btn");
+    
+        sidebarbtn.onclick = function(){
+            sidebar.classList.toggle("active");
+        }
+        </script>
     <!-- end navbar -->
 
     @yield('content')

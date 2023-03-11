@@ -90,16 +90,7 @@
 
                     <a href="{{ route('contact') }}" class="nav-item nav-link">Contact Us</a>
                 </div>
-                {{-- @auth
-                    {{Auth::user()->name}}
-                    @else
-                    <a href="{{ route('login') }}" class="btn btn-sm btn-light rounded-pill py-2 px-4 d-none d-lg-block">Login</a>
-
-                @endauth --}}
-                {{-- <form action="{{ route("logout") }}" method="POST">
-                    @csrf
-                <input type="submit" value="logout" class="btn btn-sm btn-light rounded-pill py-2 px-4 d-none d-lg-block"></form> --}}
-                {{-- <li class="nav-item"> --}}
+                
                     @auth                        
                     <div class="d-flex align-items-center">
                         <div class="btn-group">

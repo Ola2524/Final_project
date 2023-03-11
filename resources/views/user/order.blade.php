@@ -6,11 +6,12 @@
         <h3 class="mb-5">Order Details</h3>
         <input type="hidden" name="user_id" value="{{ auth()->user()->id }}">
         <input type="hidden" name="worker_id" value="{{ $worker_services->workers->id }}">
+        <input type="hidden" name="service_id" value="{{ $worker_services->services->id }}">
         <input type="hidden" name="status" value="pending">
         <div class="mb-3">
-            <label for="exampleInputPassword1" class="form-label">Services</label>
-            <select class="form-select" name="service_id" aria-label="Default select example">
-                <option selected value="{{ $worker_services->services->id }}">{{ $worker_services->services->name }}</option>                    
+            <label for="exampleInputPassword1" class="form-label">Service</label><h4>{{ $worker_services->services->name }}</h4>
+            {{-- <select class="form-select" name="service_id" aria-label="Default select example"> --}}
+                {{-- <option selected value="{{ $worker_services->services->id }}">{{ $worker_services->services->name }}</option>                     --}}
 
                 {{-- @foreach ($worker_services as $worker_service)
                     <option value="{{ $worker_service->services->id }}">{{ $worker_service->services->name }}</option>                    

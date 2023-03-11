@@ -49,7 +49,11 @@ class RegisterController extends Controller
         'password' => Hash::make($input['password'])
       ]);
        $services = Service :: all();
+<<<<<<< HEAD
        return redirect('login');
+=======
+       return redirect('homepage');
+>>>>>>> 596334d7d8795aebc4512cda33f42b1fcea2425b
     }
         
     public function login(){

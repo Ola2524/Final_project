@@ -170,28 +170,26 @@ body{
         <div class="container">
             <div class="row">
                 <div class="col-md-offset-4 col-md-4 col-sm-offset-3 col-sm-6">
-                    <form action="{{route('login')}}" method="post">
-                        @csrf
                     <div class="form-container">
                         <div class="form-icon">
                             <i class="fa fa-user-edit"></i>
                         </div>
                         <h3 class="title">User Login</h3>
-                        <form class="form-horizontal">
+                        <form action="{{route('user.login.index')}}" method="post" class="form-horizontal">
+                        @csrf
                             <div class="form-group">
                                 <span class="input-icon"><i class="fa fa-user"></i></span>
-                                <input class="form-control" type="email" placeholder="Username">
+                                <input class="form-control" type="email" placeholder="Email">
                             </div>
                             <div class="form-group">
                                 <span class="input-icon"><i class="fa fa-lock"></i></span>
                                 <input class="form-control" type="password" placeholder="Password">
                             </div>
-                            <span class="forgot-pass"><a href="#">Forgot Password ?</a></span>
-                            <a class="btn btn-primary signin " type="submit">Login</a>
+                            {{-- <span class="forgot-pass"><a href="#">Forgot Password ?</a></span> --}}
+                            <input type="submit" class="btn btn-primary signin" value="Login">
                         </form>
                         <span class="user-signup">Don't Have an Account? <a href="#">Create Now !</a></span>
                     </div>
-                </form>
                 </div>
             </div>
         </div>

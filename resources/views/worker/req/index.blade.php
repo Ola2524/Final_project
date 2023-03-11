@@ -32,7 +32,7 @@
         
         {{-- <tbody> --}}
         <tr>
-                    @foreach ($jobs as $job)
+                    @foreach ($jobs->reverse() as $job)
                     <tr>
                       <th scope="row">{{$job['id']}}</th>
                       <td>{{$job->users ['name']}}</td>

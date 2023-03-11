@@ -47,4 +47,8 @@ class ProfitsController extends Controller
             }
              return redirect("profits");
      }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 596334d7d8795aebc4512cda33f42b1fcea2425b

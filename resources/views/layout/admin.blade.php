@@ -21,22 +21,24 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
 </head>
 <body> 
+
   <!-- start sidebar -->
-    <div class="sidebar"style="ba">
+  <div class="sidebar">
     <div class="logo-details">
-        <i class='bx bxs-home-smile'></i>
-        <span class="logo-name">Home Care</span>
+      <i class='bx bxs-home-smile'></i>
+      <span class="logo-name">Home Care</span>
     </div>
 
         <ul class="nav-links">
             <li class="active"><a href="{{ route('admin') }}"><i class='bx bx-grid-small'></i><span>Dashboard</span></a></li>
             <li><a href="{{ route('services') }}"><i class="fa-solid fa-briefcase"></i><span>Services</span></a></li>
+            <li><a href="{{ route('profits') }}"><i class="fa-solid fa-sack-dollar"></i><span>Profits</span></a></li>
             <li><a href="{{ route('jobs') }}"><i class="fa-solid fa-list-ul"></i><span>Job list</span></a></li>
             <li><a href="/user"><i class="fa-solid fa-users"></i><span>Users</span></a></li>
             <li><a href="{{ route('workers') }}"><i class="fa-solid fa-users-gear"></i><span>Workers</span></a></li>
             <li><a href="{{ route('workerreq') }}"><i class="fa-solid fa-check-to-slot"></i><span>Verification</span></a></li>
             <li><a href="{{ route('offers') }}"><i class="fa-solid fa-gift"></i><span>Offers</span></a></li>
-            <li><a href="{{ route('AdminWorkerserv') }}"><i class="fa-solid fa-gift"></i><span>worker services</span></a></li>
+            <li><a href="{{ route('AdminWorkerserv') }}"><i class="fa-solid fa-person-digging"></i><span>worker services</span></a></li>
             <li><a href="{{ route('contact.us') }}"><i class="fa-solid fa-envelope"></i><span>Contact Us</span></a></li>
             <li><a href="#"><i class='bx bx-log-out'></i><span>
                 <form action="{{ route("logout") }}" method="POST">
@@ -87,6 +89,16 @@
         </div>
         </div>
     </nav>
+    
+    <script>
+        let sidebar = document.querySelector(".sidebar");
+        let sidebarbtn = document.querySelector(".sidebar-btn");
+    
+        sidebarbtn.onclick = function(){
+            sidebar.classList.toggle("active");
+        }
+        </script>
      <!-- end navbar -->
 
     @yield('content')
+

@@ -5,7 +5,7 @@
         <div class="card-header mb-4">create service</div>
         @csrf
         {{-- <input type="hidden" name="worker_id" value="{{ auth()->user()->workers->id }}"> --}}
-        <input type="hidden" name="worker_id" value="{{ auth()->user()->id }}">
+        <input type="hidden" name="worker_id" value="{{ auth()->user()->workers->id }}">
         <label for="exampleFormControlInput1" class="form-label">service</label>
         <select class="form-select mb-3" name="service_id" aria-label="Default select example">
             @foreach ($services as $service)        
