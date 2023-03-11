@@ -34,8 +34,4 @@ class WorkerProfitsController extends Controller
         
         return view("worker.profits.index",['payments'=>$payments]);
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 596334d7d8795aebc4512cda33f42b1fcea2425b
