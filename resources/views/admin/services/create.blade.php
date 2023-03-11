@@ -2,8 +2,18 @@
 @section('content')
 <div class="container w-75  p-3 m-4">
 
-
+  @if ($errors->any())
+  <div class="alert alert-danger">
+      <strong>Whoops!</strong> There were some problems with your input.<br><br>
+      <ul>
+          @foreach ($errors->all() as $error)
+              <li>{{ $error }}</li>
+          @endforeach
+      </ul>
+  </div>
+@endif
   <form method="POST" action="{{route('services.store')}}" enctype="multipart/form-data">
+
     <div class="card-header ">create service</div>
     {{-- <div class="text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 600px;">
     <h6 class="section-title bg-white text-center text-primary px-3">create service</h6>

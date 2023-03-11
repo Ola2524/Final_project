@@ -79,7 +79,7 @@
 
                             @else
 
-                        <a href="{{ route('user.login') }}" class="nav-item nav-link">Services</a>
+                        <a href="{{ route('login') }}" class="nav-item nav-link">Services</a>
                             
                             {{-- <a href="#" class="dropdown-item">Cleaning Services</a>
                             <a href="#" class="dropdown-item">Guest Services</a>
@@ -129,7 +129,7 @@
                           </div>
                     </div>
                     @else
-                    <a href="{{ route('user.login') }}" class="btn btn-sm btn-light rounded-pill py-2 px-4 d-none d-lg-block me-3">Login</a>
+                    <a href="{{ route('login') }}" class="btn btn-sm btn-light rounded-pill py-2 px-4 d-none d-lg-block me-3">Login</a>
                     <a href="{{ route('registeration') }}" class="btn btn-sm btn-light rounded-pill py-2 px-4 d-none d-lg-block">Register</a>
 
                     @endauth

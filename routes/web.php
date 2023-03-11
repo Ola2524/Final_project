@@ -7,7 +7,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\OfferController;
 use App\Http\Controllers\WorkerController;
-
+use App\Http\Controllers\ProfitsController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\WorkerRegistrationController;
 
@@ -16,7 +16,7 @@ use App\Http\Controllers\worker\WorkerServiceController;
 use App\Http\Controllers\worker\ReqController;
 use App\Http\Controllers\worker\WorkerdashbordController;
 use App\Http\Controllers\worker\WorkerJobHistortyController;
-
+use App\Http\Controllers\worker\WorkerProfitsController;
 use App\Http\Controllers\user\ProfileController;
 use App\Http\Controllers\user\ContactController;
 use App\Http\Controllers\user\AboutController;
@@ -39,7 +39,9 @@ use App\Http\Controllers\ReviewController;
 
 use App\Http\Controllers\RequestController;
 
+use App\Http\Controllers\Auth\LoginController;
 
+// use App\Http\Controllers\user\ProfileController;
 
 /*
 |--------------------------------------------------------------------------
@@ -57,8 +59,8 @@ Route::get('/', [RegisterController::class,"index"])->name("homepage");
 Route::get('/regist', [RegisterController::class,"show"])->name("registeration");
 Route::get('/user-regist', [RegisterController::class, 'create'])->name('createUser');
 Route::post('/registeration', [RegisterController::class, 'store'])->name('user.registration');
-Route::get('/user-login', [RegisterController::class,"login"])->name("user.login");
-
+// Route::get('/user-login', [RegisterController::class,"login"])->name("user.login");
+Route::post('/user-login/loggedin', [HomeController::class,"index"])->name("user.login.index");
 Route::get('/homepage', [RegisterController::class,"index"]);
 
 
@@ -66,11 +68,14 @@ Route::get('/workerregistration', [WorkerRegistrationController::class, 'create'
 Route::post('/worker-register', [WorkerRegistrationController::class, 'store'])->name('worker.register');
 
 // general routes for guests
-Route::get('/home', [HomeController::class,"show"])->name("index");
+
+// Route::post('/login', function(){return view('user.login');})->name('login');
 // Route::get('/homepage', [HomeController::class,"homePage"])->name("homepage");
+Route::get('/login', [LoginController::class,"login"])->name("login");
+
+Route::get('/home', [HomeController::class,"show"])->name("index");
 Route::get('/contact-us', [ContactController::class,'index'])->name('contact');
 Route::get('/about-us', [AboutController::class,'index'])->name('about');
-Route::get('/login', function(){return view('user.login');})->name('login');
 Route::get('/profile', [ProfileController::class,'index'])->name('user.profile');
 Route::get('/our-services', [ServicesController::class, 'index'])->name('ourservices');
 Route::get('/our-services/{id}', [ServicesController::class, 'show'])->name('services.show');
@@ -119,6 +124,9 @@ Route::get('/workerreq', [WorkerreqController::class,"index"])->name("workerreq"
 Route::get('/workerreq/{worker}', [WorkerreqController::class,"remove"])->name("workerreq.remove");
 Route::get('/workerreq-add/{worker}', [WorkerreqController::class,"add"])->name("workerreq.add");
 
+Route::get('/workerreq/{worker}/{user}', [WorkerreqController::class,"remove"])->name("workerreq.remove");
+Route::get('/workerreq-add/{worker}/{user}', [WorkerreqController::class,"add"])->name("workerreq.add");
+
 //contact us
 Route::get('/contact-us', [ContactController::class,"adminContacts"])->name("contact.us");
 // end admin routes
@@ -139,6 +147,11 @@ Route::get('/verify', [WorkerProfileController::class,"verify"])->name("verify")
 Route::post('/store-verify/{worker}', [WorkerProfileController::class,"verified"])->name("verify.update");
 Route::get('profile/edit/{worker}', [WorkerProfileController::class, 'edit'])->name('profile.edit');
 Route::post('/update-profile/{worker}', [WorkerProfileController::class,"update"])->name("profile.update");
+
+
+// profits
+Route::get('/profits', [ProfitsController::class,"index"])->name("profits");
+Route::get('/worker/profits', [WorkerProfitsController::class, 'index'])->name('worker.profits');
 
 // jobs requests 
 Route::get('/req', [ReqController::class,"index"])->name("req");
@@ -214,7 +227,7 @@ Route::get('/search/job', [JobController::class, 'search']);
 Route::get('/search', [WorkerServiceController::class, 'search']);
 Route::get('/search', [ReqController::class, 'search']);
 Route::get('/search', [WorkerJobHistortyController::class, 'search']);
-
+Route::get('/search/profits', [ProfitsController::class, 'search']);
 
 
 Route::get('/requset', [RequestController::class, 'index'])->name('requset');

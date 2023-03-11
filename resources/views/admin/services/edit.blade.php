@@ -1,7 +1,16 @@
 @extends('layout.admin')
 @section('content')
 <div class="container w-75  p-3 m-5">
-
+  @if ($errors->any())
+  <div class="alert alert-danger">
+      <strong>Whoops!</strong> There were some problems with your input.<br><br>
+      <ul>
+          @foreach ($errors->all() as $error)
+              <li>{{ $error }}</li>
+          @endforeach
+      </ul>
+  </div>
+@endif
   <form method="POST" action="{{route('services.update',['services'=>$services->id])}}" enctype="multipart/form-data">
     <div class="card-header">Edit service</div>
     @csrf

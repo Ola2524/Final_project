@@ -29,8 +29,29 @@ class HomeController extends Controller
      * @return \Illuminate\Contracts\Support\Renderable
      */
     public function index(Request $request){
-        $user = User::where('email',$request['email'])->first();
-        $request->session()->put('user', $user);
+        // $user = User::where('email',$request['email'])->first();
+        // $request->session()->put('user', $user);
+
+        $credentials = $request->validate([
+            'email' => ['required', 'email'],
+            'password' => ['required'],
+        ]);
+ 
+        $credentials = array('email'=>$request->get('email'),'password'=>$request->get('password'));
+
+        if (Auth::attempt($credentials)) {
+            $request->session()->put('user', $credentials);
+            $role = Auth::User()->role;
+
+
+            return redirect()->intended('homepage');
+        }
+ 
+        return back()->withErrors([
+            'email' => 'The provided credentials do not match our records.',
+        ])->onlyInput('email');
+
+        
         $role = Auth::User()->role;
         $services = Service::all();
         if ($role == 'admin'){

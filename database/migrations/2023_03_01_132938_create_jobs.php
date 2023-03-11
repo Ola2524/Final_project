@@ -21,7 +21,7 @@ return new class extends Migration
                 $table->date('date')->nullable();
                 $table->float('price')->default(0);
                 $table->text('desc');
-                $table->text('review');
+                $table->text('review')->nullable();
                 $table->foreign('service_id')->references('id')->on('services')->onDelete('cascade')->onUpdate('cascade');
                 $table->foreign('worker_id')->references('id')->on('workers')->onDelete('cascade')->onUpdate('cascade');
                 $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');

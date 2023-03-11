@@ -45,10 +45,11 @@ class RegisterController extends Controller
         'country' => $input['country'],
         'bio' => $input['bio'],
         'img'=>$input['img'],
+        'role'=>'user',
         'password' => Hash::make($input['password'])
       ]);
        $services = Service :: all();
-       return view('login',['services'=>$services]);
+       return redirect('login');
     }
         
     public function login(){

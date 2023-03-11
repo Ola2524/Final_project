@@ -2,6 +2,7 @@
 
 namespace App\Models;
 use App\Models\Worker;
+use App\Models\Payment;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -23,5 +24,10 @@ class Job extends Model
 
     public function users(){
         return $this->belongsTo(User::class,'user_id');
+    }
+
+    public function payments()
+    {
+        return $this->hasOne(Payment::class);
     }
 }

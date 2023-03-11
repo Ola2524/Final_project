@@ -12,7 +12,7 @@ class JobController extends Controller
 {
     public function index()
     {
-        $jobs = Job::all();
+        $jobs = Job::latest()->paginate(5);
 
         return view('admin.jobs.jobs', ['jobs' => $jobs]);
     }

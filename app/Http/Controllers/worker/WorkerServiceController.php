@@ -10,7 +10,7 @@ use App\Models\WorkerService;
 class WorkerServiceController extends Controller
 {
     public function index(){
-        $services = WorkerService::all();
+        $services = WorkerService::where('worker_id',Auth()->user()->workers->id)->get();
         return view("worker.services.services",['services'=>$services]);
     }
 

@@ -5,6 +5,10 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Foundation\Auth\User;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Crypt;
 
 class LoginController extends Controller
 {
@@ -33,6 +37,17 @@ class LoginController extends Controller
      *
      * @return void
      */
+
+    //  public function login(Request $request)
+    //  {
+    //     $user=User::where('email',$request->input('email'))->get();
+    //     // if(Crypt::decrypt($user[0]->password)==$request->input('email')){
+    //     //     $request->session()->put('user',$user[0]->name);
+    //         return redirect('/homepage');
+
+        
+
+    //  }
     public function __construct()
     {
         $this->middleware('guest')->except('logout');

@@ -110,7 +110,7 @@ class WorkerController extends Controller
      * @param  \App\Models\Worker  $worker
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Worker $worker)
+    public function update(Request $request, Worker $worker,User $user)
     {
         $request->validate([
             'national_id' => 'required',
@@ -132,7 +132,22 @@ class WorkerController extends Controller
         }else{
             unset($input['img']);
         }
-        $worker->update($input);
+
+        $user->update([
+            'name' => $input['name'],
+            'email' => $input['email'],
+            'street' => $input['street'],
+            'country' => $input['country'],
+            'city' => $input['city'],
+            'img'=>$input['img'],
+            'bio' => $input['bio'],
+          ]);
+    
+          $worker->update([
+            'national_id'=> $input['national_id'],
+            'age'=> $input['age'],
+            'phone_number'=> $input['phone_number'],
+          ]);
      
         return redirect()->route('workers')
                         ->with('success','Worker updated successfully');

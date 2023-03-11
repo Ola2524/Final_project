@@ -37,10 +37,24 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
+
+        $request->validate(
+            ["name"=>"required|min:5|max:50",
+            "city"=>" required|string",
+            "country"=>" required|string",
+            "street"=>"required|string",
+            "email"=>"required|unique:users",
+        ]);
+        $input = $request->all();
+
+
         $input = $request->all();
         //dd($input);
         User::create($input);
         return redirect('user')->with('flash_message', 'User Addedd!');
+
+
+        
     }
 
     /**
@@ -59,6 +73,9 @@ class UserController extends Controller
      */
     public function edit($id)
     {
+ 
+       
+
         $user = User::find($id);
         return view('admin.users.edit',['users'=>$user]);
     }
@@ -72,6 +89,14 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $request->validate(
+            ["name"=>"required|min:5|max:50",
+            "city"=>" required|string",
+            "country"=>" required|string",
+            "street"=>"required|string",
+            "email"=>"required|unique:users",
+        ]);
+        $input = $request->all();
         $user = User::find($id);
         $input = $request->all();
         $user->update($input);
