@@ -116,7 +116,7 @@
                         <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ad veritatis inventore iure ipsam laboriosam nemo, aspernatur totam ducimus adipisci, mollitia hic quod, officia aliquam. Necessitatibus quaerat dolore unde quos repellendus?</p>
                         <p class="mb-4">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi iure hic fugiat aperiam, minima delectus. Odit laboriosam similique adipisci ratione facere corrupti veniam aliquam magni, excepturi placeat! Iusto, quod cum!</p>
                         
-                        <a class="btn rounded-pill py-3 px-5" style="background-color: rgb(74, 74, 150)" href="{{ route('about') }}">Read More</a>
+                        <a class="btn rounded-pill py-3 px-5 text-white" style="background-color: #008dde" href="{{ route('about') }}">Read More</a>
                     </div>
                 </div>
             </div>

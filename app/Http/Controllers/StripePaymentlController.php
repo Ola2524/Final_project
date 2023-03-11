@@ -61,4 +61,43 @@ class StripePaymentlController extends Controller
      Session::flash('success','Payment has been successfully');
         return redirect("review-edit/".$id)->with('success','Payment has been successfully');
     }
+
+    public function stripePoint(Request $request,$id)
+    {
+        $services = Service::all();
+
+        $job = Job::findOrFail($id);
+        $profit = ($job->price*20)/100;
+        $user = User::findOrFail($job->users->id);
+        $worker = Worker::findOrFail($job->workers->id);
+        Stripe\Stripe::setApiKey(env('STRIPE_SECRET'));
+        Stripe\Charge::create([
+            'amount' => ($job->price*100)-($profit*100)-($user->points*100),
+            'currency'=>"usd",
+            'source'=> $request->stripeToken,
+            'description' =>$job->users->name .' payment for ' . $job->workers->name
+        ]);
+
+        Payment::create([
+            'profit' => $profit,
+            'worker_profit' => ($job->price)-($profit),
+            'job_id'=> $job->id,
+            'date'=> Carbon::now(),
+        ]);
+
+        $user->update([
+            'points' => $user->points+1,
+          ]);
+
+        $worker->update([
+        'points' => $worker->points+1,
+        ]);
+
+        $job->update([
+        'status' => 'Done',
+        ]);
+
+     Session::flash('success','Payment has been successfully');
+        return redirect("review-edit/".$id)->with('success','Payment has been successfully');
+    }
 }

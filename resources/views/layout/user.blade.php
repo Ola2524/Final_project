@@ -46,20 +46,20 @@
 </head>
 
 <body>
+
     <!-- Spinner Start -->
     <div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
         <div class="spinner-border position-relative text-primary" style="width: 6rem; height: 6rem;" role="status"></div>
         <i class="fa fa-laptop-code fa-2x text-primary position-absolute top-50 start-50 translate-middle"></i>
     </div>
     <!-- Spinner End -->
-{{-- <nav style="height: 20px; background-color:blue"> --}}
-
-</nav>
+<div style="height: 20px; background-color:#008dde" class="position-relative z-1 sticky-top wow fadeIn" data-wow-delay="0.1s"></div>
     <!-- Navbar Start -->
-    <nav  class="navbar navbar-expand-lg navbar-dark sticky-top py-lg-0 px-lg-5 wow fadeIn" data-wow-delay="0.1s" style="background-color: rgb(5, 59, 130)">
+    <nav  class="z-5 navbar navbar-expand-lg navbar-dark bg-white sticky-top py-lg-0 px-lg-5 wow fadeIn" data-wow-delay="0.1s" style="background-color: rgb(5, 59, 130)">
         <div>
-            {{-- <img src="{{asset('img/homecare-removebg-preview.png')}}" class="position-absolute top-0 start-0" alt=""> --}}
-            <h1 class="fw-bold text-white m-0" style="font-family:Petit Formal Script">Home Care</h1>
+            <div style="height: 20px; background-color:#008dde" class="position-relative z-1"></div>
+            <img src="{{asset('img/logo.png')}}" width="80px" style="top:-15px;left:35px" class="z-1 position-absolute" alt="">
+            {{-- <h1 class="fw-bold text-white m-0" style="font-family:Petit Formal Script">Home Care</h1> --}}
         </div>
         <div class="ms-auto">
             <a href="#" class="navbar-brand ms-3 d-lg-none">MENU</a>
@@ -68,11 +68,11 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarCollapse">
                 <div class="navbar-nav me-auto p-3 p-lg-0">
-                    <a href="/" class="nav-item nav-link active">Home</a>
-                    <a href="{{ route('about') }}" class="nav-item nav-link">About Us</a>
+                    <a href="/" class="nav-item nav-link active text-dark">Home</a>
+                    <a href="{{ route('about') }}" class="nav-item nav-link text-dark">About Us</a>
                     @auth
                     <div class="nav-item dropdown">
-                        <a href="{{ route('ourservices') }}" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Services</a>
+                        <a href="{{ route('ourservices') }}" class=" text-dark nav-link dropdown-toggle" data-bs-toggle="dropdown">Services</a>
                         <div class="dropdown-menu border-0 rounded-0 rounded-bottom m-0">
                             @foreach ($services as $service)
                                 <a href="{{ route("services.show",['id'=>$service->id]) }}" class="dropdown-item">{{ $service->name }}</a>   
@@ -82,7 +82,7 @@
 
                             @else
 
-                        <a href="{{ route('login') }}" class="nav-item nav-link">Services</a>
+                        <a href="{{ route('login') }}" class="nav-item nav-link text-dark">Services</a>
                             
                             {{-- <a href="#" class="dropdown-item">Cleaning Services</a>
                             <a href="#" class="dropdown-item">Guest Services</a>
@@ -91,7 +91,7 @@
                             <a href="#" class="dropdown-item">Bride Services</a> --}}
                         @endauth
 
-                    <a href="{{ route('contact') }}" class="nav-item nav-link">Contact Us</a>
+                    <a href="{{ route('contact') }}" class="nav-item nav-link text-dark">Contact Us</a>
                 </div>
                 
                     @auth                        
@@ -113,7 +113,7 @@
                                 <li><a href="{{ route('user.profile') }}" class="dropdown-item" type="button">Profile</a></li>                                
                                  @endif
                                 @if (auth()->user()->role == 'user' || auth()->user()->role == 'worker')
-                                    <li><a href="{{ route('requset') }}" class="dropdown-item" type="button">Request</a></li>                                
+                                    <li><a href="{{ route('requset') }}" class="dropdown-item" type="button">Requests</a></li>                                
                                 @endif
                               <li><form action="{{ route("logout") }}" method="POST">
                                 @csrf
@@ -123,8 +123,8 @@
                           </div>
                     </div>
                     @else
-                    <a href="{{ route('login') }}" class="btn btn-sm btn-light rounded-pill py-2 px-4 d-none d-lg-block me-3">Login</a>
-                    <a href="{{ route('registeration') }}" class="btn btn-sm btn-light rounded-pill py-2 px-4 d-none d-lg-block">Register</a>
+                    <a href="{{ route('login') }}" style="background-color: #008dde" class="btn btn-sm btn-light rounded-pill py-2 px-4 d-none d-lg-block me-3 text-white">Login</a>
+                    <a href="{{ route('registeration') }}" style="background-color: #008dde" class="btn btn-sm btn-light rounded-pill py-2 px-4 d-none d-lg-block text-white">Register</a>
 
                     @endauth
 
@@ -160,11 +160,19 @@
             <div class="col-lg-4 col-md-6">
                 <h5 class="text-light mb-4">Services</h5>
                 <div class="row g-2">
+                    @auth                        
                     @foreach ($services as $service)
                     <div class="col-4">
                         <a href="/our-services/{{$service->id}}"><img class="img-fluid rounded" src="{{asset('img/'.$service->img)}}" alt="Image"></a>
                     </div>                        
                     @endforeach
+                    @else
+                    @foreach ($services as $service)
+                    <div class="col-4">
+                        <a href="{{ route('login') }}"><img class="img-fluid rounded" src="{{asset('img/'.$service->img)}}" alt="Image"></a>
+                    </div>                        
+                    @endforeach
+                    @endauth
 
                     {{-- <div class="col-4">
                         <img class="img-fluid rounded" src="{{asset('img/cleaning (2).jpg')}}" alt="Image">

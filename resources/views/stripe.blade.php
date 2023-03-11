@@ -1,11 +1,5 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>payment</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" />
-    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"
-    integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
-<link rel="stylesheet" href="style.css">
+@extends('layout.user')
+@section('content')    
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <style >
         .panel-title {
@@ -49,10 +43,10 @@ body{
   text-align: center;
   border: 1px dotted #333;
 }
-h4{
+/* h4{
   padding-bottom: 5px;
   color: #7ed321;
-}
+} */
 .input-group{
   margin-bottom: 8px;
   width: 100%;
@@ -203,8 +197,18 @@ button:hover{
                             <p>{{ Session::get('success') }}</p>
                         </div>
                     @endif
-  
+                    
+                    @if (auth()->user()->points>0)
                     <form 
+                      role="form" 
+                      action="{{ route('stripe.point',['id'=>$job->id]) }}" 
+                      method="post" 
+                      class="require-validation"
+                      data-cc-on-file="false"
+                      data-stripe-publishable-key="{{ env('STRIPE_KEY') }}"
+                      id="payment-form">
+                        @else
+                        <form 
                             role="form" 
                             action="{{ route('stripe.post',['id'=>$job->id]) }}" 
                             method="post" 
@@ -212,6 +216,8 @@ button:hover{
                             data-cc-on-file="false"
                             data-stripe-publishable-key="{{ env('STRIPE_KEY') }}"
                             id="payment-form">
+                    @endif
+                    
                         @csrf
   
                         
@@ -236,10 +242,10 @@ button:hover{
                             </div><br> --}}
                             <h4>Payment Details</h4>
   
-                        <div class='form-row row'>
+                        <div class='form-row row my-3'>
                             <div class='col-xs-12 form-group card required'>
                                 <label class='control-label'>Card Number</label> <input
-                                    autocomplete='off' class='form-control card-number' size='20'
+                                    autocomplete='off' class='form-control card-number mb-3' size='20'
                                     type='text'>
                             </div>
                         </div>
@@ -273,14 +279,31 @@ button:hover{
                       
    
                         <div class="row">
-                            <div class="col-xs-12">
-                                <div class="btn btn-success btn-lg btn-block" type="submit">Price: (${{$job->price}}) </div><br>
+                            <div class="col-xs-12 my-3">
+                                <div class="btn btn-success btn-lg btn-block w-100" type="submit">Price: (${{$job->price}}) </div><br>
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-xs-12">
-                                <button class="btn btn-primary btn-lg btn-block" type="submit">Pay </button>
+                            @if (auth()->user()->points>0)
+                            <div class="d-flex w-100 justify-content-center align-items-center text-center">
+                              {{-- <div class="col-xs-4"> --}}
+                                <button class="btn btn-lg text-white" style="width:45%;background-color: #008dde" type="submit">Pay </button>
+                              {{-- </div> --}}
+                              {{-- <div class="col-xs-1"> --}}
+                              <h5 style="width: 15%">OR</h5>
+                              {{-- </div> --}}
+                              {{-- <div class="col-xs-4"> --}}
+                                <button class="btn btn-lg text-white" style="width:45%;background-color: #008dde" type="submit">Use your points </button>
+                              {{-- </div> --}}
+                              
                             </div>
+                            <h5 class="text-center mt-3">You have {{auth()->user()->points}} points</h5>
+
+                              @else
+                              <div class="col-xs-12">
+                                <button class="btn btn-lg btn-block text-white" style="background-color: #008dde" type="submit">Pay </button>
+                              </div>
+                            @endif
                         </div>
                           
                     </form>
@@ -351,4 +374,5 @@ $(function() {
    
 });
 </script>
-</html>
+@endsection
+
