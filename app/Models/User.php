@@ -30,8 +30,8 @@ class User extends Authenticatable
         'role',
         'points',
         'img',
-        'bio'
-
+        'bio',
+        'gender'
     ];
 
     public function workers()

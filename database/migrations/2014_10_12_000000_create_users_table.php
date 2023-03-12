@@ -24,6 +24,7 @@ return new class extends Migration
             $table->string('city');
             $table->string('img')->nullable();
             $table->text('bio')->nullable();
+            $table->enum('gender', ['male', 'female'])->nullable();
             $table->rememberToken();
             $table->timestamps();
            
