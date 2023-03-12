@@ -64,14 +64,14 @@ button
 
 a{
     text-decoration: none;
-    font-size:22px;
+    /* font-size:22px; */
     color:rgb(255, 239, 239);
 }
 
 a:hover,button:hover{
     opacity: 0.6;
 }
-.card:hover
+/* .card:hover
 {
   opacity: 0.8;
   box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.2);
@@ -82,6 +82,9 @@ a:hover,button:hover{
   border-radius:40px;
   padding-bottom:15px;
   
+} */
+i{
+    font-size: 22px;
 }
 
 /* .center{
@@ -158,38 +161,38 @@ a:hover,button:hover{
         <p class="title">${{$users->fixed_price}}</p>
           {{-- <p></p> --}}
        
-{{-- <span class="review-stars mb-5" style="color: yellow;">
+<span class="review-stars mb-4" style="color: #fd4;">
     <!-- ////////////// STAR RATE CHECKER ////////////// -->
         @if($users->rate <= 0.00)
-            <i class="fa fa-star-o" aria-hidden="true"></i>
-            <i class="fa fa-star-o" aria-hidden="true"></i>
-            <i class="fa fa-star-o" aria-hidden="true"></i>
-            <i class="fa fa-star-o" aria-hidden="true"></i>
-            <i class="fa fa-star-o" aria-hidden="true"></i>
+        <i class="fa-regular fa-star"></i>
+        <i class="fa-regular fa-star"></i>
+        <i class="fa-regular fa-star"></i>
+        <i class="fa-regular fa-star"></i>
+        <i class="fa-regular fa-star"></i>
         @elseif($users->rate === 1.00)
             <i class="fa fa-star" aria-hidden="true"></i>
-            <i class="fa fa-star-o" aria-hidden="true"></i>
-            <i class="fa fa-star-o" aria-hidden="true"></i>
-            <i class="fa fa-star-o" aria-hidden="true"></i>
-            <i class="fa fa-star-o" aria-hidden="true"></i>
+            <i class="fa-regular fa-star"></i>
+            <i class="fa-regular fa-star"></i>
+            <i class="fa-regular fa-star"></i>
+            <i class="fa-regular fa-star"></i>
         @elseif($users->rate === 2.00)
             <i class="fa fa-star" aria-hidden="true"></i>
             <i class="fa fa-star" aria-hidden="true"></i>
-            <i class="fa fa-star-o" aria-hidden="true"></i>
-            <i class="fa fa-star-o" aria-hidden="true"></i>
-            <i class="fa fa-star-o" aria-hidden="true"></i>
+            <i class="fa-regular fa-star"></i>
+            <i class="fa-regular fa-star"></i>
+            <i class="fa-regular fa-star"></i>
         @elseif($users->rate === 3.00)
             <i class="fa fa-star" aria-hidden="true"></i>
             <i class="fa fa-star" aria-hidden="true"></i>
             <i class="fa fa-star" aria-hidden="true"></i>
-            <i class="fa fa-star-o" aria-hidden="true"></i>
-            <i class="fa fa-star-o" aria-hidden="true"></i>
+            <i class="fa-regular fa-star"></i>
+            <i class="fa-regular fa-star"></i>
         @elseif($users->rate === 4.00)
             <i class="fa fa-star" aria-hidden="true"></i>
             <i class="fa fa-star" aria-hidden="true"></i>
             <i class="fa fa-star" aria-hidden="true"></i>
             <i class="fa fa-star" aria-hidden="true"></i>
-            <i class="fa fa-star-o" aria-hidden="true"></i>
+            <i class="fa-regular fa-star"></i>
         @elseif($users->rate >= 5.00)
             <i class="fa fa-star" aria-hidden="true"></i>
             <i class="fa fa-star" aria-hidden="true"></i>
@@ -198,9 +201,9 @@ a:hover,button:hover{
             <i class="fa fa-star" aria-hidden="true"></i>
         @endif
         <!-- ///////////////////////////////////////////// -->
-    </span> --}}
+    </span>
 
-        <p><a href="{{route('profile.show',['id'=>$users->worker_id])}}" class="btn btn-outline-primary">Show More </a></p>
+        <p><a href="{{route('profile.show',['id'=>$users->worker_id])}}" class="btn text-white" style="background-color: #008dde">Show More</a></p>
 
       </div>
     </div>
