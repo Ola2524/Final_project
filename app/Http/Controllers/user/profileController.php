@@ -38,15 +38,17 @@ class profileController extends Controller
         return view("user.pages-profile",['services'=>$services,'workers'=>$workers,'job_count'=>$job_counts,'user'=>$user,'reviews'=>$reviews]);
     }
 
-    public function show($id){
-        $services = Service::all();
+    public function show($id,$service_id){
+        // dd($id);
+        $services=Service::all();
+        $wservices = WorkerService::where('worker_id',$id)->where("service_id",$service_id)->first();
         $reviews = Job :: where('worker_id',$id)->where('status','Done')->get();
-
+        $service=Service::find($service_id);
         $jobs = Job :: where('worker_id',$id)->where('status','Done')->get();
         $workers = Worker :: find($id);
         // dd($workers);
         $job_counts = count($jobs);
         $user = 0;
-        return view("user.pages-profile",['services'=>$services,'workers'=>$workers,'job_count'=>$job_counts,'user'=>$user,'reviews'=>$reviews]);
+        return view("user.pages-profile",['service'=>$service,'services'=>$services,'wservices'=>$wservices,'workers'=>$workers,'job_count'=>$job_counts,'user'=>$user,'reviews'=>$reviews]);
     }
 }

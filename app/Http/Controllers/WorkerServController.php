@@ -11,6 +11,7 @@ class WorkerServController extends Controller
 {
     public function index(){
       $worker_services = WorkerService::all();
+      
         return view('admin.worker-services.index',['worker_services'=>$worker_services]);
     }
 
@@ -18,5 +19,7 @@ class WorkerServController extends Controller
         WorkerService::findOrFail($id)->delete();
         return redirect('/AdminWorkerserv');
     }
+
+    
 
 }

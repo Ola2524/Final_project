@@ -7,14 +7,18 @@ use Illuminate\Http\Request;
 use App\Models\Service;
 use App\Models\WorkerService;
 use App\Models\Job;
+use App\Models\Worker;
 use Illuminate\Support\Facades\DB;
 
 class OrderController extends Controller
 {
-    public function create($id){
+    public function create($id,$worker_id){
+    //    dd($worker_id);
+    
+        $service= Service :: find($id);
+        $workers=Worker::find($worker_id);
         $services = Service :: all();
-        $worker_services = WorkerService :: findOrFail($id);
-        return view('user.order',['services'=>$services,'worker_services'=>$worker_services]);
+        return view('user.order',['workers'=>$workers,'service'=>$service,'services'=>$services]);
     }
 
     public function store(Request $request){

@@ -133,6 +133,19 @@ i{
                     excepturi, laudantium maxime, molestias fugiat accusantium error adipisci voluptas similique
                     officiis! Alias nihil provident labore veniam?
                 </p>
+                <div class="card mt-3">
+                    <div class="card-header">
+                        <h4>Price</h4>
+                    </div>
+                    <div class="card-body">
+                        <label class="d-block">
+                            <input type="radio" id="high" name="priceSort" wire:model="priceInput" value="high-to-low"/>High to Low
+                        </label>
+                        <label class="d-block">
+                            <input type="radio" id="low" name="priceSort" wire:model="priceInput" value="low-to-high"/>Low to High
+                        </label>
+                    </div>
+                </div>
             </header>
         </section>
 
@@ -143,57 +156,57 @@ i{
                 {{ session()->get('success') }}                
             </div>
         @endif --}}
-
 <!-- start card services -->
 <div class="container">
-<div class="row">
-@foreach ($user as $users )
+<div class="row" id="Content">
+   
+@foreach ($user as $worker )
 {{-- @dd($users) --}}
     <div class="column">
       <div class="card">
                 {{-- <img src="{{asset('img/babysitter.jpg')}}"> --}}
         <div class="center">
-            <img src="{{asset('img/'.$users->img)}}" style="width:150px;height:auto;padding-top:10px; border-radius: 100px;">
+            <img src="{{asset('img/'.$worker->users->img)}}" style="width:150px;height:auto;padding-top:10px; border-radius: 100px;">
         </div>
             
-        <h1>{{$users->name}}</h1>
-        <p class="title">{{$users->service_name}}</p>
-        <p class="title">${{$users->fixed_price}}</p>
+        <h1>{{$worker->users->name}}</h1>
+        <p class="title">{{$service->name}}</p>
+        <p class="title">${{$worker->fixed_price->fixed_price}}</p>
           {{-- <p></p> --}}
        
 <span class="review-stars mb-4" style="color: #fd4;">
     <!-- ////////////// STAR RATE CHECKER ////////////// -->
-        @if($users->rate <= 0.00)
+        @if($worker->fixed_price->rate <= 0.00)
         <i class="fa-regular fa-star"></i>
         <i class="fa-regular fa-star"></i>
         <i class="fa-regular fa-star"></i>
         <i class="fa-regular fa-star"></i>
         <i class="fa-regular fa-star"></i>
-        @elseif($users->rate === 1.00)
+        @elseif($worker->fixed_price->rate === 1.00)
             <i class="fa fa-star" aria-hidden="true"></i>
             <i class="fa-regular fa-star"></i>
             <i class="fa-regular fa-star"></i>
             <i class="fa-regular fa-star"></i>
             <i class="fa-regular fa-star"></i>
-        @elseif($users->rate === 2.00)
+        @elseif($worker->fixed_price->rate === 2.00)
             <i class="fa fa-star" aria-hidden="true"></i>
             <i class="fa fa-star" aria-hidden="true"></i>
             <i class="fa-regular fa-star"></i>
             <i class="fa-regular fa-star"></i>
             <i class="fa-regular fa-star"></i>
-        @elseif($users->rate === 3.00)
+        @elseif($worker->fixed_price->rate === 3.00)
             <i class="fa fa-star" aria-hidden="true"></i>
             <i class="fa fa-star" aria-hidden="true"></i>
             <i class="fa fa-star" aria-hidden="true"></i>
             <i class="fa-regular fa-star"></i>
             <i class="fa-regular fa-star"></i>
-        @elseif($users->rate === 4.00)
+        @elseif($worker->fixed_price->rate === 4.00)
             <i class="fa fa-star" aria-hidden="true"></i>
             <i class="fa fa-star" aria-hidden="true"></i>
             <i class="fa fa-star" aria-hidden="true"></i>
             <i class="fa fa-star" aria-hidden="true"></i>
             <i class="fa-regular fa-star"></i>
-        @elseif($users->rate >= 5.00)
+        @elseif($worker->fixed_price->rate >= 5.00)
             <i class="fa fa-star" aria-hidden="true"></i>
             <i class="fa fa-star" aria-hidden="true"></i>
             <i class="fa fa-star" aria-hidden="true"></i>
@@ -202,8 +215,9 @@ i{
         @endif
         <!-- ///////////////////////////////////////////// -->
     </span>
+    
 
-        <p><a href="{{route('profile.show',['id'=>$users->worker_id])}}" class="btn text-white" style="background-color: #008dde">Show More</a></p>
+        <p><a href="{{route('profile.show',['id'=>$worker->id,'service_id'=>$service->id])}}" class="btn text-white" style="background-color: #008dde">Show More</a></p>
 
       </div>
     </div>
@@ -360,5 +374,53 @@ i{
             class="bi bi-arrow-up"></i></a> -->
 
             @include('sweetalert::alert')
+<script>
+    $('#high').on('checked',function(){
+ 
+ $value=$(this).val();
+   // if($value){
+   // $('.alldata').hide();
+   // $('.searchdata').show();
+   
+   // }
+   // else{
+   //   $('.alldata').show();
+   // $('.searchdata').hide();
+   // }
+ $.ajax({
+ type:'get',
+ url:'{{URL::to('filter/services/desc')}}',
+ data:{'search':$value},
+ success:function(data)
+ {
+   console.log(data);
+   $('#Content').html(data)
+ }
+ });
+   })
 
+   $('#low').on('checked',function(){
+ 
+ $value=$(this).val();
+   // if($value){
+   // $('.alldata').hide();
+   // $('.searchdata').show();
+   
+   // }
+   // else{
+   //   $('.alldata').show();
+   // $('.searchdata').hide();
+   // }
+ $.ajax({
+ type:'get',
+ url:'{{URL::to('filter/services/asc')}}',
+ data:{'search':$value},
+ success:function(data)
+ {
+   console.log(data);
+   $('#Content').html(data)
+ }
+ });
+   })
+</script>
 @endsection

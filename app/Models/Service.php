@@ -14,14 +14,14 @@ class Service extends Model
       
     ];
 
-    public function workers()
-    {
-        return $this->hasMany(Worker::class,'worker_service');
-    }
+    // public function workers()
+    // {
+    //     return $this->hasMany(Worker::class,'worker_service');
+    // }
 
     public function worker_service()
     {
-        return $this->hasMany(WorkerService::class);
+        return $this->belongsToMany(Worker::class,"worker_service");
     }
 
     public function jobs()

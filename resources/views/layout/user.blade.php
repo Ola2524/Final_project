@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -50,7 +51,7 @@
     <!-- Spinner Start -->
     <div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
         <div class="spinner-border position-relative text-primary" style="width: 6rem; height: 6rem;" role="status"></div>
-        <i class="fa fa-laptop-code fa-2x text-primary position-absolute top-50 start-50 translate-middle"></i>
+        <i class="fa-solid fa-house fa-2x text-primary position-absolute top-50 start-50 translate-middle"></i>
     </div>
     <!-- Spinner End -->
 <div style="height: 20px; background-color:#008dde" class="position-relative z-1 sticky-top wow fadeIn" data-wow-delay="0.1s"></div>

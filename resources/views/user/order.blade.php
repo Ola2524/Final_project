@@ -1,15 +1,18 @@
 @extends('layout.user')
 @section('content')
 <div class="container w-50 p-3 m-4">
+
     <form method="POST" action="{{ route('order.store') }}">
         @csrf
         <h3 class="mb-5">Order Details</h3>
+ 
         <input type="hidden" name="user_id" value="{{ auth()->user()->id }}">
-        <input type="hidden" name="worker_id" value="{{ $worker_services->workers->id }}">
-        <input type="hidden" name="service_id" value="{{ $worker_services->services->id }}">
+        <input type="hidden" name="worker_id" value="{{ $workers->id }}">
+        <input type="hidden" name="service_id" value="{{ $service->id }}">
+    
         <input type="hidden" name="status" value="pending">
         <div class="mb-3">
-            <label for="exampleInputPassword1" class="form-label">Service</label><h4>{{ $worker_services->services->name }}</h4>
+            <label for="exampleInputPassword1" class="form-label">Service</label><h4>{{ $service->name }}</h4>
             {{-- <select class="form-select" name="service_id" aria-label="Default select example"> --}}
                 {{-- <option selected value="{{ $worker_services->services->id }}">{{ $worker_services->services->name }}</option>                     --}}
 

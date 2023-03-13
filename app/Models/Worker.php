@@ -18,7 +18,7 @@ class Worker extends Model
 
     public function worker_service()
     {
-        return $this->hasOne(WorkerService::class);
+        return $this->belongsToMany(Service::class,"worker_service");
     }
 
     public function jobs()

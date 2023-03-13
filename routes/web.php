@@ -80,8 +80,8 @@ Route::get('/profile', [ProfileController::class,'index'])->name('user.profile')
 Route::get('/our-services', [ServicesController::class, 'index'])->name('ourservices');
 Route::get('/our-services/{id}', [ServicesController::class, 'show'])->name('services.show');
 
-Route::get('/worker/profile/{id}', [ProfileController::class, 'show'])->name('profile.show');
-Route::get('/order/{id}', [OrderController::class, 'create'])->name('order.create');
+Route::get('/worker/profile/{id}/{service_id}', [ProfileController::class, 'show'])->name('profile.show');
+Route::get('/order/{id}/{worker_id}', [OrderController::class, 'create'])->name('order.create');
 Route::post('/order/store', [OrderController::class, 'store'])->name('order.store');
 Route::get('/order-details/{id}', [OrderController::class, 'show'])->name('order.show');
 
@@ -239,4 +239,14 @@ Route::get('/search/profits', [ProfitsController::class, 'search']);
 
 Route::get('/requset', [RequestController::class, 'index'])->name('requset');
 Route::get('/requset/{id}', [RequestController::class,"show"])->name("requset.show");
+
+Route::get('/filter/services/desc', [ServicesController::class, 'desc']);
+Route::get('/filter/services/asc', [ServicesController::class, 'asc']);
+
 // Route::get('/order-details/{id}', [OrderController::class, 'show'])->name('order.show');
+
+
+
+//Route::post('/{AdminWorkerserv}/restore', [WorkerServController::class, 'restore'])->name('AdminWorkerserv.restore');
+//Route::delete('/{user}/force-delete', 'UsersController@forceDelete')->name('users.force-delete');
+//Route::post('/restore-all',  [WorkerServController::class, 'restoreAll'])->name('AdminWorkerserv.restore-all');

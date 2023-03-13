@@ -80,7 +80,7 @@ class StripePaymentlController extends Controller
 
         Payment::create([
             'profit' => $profit,
-            'worker_profit' => ($job->price)-($profit),
+            'worker_profit' => ($job->price),
             'job_id'=> $job->id,
             'date'=> Carbon::now(),
         ]);

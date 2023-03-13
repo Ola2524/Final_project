@@ -1,6 +1,6 @@
 @extends('layout.user')
 @section('content')
-    
+  
 <div class="container my-5">
 
         <!-- ============================================================== -->
@@ -29,9 +29,11 @@
                     </div>
                     <div class="col-md-6 col-4">
                         @if ($user == 0)
+                      
                             <a href="/chatify/{{$workers->users->id}}" class="btn btn-outline-success float-end" style="margin:0 13px">Contact me</a>
-                            <a href="{{route('order.create',['id'=>$workers->worker_service->id])}}" class="btn btn-outline-primary float-end">Order service</a>
-                        @endif
+                            <a href="{{route('order.create',['id'=>$service->id,"worker_id"=>$workers->id])}}" class="btn btn-outline-primary float-end">Order service</a>
+                  
+                            @endif
                     </div>
                     
                 </div>
@@ -73,7 +75,7 @@
                                     
                                     @if ($user == 0)
                                     <h6 class="card-subtitle">
-                                        {{$workers->worker_service->services->name}}
+                                        {{$service->name}}
 
                                     </h6>
                                     @endif
@@ -174,11 +176,12 @@
                                         <div class="col-md-6">
                                             <h6>
 
-                                                {{$workers->worker_service->services->name}}
+                                                {{$service->name}}
                                             </h6>
                                         </div>
                                         <div class="col-md-6 text-end">
-                                            <h6>( ${{ $workers->worker_service->fixed_price }} )</h6>
+                                      
+                                            <h6>( ${{ $wservices->fixed_price }} )</h6>
                                         </div>
                                 </div>
                             </div>
