@@ -102,13 +102,18 @@ public function asc(){
         // ->select('users.name' ,'users.city','jobs.rate','jobs.date','services.description')
         // ->get();
 
-        $users = DB::table('workers')
-        ->join('worker_service', 'worker_service.worker_id', '=', 'workers.id')
-        ->join('users', 'users.id', '=', 'workers.user_id')
-        ->join('services', 'services.id', '=', 'worker_service.service_id')
-        ->select('worker_service.id as id','worker_service.rate as rate','worker_service.fixed_price','worker_id','users.img as img','users.name as name','services.name as service_name','services.description')
-        ->get();
-
+        // $users = DB::table('workers')
+        // ->join('worker_service', 'worker_service.worker_id', '=', 'workers.id')
+        // ->join('users', 'users.id', '=', 'workers.user_id')
+        // ->join('services', 'services.id', '=', 'worker_service.service_id')
+        // ->select('worker_service.id as id','worker_service.rate as rate','worker_service.fixed_price','worker_id','users.img as img','users.name as name','services.name as service_name','services.description')
+        // ->get();
+        $users=$service->worker_service;
+        foreach($users as $item){
+            $price=WorkerService::where("service_id",$id)->where("worker_id",$item->id)->first();
+            // $item =$item->users;
+            $item->fixed_price=$price;
+        }
         // $users = WorkerService :: all();
 
         return view("user.services",['services'=>$services,'user' => $users,'service'=>$service]);
@@ -138,9 +143,10 @@ public function asc(){
             // $item =$item->users;
             $item->fixed_price=$price;
         }
+
     //    dd($users);
         // $users = WorkerService::where('service_id',$id)->get();
-        return view("user.services",['services'=>$services,'user' => $users,'service'=>$service]);
+        return view("user.services",['services'=>$services,'user' => $users,'service'=>$service,'id'=>$id]);
     }
 
 

@@ -70,8 +70,8 @@
             <li class="nav-item">
                 <div class="d-flex align-items-center">
                     <div class="btn-group">
-                        <button type="button" class="btn btn-secondary dropdown-toggle d-flex justify-content-between align-items-center" data-bs-toggle="dropdown" aria-expanded="false">
-                            <div><i class="fa-solid fa-circle-user"></i></div>
+                        <button type="button" class="btn bg-light text-dark dropdown-toggle d-flex justify-content-between align-items-center" data-bs-toggle="dropdown" aria-expanded="false">
+                            <div><img src="{{asset('img/'.auth()->user()->img)}}"class="rounded-circle" width="40"/></div>
                             <span class="ms-2 me-1">{{ auth()->user()->name }}</span>
                         </button>
                         <ul class="dropdown-menu dropdown-menu-end">

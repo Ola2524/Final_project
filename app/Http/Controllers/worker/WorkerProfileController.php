@@ -17,7 +17,7 @@ class WorkerProfileController extends Controller
         $job = Job :: where('worker_id',$worker->workers->id)->where('status','Done')->get();
         $job_count = count($job); 
         $reviews = Job :: where('worker_id',$worker->workers->id)->get();
-        $services = WorkerService :: where('worker_id',$worker->id)->get();
+        $services = WorkerService :: where('worker_id',$worker->workers->id)->get();
         return view("worker.profile.index",['services' => $services,'verified'=>$verified,'job_count'=>$job_count,'reviews'=>$reviews]);
     }
     

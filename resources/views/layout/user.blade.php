@@ -98,8 +98,8 @@
                     @auth                        
                     <div class="d-flex align-items-center">
                         <div class="btn-group">
-                            <button type="button" class=" bg-light text-dark btn btn-secondary dropdown-toggle d-flex justify-content-between align-items-center" data-bs-toggle="dropdown" aria-expanded="false">
-                                <div><i class="fa-solid fa-circle-user"></i></div>
+                            <button type="button" class="bg-light text-dark btn btn-secondary dropdown-toggle d-flex justify-content-between align-items-center" data-bs-toggle="dropdown" aria-expanded="false">
+                                <div><img src="{{asset('img/'.auth()->user()->img)}}"class="rounded-circle" width="50"/>                                </div>
                                 <span class="ms-2 me-1">{{ auth()->user()->name }}</span>
                             </button>
                             <ul class="dropdown-menu dropdown-menu-end">

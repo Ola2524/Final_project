@@ -68,7 +68,7 @@
                                 </div>
                             </div>
                             <div class="col-12 text-center">
-                                <button class="btn btn-primary rounded-pill py-3 px-5" type="submit">Send Message</button>
+                                <button class="btn rounded-pill py-3 px-5 text-white" style="background-color: #018cdd" type="submit">Send Message</button>
                             </div>
                         </div>
                     </form>

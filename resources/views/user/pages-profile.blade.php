@@ -1,6 +1,10 @@
 @extends('layout.user')
 @section('content')
-  
+  <style>
+    .btn:hover{
+        transform: scale(1.1)
+    }
+  </style>
 <div class="container my-5">
 
         <!-- ============================================================== -->
@@ -30,8 +34,8 @@
                     <div class="col-md-6 col-4">
                         @if ($user == 0)
                       
-                            <a href="/chatify/{{$workers->users->id}}" class="btn btn-outline-success float-end" style="margin:0 13px">Contact me</a>
-                            <a href="{{route('order.create',['id'=>$service->id,"worker_id"=>$workers->id])}}" class="btn btn-outline-primary float-end">Order service</a>
+                            <a href="/chatify/{{$workers->users->id}}" class="btn  float-end text-white" style="margin:0 13px;background-color:#018cdd">Contact me</a>
+                            <a href="{{route('order.create',['id'=>$service->id,"worker_id"=>$workers->id])}}" class="btn float-end text-white" style="background-color:#0b5ba4" >Order service</a>
                   
                             @endif
                     </div>
@@ -128,7 +132,7 @@
                                             <h6>Today</h6>
                                         </div>
                                     </div>
-                                    @if ($workers->verified == 1)                                        
+                                    @if ($workers->verify == 1)                                        
                                     <div class="row mt-3">
                                         <div class="col-md-6 mt-3 text-end">
                                             <h6 class="fs-4">Verified</h6>
@@ -172,14 +176,57 @@
                                     <h5 class="mb-3">Service price</h5>
                                     <hr>
 
-                                    <div class="row mt-3">
-                                        <div class="col-md-6">
+                                    <div class="mt-3 d-flex">
+                                        <div class="col-md-4">
                                             <h6>
 
-                                                {{$service->name}}
+                                                {{$wservices->services->name}}
                                             </h6>
                                         </div>
-                                        <div class="col-md-6 text-end">
+                                        <div class="w-50">
+                                            <span class="review-stars pb-4" style="color: #fd4;">
+                                                <!-- ////////////// STAR RATE CHECKER ////////////// -->
+                                                    @if($wservices->rate <= 0.00)
+                                                    <i class="fa-regular fa-star"></i>
+                                                    <i class="fa-regular fa-star"></i>
+                                                    <i class="fa-regular fa-star"></i>
+                                                    <i class="fa-regular fa-star"></i>
+                                                    <i class="fa-regular fa-star"></i>
+                                                    @elseif($wservices->rate === 1.00)
+                                                        <i class="fa fa-star" aria-hidden="true"></i>
+                                                        <i class="fa-regular fa-star"></i>
+                                                        <i class="fa-regular fa-star"></i>
+                                                        <i class="fa-regular fa-star"></i>
+                                                        <i class="fa-regular fa-star"></i>
+                                                    @elseif($wservices->rate === 2.00)
+                                                        <i class="fa fa-star" aria-hidden="true"></i>
+                                                        <i class="fa fa-star" aria-hidden="true"></i>
+                                                        <i class="fa-regular fa-star"></i>
+                                                        <i class="fa-regular fa-star"></i>
+                                                        <i class="fa-regular fa-star"></i>
+                                                    @elseif($wservices->rate === 3.00)
+                                                        <i class="fa fa-star" aria-hidden="true"></i>
+                                                        <i class="fa fa-star" aria-hidden="true"></i>
+                                                        <i class="fa fa-star" aria-hidden="true"></i>
+                                                        <i class="fa-regular fa-star"></i>
+                                                        <i class="fa-regular fa-star"></i>
+                                                    @elseif($wservices->rate === 4.00)
+                                                        <i class="fa fa-star" aria-hidden="true"></i>
+                                                        <i class="fa fa-star" aria-hidden="true"></i>
+                                                        <i class="fa fa-star" aria-hidden="true"></i>
+                                                        <i class="fa fa-star" aria-hidden="true"></i>
+                                                        <i class="fa-regular fa-star"></i>
+                                                    @elseif($wservices->rate >= 5.00)
+                                                        <i class="fa fa-star" aria-hidden="true"></i>
+                                                        <i class="fa fa-star" aria-hidden="true"></i>
+                                                        <i class="fa fa-star" aria-hidden="true"></i>
+                                                        <i class="fa fa-star" aria-hidden="true"></i>
+                                                        <i class="fa fa-star" aria-hidden="true"></i>
+                                                    @endif
+                                                    <!-- ///////////////////////////////////////////// -->
+                                                </span>
+                                        </div>
+                                        <div class="text-end">
                                       
                                             <h6>( ${{ $wservices->fixed_price }} )</h6>
                                         </div>
@@ -205,17 +252,65 @@
                                 @endif
                             </div>
                         </div>
+                        <div class="card">
+                        <div class="mx-3 mb-2">
+                        <h4 class="pt-3">Reviews</h4>
 
                         @foreach ($reviews as $review)
-                        <div class="card">
+
+                        <div class="card my-2">
                             <div class="card-body">
-                                <h4>Reviews</h4>
-                                {{$review->rate}}                                  
-                                {{$review->review}}                                  
-                                {{$review->users->name}}                                  
+                                <img src="{{asset('img/'.$review->users->img)}}"class="rounded-circle" width="50"/>
+                                <h4>{{$review->users->name}}</h4>
+                                <span class="review-stars mb-4" style="color: #fd4;">
+                                    <!-- ////////////// STAR RATE CHECKER ////////////// -->
+                                        @if($review->rate <= 0.00)
+                                        <i class="fa-regular fa-star"></i>
+                                        <i class="fa-regular fa-star"></i>
+                                        <i class="fa-regular fa-star"></i>
+                                        <i class="fa-regular fa-star"></i>
+                                        <i class="fa-regular fa-star"></i>
+                                        @elseif($review->rate === 1.00)
+                                            <i class="fa fa-star" aria-hidden="true"></i>
+                                            <i class="fa-regular fa-star"></i>
+                                            <i class="fa-regular fa-star"></i>
+                                            <i class="fa-regular fa-star"></i>
+                                            <i class="fa-regular fa-star"></i>
+                                        @elseif($review->rate === 2.00)
+                                            <i class="fa fa-star" aria-hidden="true"></i>
+                                            <i class="fa fa-star" aria-hidden="true"></i>
+                                            <i class="fa-regular fa-star"></i>
+                                            <i class="fa-regular fa-star"></i>
+                                            <i class="fa-regular fa-star"></i>
+                                        @elseif($review->rate === 3.00)
+                                            <i class="fa fa-star" aria-hidden="true"></i>
+                                            <i class="fa fa-star" aria-hidden="true"></i>
+                                            <i class="fa fa-star" aria-hidden="true"></i>
+                                            <i class="fa-regular fa-star"></i>
+                                            <i class="fa-regular fa-star"></i>
+                                        @elseif($review->rate === 4.00)
+                                            <i class="fa fa-star" aria-hidden="true"></i>
+                                            <i class="fa fa-star" aria-hidden="true"></i>
+                                            <i class="fa fa-star" aria-hidden="true"></i>
+                                            <i class="fa fa-star" aria-hidden="true"></i>
+                                            <i class="fa-regular fa-star"></i>
+                                        @elseif($review->rate >= 5.00)
+                                            <i class="fa fa-star" aria-hidden="true"></i>
+                                            <i class="fa fa-star" aria-hidden="true"></i>
+                                            <i class="fa fa-star" aria-hidden="true"></i>
+                                            <i class="fa fa-star" aria-hidden="true"></i>
+                                            <i class="fa fa-star" aria-hidden="true"></i>
+                                        @endif
+                                        <!-- ///////////////////////////////////////////// -->
+                                    </span>
+                                    
+                                                             
+                                <p class="mt-2">{{$review->review}}</p>                                
                             </div>
                         </div>
                         @endforeach
+                        </div>
+                    </div>
                     </div>
                     <!-- Column -->
                 </div>

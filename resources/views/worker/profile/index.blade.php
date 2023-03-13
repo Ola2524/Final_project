@@ -16,7 +16,7 @@
                 <div class="card-body profile-card">
                     <center class="mt-4"> 
                         {{-- <img src="../assets/images/users/5.jpg" class="rounded-circle" width="150" /> --}}
-                        <i class="fa-solid fa-user" style="font-size: 50px"></i>
+                        <img src="{{asset('img/'.auth()->user()->img)}}"class="rounded-circle" width="150"/>
                         {{-- <img src="Storage/img/{{auth()->user()->img}}" alt=""> --}}
                         <h4 class="card-title mt-2">{{ auth()->user()->name }}</h4>
                         <h6 class="card-subtitle">
@@ -63,7 +63,19 @@
                                 <h6>Today</h6>
                             </div>
                         </div>
-                        @if ($verified == 0)
+
+                        
+                        @if (auth()->user()->workers->verify == 1)                                        
+                            <div class="row mt-3">
+                                <div class="col-md-6 mt-3 text-end">
+                                    <h6 class="fs-4">Verified</h6>
+                                </div>
+                                <div class="col-md-6">
+                                    <h6><img src="{{asset('img/verified.png')}}" alt="" width="60px"></h6>
+                                </div>
+                            </div>
+                            @else
+                            @if ($verified == 0)
                         <div class="row mt-3">
                             <a href="{{ route('verify') }}" class="btn btn-primary">Verify Identity</a>
                         </div>
@@ -71,6 +83,7 @@
                         <div class="row mt-4 text-center">
                            <div class="col-9"> Verification is pending</div> <div class="col-1"><i class="fa-solid fa-check"></i></div>
                         </div>
+                        @endif
                         @endif
 
                     </div>
@@ -86,19 +99,67 @@
                 </div>
             </div>
             <div class="card mt-3">
-                <div class="card-body">
-                    <h4>Reviews</h4>
-                    @foreach ($reviews as $review)
-                        {{ $review->rate }}                        
-                        {{ $review->review }}                        
-                        {{ $review->users->name }}                        
-                    @endforeach
+                <div class="mx-3 mb-2">
+                <h4 class="pt-3">Reviews</h4>
+
+                @foreach ($reviews as $review)
+
+                <div class="card my-2">
+                    <div class="card-body">
+                        <img src="{{asset('img/'.$review->users->img)}}"class="rounded-circle" width="50"/>
+                        <h4>{{$review->users->name}}</h4>
+                        <span class="review-stars mb-4" style="color: #fd4;">
+                            <!-- ////////////// STAR RATE CHECKER ////////////// -->
+                                @if($review->rate <= 0.00)
+                                <i class="fa-regular fa-star"></i>
+                                <i class="fa-regular fa-star"></i>
+                                <i class="fa-regular fa-star"></i>
+                                <i class="fa-regular fa-star"></i>
+                                <i class="fa-regular fa-star"></i>
+                                @elseif($review->rate === 1.00)
+                                    <i class="fa fa-star" aria-hidden="true"></i>
+                                    <i class="fa-regular fa-star"></i>
+                                    <i class="fa-regular fa-star"></i>
+                                    <i class="fa-regular fa-star"></i>
+                                    <i class="fa-regular fa-star"></i>
+                                @elseif($review->rate === 2.00)
+                                    <i class="fa fa-star" aria-hidden="true"></i>
+                                    <i class="fa fa-star" aria-hidden="true"></i>
+                                    <i class="fa-regular fa-star"></i>
+                                    <i class="fa-regular fa-star"></i>
+                                    <i class="fa-regular fa-star"></i>
+                                @elseif($review->rate === 3.00)
+                                    <i class="fa fa-star" aria-hidden="true"></i>
+                                    <i class="fa fa-star" aria-hidden="true"></i>
+                                    <i class="fa fa-star" aria-hidden="true"></i>
+                                    <i class="fa-regular fa-star"></i>
+                                    <i class="fa-regular fa-star"></i>
+                                @elseif($review->rate === 4.00)
+                                    <i class="fa fa-star" aria-hidden="true"></i>
+                                    <i class="fa fa-star" aria-hidden="true"></i>
+                                    <i class="fa fa-star" aria-hidden="true"></i>
+                                    <i class="fa fa-star" aria-hidden="true"></i>
+                                    <i class="fa-regular fa-star"></i>
+                                @elseif($review->rate >= 5.00)
+                                    <i class="fa fa-star" aria-hidden="true"></i>
+                                    <i class="fa fa-star" aria-hidden="true"></i>
+                                    <i class="fa fa-star" aria-hidden="true"></i>
+                                    <i class="fa fa-star" aria-hidden="true"></i>
+                                    <i class="fa fa-star" aria-hidden="true"></i>
+                                @endif
+                                <!-- ///////////////////////////////////////////// -->
+                            </span>
+                            
+                                                     
+                        <p class="mt-2">{{$review->review}}</p>                                
+                    </div>
+                </div>
+                @endforeach
                 </div>
             </div>
+            </div>
+            <!-- Column -->
         </div>
-        
-        <!-- Column -->
-    </div>
     <!-- Row -->
     <!-- ============================================================== -->
     <!-- End PAge Content -->
