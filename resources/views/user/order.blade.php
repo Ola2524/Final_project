@@ -63,7 +63,6 @@
         <label for="exampleInputPassword1" class="form-label">Description</label>
 
         <div class="form-floating mb-3">
-            <label for="floatingTextarea">Enter job description</label>
             <textarea class="form-control" name="desc" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 100px"></textarea>
         </div>
         @if ($errors->has('desc'))

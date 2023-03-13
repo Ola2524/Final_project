@@ -78,7 +78,7 @@
                 @endif
             {{-- </div>
             <div class="col-md-6"> --}}
-                <a href="/chatify/{{$users->id}}" class="btn btn-success py-2" style="width:15%">Contact</a>
+                <a href="/chatify/{{$users->workers->users->id}}" class="btn btn-success py-2" style="width:15%">Contact</a>
             {{-- </div> --}}
         </div>
 
