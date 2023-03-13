@@ -29,6 +29,24 @@ class RegisterController extends Controller
 
     public function store(Request $request)
     {
+        $request->validate([
+            'name' => ['required', 'string', 'max:255'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:'.User::class],
+            'password' => ['required','min:8'],
+            'conf' => ['required'],
+            'street'=>['required', 'string', 'max:255'],
+            'country'=>['required', 'string', 'max:255'],
+            'city'=>['required', 'string', 'max:255'],
+            'img' =>[ 'required'],
+            'gender'=> ['required'],
+
+            // 'nationaID'=>['required', 'string', 'max:14'],
+            // 'age'=>['required', 'string', 'max:14'],
+            // '  phone'=>['required', 'string', 'max:12'],
+            'bio'=>['required', 'string', 'max:255']
+    
+        ]);
+        
        $input = $request->all();
        if ($img = $request->file('img')) {
         $destinationPath = 'img/';
@@ -46,6 +64,7 @@ class RegisterController extends Controller
         'bio' => $input['bio'],
         'img'=>$input['img'],
         'role'=>'user',
+        'gender'=>$input['gender'],
         'password' => Hash::make($input['password'])
       ]);
        $services = Service :: all();

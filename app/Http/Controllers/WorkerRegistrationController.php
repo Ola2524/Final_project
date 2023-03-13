@@ -13,11 +13,30 @@ class WorkerRegistrationController extends Controller
 {
     public function create()
     {
-        return view('workerReg.create');
+      $services = Service :: all();
+
+        return view('workerReg.create',['services'=>$services]);
     }
 
     public function store(Request $request)
     {
+      $request->validate([
+        'name' => ['required', 'string', 'max:255'],
+        'email' => ['required', 'string', 'email', 'max:255', 'unique:'.User::class],
+        'password' => ['required','min:8'],
+        'conf' => ['required'],
+        'street'=>['required', 'string', 'max:255'],
+        'country'=>['required', 'string', 'max:255'],
+        'city'=>['required', 'string', 'max:255'],
+        'img' =>[ 'required'],
+        'gender'=> ['required'],
+
+        'national_id'=>['required', 'string', 'max:14'],
+        'age'=>['required', 'string', 'max:14'],
+        'phone_number'=>['required', 'string', 'max:12'],
+        'bio'=>['required', 'string', 'max:255']
+
+    ]);
        $input = $request->all();
       //  $request->img->storeAs("public/img", $request->img->getClientOriginalName());
 
@@ -38,7 +57,8 @@ class WorkerRegistrationController extends Controller
         'img'=>$input['img'],
         'bio' => $input['bio'],
         'password' => Hash::make($input['password']),
-        'role' => 'worker'
+        'role' => 'worker',
+        'gender' => $input['gender'],
       ]);
 
       $user_id = DB::getPdo()->lastInsertId();
@@ -75,6 +95,6 @@ class WorkerRegistrationController extends Controller
     //     $record->delete();
 
       $services = Service :: all();
-      return redirect('homepage');
+      return redirect('login');
     }
 }

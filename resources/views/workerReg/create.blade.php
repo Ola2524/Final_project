@@ -1,187 +1,138 @@
-
 <!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:400,700">
-<title> User Registration</title>
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-      
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css">
-<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
-<style>
-	.divider-text {
-   position: relative;
-   text-align: center;
-   margin-top: 15px;
-   margin-bottom: 15px;
-}
-.divider-text span {
-   padding: 7px;
-   font-size: 12px;
-   position: relative;   
-   z-index: 2;
-}
-.divider-text:after {
-   content: "";
-   position: absolute;
-   width: 100%;
-   border-bottom: 1px solid #ddd;
-   top: 55%;
-   left: 0;
-   z-index: 1;
-}
+<!-- Designined by CodingLab - youtube.com/codinglabyt -->
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8">
+    <title> Registration </title>
+    {{-- <link rel="stylesheet" href="Regstyle.css"> --}}
+ <link rel="stylesheet" href="{{asset('css/Regstyle.css')}}">
 
-.btn-facebook {
-   background-color: #405D9D;
-   color: #fff;
-}
-.btn-twitter {
-   background-color: #42AEEC;
-   color: #fff;
-}
-   </style>
-
-			   
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
    </head>
-   <body>
- 
- <div class="container">
- 
- <div class="card bg-light">
- <article class="card-body mx-auto" style="max-width: 400px;">
-	 <h4 class="card-title mt-3 text-center">Create Account</h4>
-	 <p class="text-center">Get started with your free account</p>
-	 <p>
-		 <a href="#" class="btn btn-block btn-twitter"> <i class="fab fa-twitter"></i>   sign up via Twitter</a>
-		 <a href="#" class="btn btn-block btn-facebook"> <i class="fab fa-facebook-f"></i>   sign up via facebook</a>
-	 </p>
-	 <p class="divider-text">
-		 <span class="bg-light">OR</span>
-	 </p>
-	 <form method="POST" action="{{ route('worker.register') }}">
-		@csrf
-	 <div class="form-group input-group">
-		 <div class="input-group-prepend">
-			 <span class="input-group-text"> <i class="fa fa-user"></i> </span>
-		  </div>
-		 <input name="name" id="user_id" class="form-control" placeholder="Full name" type="text">
-	 </div> <!-- form-group// -->
-	 <div class="form-group input-group">
-		 <div class="input-group-prepend">
-			 <span class="input-group-text"> <i class="fa fa-envelope"></i> </span>
-		  </div>
-		 <input name="email" id="user_id" class="form-control" placeholder="Email address" type="email">
-	 </div> <!-- form-group// -->
+<body>
+  <div class="container">
+    <h3 class="title">Create Account</h3>
+    <div class="content">
+	
+      <form method="POST" action="{{ route('worker.register') }}">
+        @csrf
+        <div class="user-details">
+          <div class="input-box">
+            <span class="details">Full Name</span>
+            <!-- <input type="text" placeholder="Enter your name" name="name" id="name"  required> -->
+            <input class="form-control"name="name" id="name" type="text" placeholder="Full Name">
+			<x-input-error :messages="$errors->get('name')" class="mt-2" />
 
-	 <div class="form-group input-group">
-		<div class="input-group-prepend">
-			<span class="input-group-text"> <i class="fa-solid fa-city"></i> </span>
-		 </div>
-		<input name="street" id="user_id" class="form-control" placeholder="street" type="city">
-	</div> <!-- form-group// -->
-	<div class="form-group input-group">
-		<div class="input-group-prepend">
-			<span class="input-group-text"> <i class="fa-solid fa-city"></i> </span>
-		 </div>
-		<input name="city" id="user_id" class="form-control" placeholder="city" type="city">
-	</div> <!-- form-group// -->
-	<div class="form-group input-group">
-		<div class="input-group-prepend">
-			<span class="input-group-text"> <i class="fa-solid fa-city"></i> </span>
-		 </div>
-		<input name="country" id="user_id" class="form-control" placeholder="country" type="city">
-	</div> <!-- form-group// -->
-	<div class="form-group input-group">
-		<div class="input-group-prepend">
-			<span class="input-group-text"> <i class="fa-solid fa-file-image"></i> </span>
-		 </div>
-		<input name="age" id="age" class="form-control" placeholder="Age"  type="age">
-	</div> <!-- form-group// -->
-	 
-	 <div class="form-group input-group">
-		 <div class="input-group-prepend">
-			 <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
-		 </div>
-		 <input class="form-control" placeholder="password" type="password" name="password" id="password">
-	 </div> <!-- form-group// -->
-	 <div class="form-group input-group">
-		 <div class="input-group-prepend">
-			 <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
-		 </div>
-		 <input class="form-control" placeholder="Repeat password" type="password" name="password" id="password">
-	 </div> <!-- form-group// --> 
-     <div class="form-group input-group">
-        <div class="input-group-prepend">
-            <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
+          </div>
+          <div class="input-box">
+            <span class="details">Email</span>
+            <input  name="email" id="email" class="form-control" type="email" placeholder="Email Address">
+			<x-input-error :messages="$errors->get('email')" class="mt-2" />
+
+            <!-- <input type="email" name="password" id="password" name="email" id="email"  placeholder="Enter your email" required> -->
+          </div>
+        
+          <div class="input-box">
+            <span class="details">Password</span>
+         <input class="form-control" name="password" id="password" type="password" placeholder="Password">
+		 <x-input-error :messages="$errors->get('Password')" class="mt-2 danger" />
+          </div>
+          <div class="input-box">
+            <span class="details">country</span>
+            <!-- <input type="text" name="country" id="country" placeholder="Enter your country" required> -->
+            <input class="form-control" name="country" id="country" type="text" placeholder="country">
+			<x-input-error :messages="$errors->get('country')" class="mt-2" />
+          </div>
+          <div class="input-box">
+            <span class="details">Confirm Password</span>
+            <input class="form-control" name="conf" id="conf" type="password" placeholder="Confirm Password">
+			<x-input-error :messages="$errors->get('conf')" class="mt-2" />
+          </div>
+          <div class="input-box">
+            <span class="details">city</span>
+            <!-- <input class="form-control"  name="street" id="street" type="text" placeholder="street"> -->
+            <input class="form-control" name="city" id="city" type="text" placeholder="city">
+			<x-input-error :messages="$errors->get('city')" class="mt-2" />
+          </div>
+          
+          <div class="input-box">
+            <span class="details">img</span>
+            <input class="form-control"style="background-color:rgb(255, 255, 255)"  name="img" id="img" type="file" placeholder="file">
+			<x-input-error :messages="$errors->get('img')" class="mt-2" />
+          </div>
+         
+          
+          <div class="input-box">
+            <span class="details">street</span>
+            <!-- <input type="text"name="street" id="street" placeholder="Enter your street" required> -->
+            <input class="form-control"  name="street" id="street" type="text" placeholder="street">
+			<x-input-error :messages="$errors->get('street')" class="mt-2" />
+          </div>
+          <div class="input-box">
+            <span class="details">Age</span>
+            <!-- <input class="form-control"  name="street" id="street" type="text" placeholder="street"> -->
+            <input class="form-control"  name="age" id="age"type="age" placeholder="Age">
+			<x-input-error :messages="$errors->get('age')" class="mt-2" />
+            <!-- <input name="age" id="age" class="form-control" placeholder=""  type="age"> -->
+
+          </div>
+          <div class="input-box">
+            <span class="details">national id</span>
+            <!-- <input class="form-control"  name="street" id="street" type="text" placeholder="street"> -->
+            <input class="form-control"placeholder="National Code" type="text" name="national_id" id="national_id" max="14">
+			<x-input-error :messages="$errors->get('national_id')" class="mt-2" />
+        <!-- <input class="form-control" placeholder="National Code" type="national_id" name="national_id" id="national_id" max="14"> -->
+          
+          </div>
+          <div class="input-box">
+            <span class="details">phone </span>
+        <input name="phone_number" class="form-control" placeholder="Phone Number" type="text" id="phone_number">
+		<x-input-error :messages="$errors->get('phone_number')" class="mt-2" />
+
+          
+          </div>
+          <div class="input-box">
+            <!-- <span class="details"> </span> -->
+        <!-- <input name="phone_number" class="form-control" placeholder="Phone Number" type="phone_number" id="phone_number"> -->
+          </div>
+
+          <div class="input-box">
+            <span class="details">bio</span>
+            <textarea name="bio" class="form-control "style="width: 640px;height: 100px;" placeholder="Bio" type="text" id="bio"></textarea>
+			<x-input-error :messages="$errors->get('bio')" class="mt-2" />
+          </div>
+          
         </div>
-        <input class="form-control" placeholder="National Code" type="national_id" name="national_id" id="national_id" max="14">
-    </div> <!-- form-group// --> 
-    {{-- <div class="form-group input-group">
-        <div class="input-group-prepend">
-            <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
+        <div class="gender-details">
+          <input type="radio" name="gender" value="male" id="dot-1">
+          <input type="radio" name="gender"value="female" id="dot-2">
+          <!-- <input type="radio" name="gender" id="dot-3"> -->
+          <span class="gender-title">Gender</span>
+          <div class="category">
+            <label for="dot-1">
+            <span class="dot one"></span>
+            <span class="gender">Male</span>
+          </label>
+          <label for="dot-2">
+            <span class="dot two"></span>
+            <span class="gender">Female</span>
+          </label>
+			<x-input-error :messages="$errors->get('gender')" class="mt-2" />
+
+          <!-- <label for="dot-3">
+            <span class="dot three"></span>
+            <span class="gender">Prefer not to say</span>
+            </label> -->
+          </div>
         </div>
-        <input class="form-control" placeholder="Criminal Record Certificate" type="criminal_record_certificate" name="criminal_record_certificate" id="criminal_record_certificate" max="9">
-    </div> <!-- form-group// -->  --}}
-    <div class="form-group input-group">
-        <div class="input-group-prepend">
-            <span class="input-group-text"> <i class="fa fa-phone"></i> </span>
+        <div class="button">
+          <!-- <input type="submit" value="Register"> -->
+          <input type="submit" value="Submit" class="btn btn-primary">
+
         </div>
-        <input name="phone_number" class="form-control" placeholder="Phone Number" type="phone_number" id="phone_number">
-    </div> <!-- form-group// -->        
-	<div class="form-group input-group">
-		<div class="input-group-prepend">
-			<span class="input-group-text"> <i class="fa-solid fa-file-image"></i> </span>
-		 </div>
-		<input name="img" id="img" class="form-control"  type="file">
-	</div> <!-- form-group// -->
-	<div class="form-group input-group">
-		<div class="input-group-prepend">
-			<span class="input-group-text"> <i class="fa-solid fa-book"></i> </span>
-		 </div>
-		<textarea name="bio" class="form-control" placeholder="Bio" type="text" id="bio"></textarea>
-	</div> <!-- form-group// -->                               
-	 <div class="form-group">
-		<input type="submit" value="Submit" class="btn btn-primary">
-	 </div> <!-- form-group// -->                                                                      
- </form>
- </article>
- </div> <!-- card.// -->
- 
- </div> 
- <!--container end.//-->
-	   
-   </body>
+      </form>
+    </div>
+  </div>
+
+</body>
 </html>
-
-
-
-
-{{-- <div class="form-group input-group">
-		 <div class="input-group-prepend">
-			 <span class="input-group-text"> <i class="fa fa-phone"></i> </span>
-		 </div>
-		 <select class="custom-select" style="max-width: 80px;">
-			 <option selected="">+91</option>
-			 <option value="1">+001</option>
-			 <option value="2">+020</option>
-			 <option value="3">+011</option>
-		 </select>
-		 <input name="" class="form-control" placeholder="Phone number" type="text">
-	 </div> <!-- form-group// --> --}}
-	 {{-- <div class="form-group input-group">
-		 <div class="input-group-prepend">
-			 <span class="input-group-text"> <i class="fa fa-building"></i> </span>
-		 </div>
-		 <select class="form-control">
-			 <option selected=""> Select job type</option>
-			 <option>Web Developer</option>
-			 <option>Full Stack Developer</option>
-			 <option>Mean Stack</option>
-		 </select>
-	 </div> <!-- form-group end.// --> --}}

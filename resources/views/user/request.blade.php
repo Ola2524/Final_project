@@ -4,23 +4,17 @@
 
             <!-- Carousel Start -->
 
-            <div class="container-fluid px-0 mb-5">
-                <div id="header-carousel" class="carousel slide" data-bs-ride="carousel">
-                    <div class="carousel-inner">
-                        <div class="carousel-item active">
-                            <img style="height: 450px" class="w-100 " src="img/shutterstock_240339163-696x464.jpg"
-                                alt="Image">
-                            <div class="carousel-caption">
-                                <!-- <div class="container"> -->
-                                    <!-- <div class="row justify-content-center">
-                                        <div class="col-lg-10 text-start"> -->
-                                            <!-- <p class="fs-5 fw-medium text-dark text-uppercase animated slideInRight">Home Helpers</p> -->
-
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+            <div class="container-fluid page-header py-5 mb-5 wow fadeIn" data-wow-delay="0.1s" style="background-image: url('{{asset('img/elder care (1).jpg')}}')">
+                <div class="container text-center py-5">
+                    <h1 class="display-4  animated slideInDown mb-3">Request</h1>
+                    <nav aria-label="breadcrumb animated slideInDown">
+                        <ol class="breadcrumb justify-content-center mb-0">
+                            <li class="breadcrumb-item"><a class="text-white" href="{{route('homepage')}}">Home</a></li>
+                            <li class="breadcrumb-item text-primary active" aria-current="#"><a class="text-white" href="{{asset('requse')}}t">Requests</a></li>
+                        </ol>
+                    </nav>
+                </div>
+            </div>
 <!--                                  
             <button class="carousel-control-prev" type="button" data-bs-target="#header-carousel" data-bs-slide="prev">
                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>

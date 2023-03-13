@@ -15,6 +15,8 @@ class ServicesController extends Controller
 {
     public function index(){
         $services = Service :: all();
+        $service = Service::findOrFail(1);
+
         // $users = DB::table('users')
         // ->join('jobs', 'jobs.user_id', '=', 'users.id')
         // ->join('services', 'services.id', '=', 'jobs.service_id')
@@ -31,11 +33,13 @@ class ServicesController extends Controller
 
         // $users = WorkerService :: all();
 
-        return view("user.services",['services'=>$services,'user' => $users]);
+        return view("user.services",['services'=>$services,'user' => $users,'service'=>$service]);
     }
 
     public function show($id){
         $services = Service :: all();
+        $service = Service::findOrFail($id);
+
         $worker_id=0;
         $role = User::where('id',Auth::user()->id)->first();
 
@@ -50,9 +54,8 @@ class ServicesController extends Controller
         ->where('worker_service.worker_id','!=',$worker_id)
         ->select('worker_service.id as id','worker_service.rate as rate','worker_service.worker_id as worker_id','users.img as img','worker_service.fixed_price','users.name as name','services.name as service_name','services.description')
         ->get();
-
         // $users = WorkerService::where('service_id',$id)->get();
-        return view("user.services",['services'=>$services,'user' => $users]);
+        return view("user.services",['services'=>$services,'user' => $users,'service'=>$service]);
     }
 
 
