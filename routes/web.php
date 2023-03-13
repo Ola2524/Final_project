@@ -195,9 +195,9 @@ Route::get('payment/success', [PayPalController::class, 'success'])->name('payme
 
 //paymentstripe:
 
-Route::get('stripe/{id}', [StripePaymentlController::class , 'stripe'])->name('stripe');
-Route::post('stripe/{id}', [StripePaymentlController::class, 'stripePost'])->name('stripe.post');
-Route::post('stripe/{id}', [StripePaymentlController::class, 'stripePoint'])->name('stripe.point');
+Route::get('stripe/{id}/store', [StripePaymentlController::class , 'stripe'])->name('stripe');
+Route::post('stripe/{id}/post', [StripePaymentlController::class, 'stripePost'])->name('stripe.post');
+Route::post('stripe/{id}/point', [StripePaymentlController::class, 'stripePoint'])->name('stripe.point');
 
 // contact us
 Route::get('/contact', function () {
