@@ -91,7 +91,23 @@
                     <td>{{$job->price}}</td>
                     <td>{{$job->rate}}</td>
                     <td>{{$job->date}}</td>
-                    <td><div class="badge bg-success status px-2 ps-1">{{$job->status}}</div></td>
+                    {{-- <td><div class="badge bg-success status px-2 ps-1">{{$job->status}}</div></td> --}}
+                    @if($job->status == 'Rejected')
+                    <td><span class="badge bg-danger ">{{$job->status}}</span></td>
+      
+      @elseif($job->status  == 'In progress')
+      <td><div class="badge bg-warning">{{$job->status}}</div></td>
+
+      @elseif($job->status  == 'Pending')
+      <td><div class="badge bg-secondary">{{$job->status}}</div></td>
+      
+      @elseif($job->status  == 'Done')
+      <td><div class="badge bg-success ms-1 me-1 ps-2 pe-2">{{$job->status}}</div></td>
+  
+      @endif
+
+
+
                 </tr>
               @endforeach
             </tbody>

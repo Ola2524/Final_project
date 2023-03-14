@@ -135,8 +135,8 @@
                 @foreach ($jobs as $job)                    
                 <div class="testimonial-item bg-light rounded p-4" >
                     <div class="d-flex align-items-center mb-4" >
-                        <img class="flex-shrink-0 rounded-circle border p-1" src="img/testimonial-1.jpg" alt="">
-                        <div class="ms-4">
+                        <img class="flex-shrink-0 rounded-circle border p-1" src="{{asset('img/'.$job->users->img)}}" alt="">
+                        <div class="ms-4">                      
                             <h5 class="mb-1">{{$job->users->name}}</h5>
                             <span class="review-stars mb-5" style="color: yellow;">
                                 <!-- ////////////// STAR RATE CHECKER ////////////// -->

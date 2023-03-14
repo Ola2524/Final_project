@@ -29,7 +29,7 @@
     </div>
 
         <ul class="nav-links">
-            <li class="active"><a href="dashbordWorker"><i class='bx bx-grid-small'></i><span>Dashboard</span></a></li>
+            <li class="active"><a href="{{route('dashbordWorker')}}"><i class='bx bx-grid-small'></i><span>Dashboard</span></a></li>
             <li><a href="{{ route('req') }}"><i class="fa-solid fa-users"></i><span>Requests</span></a></li>
             <li><a href="{{ route('worker.services') }}"><i class="fa-solid fa-briefcase"></i><span>Services</span></a></li>
             <li><a href="{{ route('worker.profits') }}"><i class="fa-solid fa-sack-dollar"></i><span>Profits</span></a></li>

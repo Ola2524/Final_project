@@ -124,11 +124,14 @@ Route::put('workers/update/{worker}',[WorkerController::class, 'update'])->name(
 Route::delete('delete/{worker}',[WorkerController::class, 'destroy'])->name('workers.destroy');
 // verification
 Route::get('/workerreq', [WorkerreqController::class,"index"])->name("workerreq");
-Route::get('/workerreq/{worker}/{user}', [WorkerreqController::class,"remove"])->name("workerreq.remove");
-Route::get('/workerreq-add/{worker}/{user}', [WorkerreqController::class,"add"])->name("workerreq.add");
+Route::get('/workerreq/{worker}', [WorkerreqController::class,"remove"])->name("workerreq.remove");
+Route::get('/workreq-add/{worker}', [WorkerreqController::class,"add"])->name("workerreq.add");
 
-Route::get('/workerreq/{worker}/{user}', [WorkerreqController::class,"remove"])->name("workerreq.remove");
-Route::get('/workerreq-add/{worker}/{user}', [WorkerreqController::class,"add"])->name("workerreq.add");
+
+
+//da la bs sibah 3bra :D
+// Route::get('/workerreq/{worker}/{user}', [WorkerreqController::class,"remove"])->name("workerreq.remove");
+// Route::get('/workerreq-add/{worker}/{user}', [WorkerreqController::class,"add"])->name("workerreq.add");
 
 //contact us
 Route::get('/contact-us', [ContactController::class,"adminContacts"])->name("contact.us");

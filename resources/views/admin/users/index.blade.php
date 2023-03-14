@@ -68,11 +68,11 @@
                         @if ($user->points > 0)
                           <a href="{{route('removeOffer',['user'=>$user['id']])}}" class="btn btn-outline-danger">Remove points</a> 
                         @endif
-                    <a href="{{ url('/user/' . $user->id . '/edit') }}" class="btn btn-outline-success">Edit</a>
+                    <a href="{{ url('/user/' . $user->id . '/edit') }}" class="btn btn-outline-success"><i class="fa-solid fa-pen-to-square"></i></a>
                     <form method="POST" action="{{ url('/user' . '/' . $user->id) }}" accept-charset="UTF-8" style="display:inline">
                       {{ method_field('DELETE') }}
                       {{ csrf_field() }}
-                      <button type="submit" class="btn btn-outline-danger" title="Delete Student" onclick="return confirm("Confirm delete?")"><i class="fa fa-trash-o" aria-hidden="true"></i> Delete</button>
+                      <button type="submit" class="btn btn-outline-light" title="Delete Student" onclick="return confirm("Confirm delete?")"> <i class="fa-solid fa-trash-can " style="color: red;font-size:30px"></i></button>
                   </form>
                     {{-- <a href="#" class="btn btn-outline-danger">Delete</a> --}}
                   </td>
