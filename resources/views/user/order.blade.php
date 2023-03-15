@@ -1,9 +1,9 @@
 @extends('layout.user')
 @section('content')
 
-<div class="container-fluid page-header py-5 mb-5 wow fadeIn" data-wow-delay="0.1s" style="background-image: url('{{asset('img/elder care (1).jpg')}}')">
+<div class="container-fluid page-header py-5 mb-5 wow fadeIn" data-wow-delay="0.1s" style="background-position:center;height:50vh;background-image: linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.6)),url('{{asset('img/waiter.jpg')}}')">
     <div class="container text-center py-5">
-        <h1 class="display-4  animated slideInDown mb-3">Order Details</h1>
+        <h1 class="display-4  animated slideInDown mb-3 text-white">Order Details</h1>
         <nav aria-label="breadcrumb animated slideInDown">
             <ol class="breadcrumb justify-content-center mb-0">
                 <li class="breadcrumb-item"><a class="text-white" href="{{route('homepage')}}">Home</a></li>
@@ -16,7 +16,7 @@
 <div class="w-100 p-3 m-4 d-flex justify-content-center align-items-center">
     <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.1s">
         <div class="img-border">
-            <img class="img-fluid" src="{{asset('img/babysitter.jpg')}}" alt="">
+            <img class="img-fluid" src="{{asset('img/iStock-692898468-2-optimized.webp')}}" alt="">
         </div>
     </div>
 
@@ -35,7 +35,9 @@
     
         <input type="hidden" name="status" value="pending">
         <div class="mb-3">
-            <div class="d-flex align-items-center"><label for="exampleInputPassword1" class="form-label me-2">Service: </label><h5>{{ $service->name }}</h5></div>
+            <h6 class="section-title bg-white text-center text-primary px-3">{{ $service->name }}</h6>
+                {{-- <h1 class="display-6 mb-4"></h1> --}}
+            {{-- <div class="d-flex align-items-center"><label for="exampleInputPassword1" class="form-label me-2">Service: </label><h5>{{ $service->name }}</h5></div> --}}
             {{-- <select class="form-select" name="service_id" aria-label="Default select example"> --}}
                 {{-- <option selected value="{{ $worker_services->services->id }}">{{ $worker_services->services->name }}</option>                     --}}
 

@@ -13,7 +13,7 @@
             </div>
             <div class="carousel-inner">
                 <div class="carousel-item active">
-                    <img class="w-100" src="img/Cleaning.jpg" alt="Image">
+                    <img style="width: 100%;height:100vh" src="img/Cleaning.jpg" alt="Image">
                     <div class="carousel-caption">
                         <div class="p-3" style="max-width: 900px;">
                             <h1 class="display-3 text-white mb-0 animated zoomIn mb-3">Home care.</h1>
@@ -24,7 +24,7 @@
                 </div>
                 @foreach ($services as $service)                    
                 <div class="carousel-item">
-                    <img class="w-100" src="{{asset('img/'.$service->img)}}" alt="Image">
+                    <img class="w-100" style="width: 100%;height:100vh" src="{{asset('img/'.$service->img)}}" alt="Image">
                     <div class="carousel-caption">
                         <div class="p-3" style="max-width: 900px;">
                             <h4 class="text-white text-uppercase mb-4 animated zoomIn">{{ $service->description }}</h4>
@@ -52,15 +52,15 @@
     <div class="container-xxl py-5">
         <div class="container">
             <div class="text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 600px;">
-                <h6 class="section-title bg-white text-center text-primary px-3">Services</h6>
-                <h1 class="display-6 mb-4">Lorem ipsum dolor sit amet consectetur adipisicing elit.</h1>
+                <h4 class="section-title bg-white text-center text-primary px-3">Our services</h4>
+                {{-- <h1 class="display-6 mb-4">.</h1> --}}
             </div>
 
             <div class="row g-4">
             @foreach ($services as $service)
                 <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
                     <a class="service-item d-block rounded text-center h-100 p-4 text-decoration-none" href="our-services/{{$service->id}}">
-                        <img class="img-fluid rounded mb-4" src="{{asset('img/'.$service->img)}}" alt="">
+                        <img class="img-fluid rounded mb-4" style="height:250px;width:100%" src="{{asset('img/'.$service->img)}}" alt="">
                         <h4 class="mb-0 text-dark fw-bold">{{ $service->name }} Service</h4>
                     </a>
                 </div>
@@ -107,15 +107,15 @@
             <div class="row g-5">
                 <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.1s">
                     <div class="img-border">
-                        <img class="img-fluid" src="img/waiter.jpg" alt="">
+                        <img class="img-fluid" src="{{asset('img/elder care.jpg')}}" alt="">
                     </div>
                 </div>
                 <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.5s">
                     <div class="h-100">
                         <h6 class="section-title bg-white text-start text-primary pe-3">About Us</h6>
-                        <h1 class="display-6 mb-4">Lorem ipsum dolor sit amet consectetur adipisicing elit.</h1>
-                        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ad veritatis inventore iure ipsam laboriosam nemo, aspernatur totam ducimus adipisci, mollitia hic quod, officia aliquam. Necessitatibus quaerat dolore unde quos repellendus?</p>
-                        <p class="mb-4">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi iure hic fugiat aperiam, minima delectus. Odit laboriosam similique adipisci ratione facere corrupti veniam aliquam magni, excepturi placeat! Iusto, quod cum!</p>
+                        <h1 class="display-6 mb-4">Why you chose our service ?</h1>
+                        <p>We can help you to care about your home with our amazing qualified employees. We are your reliable on-demand cleaning, childeren care, bride preparation, Elder people Care, security, and guests services</p>
+                        <p class="mb-4">We provide many services that helping you saving time, money, and effort. We also make the workers verified by their criminal record certificate so you can feeling save. We also offer a discount for users when they pay with our site. For workers, we will not get our discount presentage if the user pay by his points.</p>
                         
                         <a class="btn rounded-pill py-3 px-5 text-white" style="background-color: #008dde" href="{{ route('about') }}">Read More</a>
                     </div>

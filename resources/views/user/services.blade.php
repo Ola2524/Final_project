@@ -97,7 +97,7 @@ i{
 </style>
             <!-- Carousel Start -->
 
-            <div class="container-fluid page-header py-5 mb-5 wow fadeIn" data-wow-delay="0.1s" style="background-image: url('{{asset('img/'.$service->img)}}')">
+            <div class="container-fluid page-header py-5 mb-5 wow fadeIn text-white" data-wow-delay="0.1s" style="height:60vh;background-image: linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.6)),url('{{asset('img/'.$service->img)}}')">
                 <div class="container text-center py-5">
                     <h1 class="display-4  animated slideInDown mb-3">services</h1>
                     <nav aria-label="breadcrumb animated slideInDown">

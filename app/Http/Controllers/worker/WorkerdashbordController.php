@@ -98,6 +98,8 @@ class WorkerdashbordController extends Controller
                     'borderColor' => '#51C1C0'
                 ]);
 
+                $jobs = Job :: where('worker_id',auth()->user()->workers->id)->get();
+
         return view("worker.index", ['chart'=>$chart->api(),"jobs" => $jobs,"job_count" => $job_count, "profits" => $profits]);
     }
 

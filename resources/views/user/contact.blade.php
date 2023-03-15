@@ -2,9 +2,9 @@
 @section('content')    
     <!-- Contact Start -->
     
-    <div class="container-fluid page-header py-5 mb-5 wow fadeIn" data-wow-delay="0.1s" style="background-image: url('{{asset('img/elder care (1).jpg')}}')">
+    <div class="container-fluid page-header py-5 mb-5 wow fadeIn" data-wow-delay="0.1s" style="background-position:center;height:50vh;background-image: linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.6)),url('{{asset('img/establish-a-company-in-Egypt.jpg')}}')">
         <div class="container text-center py-5">
-            <h1 class="display-4  animated slideInDown mb-3">Contact Us</h1>
+            <h1 class="display-4  animated slideInDown mb-3 text-white">Contact Us</h1>
             <nav aria-label="breadcrumb animated slideInDown">
                 <ol class="breadcrumb justify-content-center mb-0">
                     <li class="breadcrumb-item"><a class="text-white" href="{{route('homepage')}}">Home</a></li>
@@ -17,12 +17,12 @@
         <div class="container">
             <div class="text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 600px;">
                 <h6 class="section-title bg-white text-center text-primary px-3">Contact Us</h6>
-                <h1 class="display-6 mb-4">If You Have Any Inquary, Please Feel To Free Contact Us</h1>
+                <h1 class="display-6 mb-4">Please Feel Free To Contact Us</h1>
             </div>
             <div class="row g-5">
                 <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.1s">
                     <div class="img-border">
-                        <img class="img-fluid" src="{{asset('img/babysitter.jpg')}}" alt="">
+                        <img class="img-fluid" src="{{asset('img/carousel-1.jpg')}}" alt="">
                     </div>
                 </div>
                 <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.5s">

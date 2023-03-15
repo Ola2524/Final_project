@@ -293,6 +293,55 @@
 		});
 	</script> --}}
 
+
+	<div class="container mt-4">
+        <section class="services">
+          <h2>Latest Jobs</h2>
+          <div class="table-responsive">
+            <table class="table table-bordered text-center">
+              <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">User Name</th>
+                    <th scope="col">Service Name</th>
+                    <th scope="col">Price</th>
+                    <th scope="col">Date</th>
+                    <th scope="col">Status</th>
+                </tr>
+              </thead>
+            <tbody class="table-group-divider">
+                @foreach ($jobs as $job)
+                <tr>
+                    <th scope="row">{{ $job->id }}</th>
+                    <td>{{$job->users->name}}</td>
+                    <td>{{$job->services->name}}</td>
+                    <td>$ {{$job->price}}</td>
+                    <td>{{$job->date}}</td>
+                    {{-- <td><div class="badge bg-success status px-2 ps-1">{{$job->status}}</div></td> --}}
+                    @if($job->status == 'Rejected')
+                    <td><span class="badge bg-danger ">{{$job->status}}</span></td>
+      
+      @elseif($job->status  == 'In progress')
+      <td><div class="badge bg-warning">{{$job->status}}</div></td>
+
+      @elseif($job->status  == 'Pending')
+      <td><div class="badge bg-secondary">{{$job->status}}</div></td>
+      
+      @elseif($job->status  == 'Done')
+      <td><div class="badge bg-success ms-1 me-1 ps-2 pe-2">{{$job->status}}</div></td>
+  
+      @endif
+
+
+
+                </tr>
+              @endforeach
+            </tbody>
+          </table>
+        </div>              
+      </section>
+    </div>
+
 	<script src="js/app.js"></script>
 
 <script>

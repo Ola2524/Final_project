@@ -107,7 +107,7 @@
                                             <h6>Points</h6>
                                         </div>
                                         <div class="col-md-6 text-end">
-                                            <h6>( {{ $workers->users->points }} )</h6>
+                                            <h6>( {{ $workers->points }} )</h6>
                                         </div>
                                     </div>
                                     @endif

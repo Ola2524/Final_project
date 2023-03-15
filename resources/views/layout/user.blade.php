@@ -171,13 +171,13 @@
                     @auth                        
                     @foreach ($services as $service)
                     <div class="col-4">
-                        <a href="/our-services/{{$service->id}}"><img class="img-fluid rounded" src="{{asset('img/'.$service->img)}}" alt="Image"></a>
+                        <a href="/our-services/{{$service->id}}"><img class="img-fluid rounded" style="width:100%;height:100px" src="{{asset('img/'.$service->img)}}" alt="Image"></a>
                     </div>                        
                     @endforeach
                     @else
                     @foreach ($services as $service)
                     <div class="col-4">
-                        <a href="{{ route('login') }}"><img class="img-fluid rounded" src="{{asset('img/'.$service->img)}}" alt="Image"></a>
+                        <a href="{{ route('login') }}"><img class="img-fluid rounded" style="width:100%;height:100px" src="{{asset('img/'.$service->img)}}" alt="Image"></a>
                     </div>                        
                     @endforeach
                     @endauth
