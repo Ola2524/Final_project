@@ -42,7 +42,7 @@ class profileController extends Controller
         // dd($id);
         $services=Service::all();
         $wservices = WorkerService::where('worker_id',$id)->where("service_id",$service_id)->first();
-        $reviews = Job :: where('worker_id',$id)->where('status','Done')->get();
+        $reviews = Job :: where('worker_id',$id)->where('status','Done')->where('review','!=',NULL)->get();
         $service=Service::find($service_id);
         $jobs = Job :: where('worker_id',$id)->where('status','Done')->get();
         $workers = Worker :: find($id);

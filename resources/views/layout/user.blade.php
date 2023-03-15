@@ -91,8 +91,11 @@
                             <a href="#" class="dropdown-item">Labor Supply Services</a>
                             <a href="#" class="dropdown-item">Bride Services</a> --}}
                         @endauth
-
-                    <a href="{{ route('contact') }}" class="nav-item nav-link text-dark">Contact Us</a>
+@auth
+<a href="{{ route('contact') }}" class="nav-item nav-link text-dark">Contact Us</a>
+@else
+<a href="{{ route('login') }}" class="nav-item nav-link text-dark">Contact Us</a>
+@endauth
                 </div>
                 
                     @auth                        
@@ -155,7 +158,11 @@
             <div class="col-lg-4 col-md-6">
                 <h5 class="text-light mb-4">Quick Links</h5>
                 <a class="btn btn-link" href="{{ route('about') }}">About Us</a>
+                @auth
                 <a class="btn btn-link" href="{{ route('contact') }}">Contact Us</a>
+                @else      
+                <a class="btn btn-link" href="{{ route('login') }}">Contact Us</a>
+                @endauth
                 {{-- <a class="btn btn-link" href="">Our Services</a> --}}
             </div>
             <div class="col-lg-4 col-md-6">

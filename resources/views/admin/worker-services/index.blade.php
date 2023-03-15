@@ -14,8 +14,8 @@
             <th scope="col">#</th>
             <th scope="col">Worker</th>
             <th scope="col">Service</th>
-            <th scope="col">Price</th>
             <th scope="col">Rate</th>
+            <th scope="col">Price</th>
             <th scope="col">Action</th>
           </tr>
         </thead>

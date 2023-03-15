@@ -13,7 +13,7 @@
             </div>
             <div class="carousel-inner">
                 <div class="carousel-item active">
-                    <img class="w-100" src="img/" alt="Image">
+                    <img class="w-100" src="img/Cleaning.jpg" alt="Image">
                     <div class="carousel-caption">
                         <div class="p-3" style="max-width: 900px;">
                             <h1 class="display-3 text-white mb-0 animated zoomIn mb-3">Home care.</h1>
@@ -187,7 +187,7 @@
                         </div>
                     </div>
                     
-                    <p class="mb-0"><b class="mb-1">{{$job->workers->users->name}}</b>: {{$job->review}}</p>
+                    <p class="mb-0">{{$job->review}}</p>
                 </div>
                 @endforeach
 

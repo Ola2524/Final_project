@@ -3,7 +3,7 @@
     <!-- start main content -->
         <div class="main">
             <div class="container">
-              <h1>Offers</h1>
+              <h1>Points</h1>
               <div class="row my-4 align-items-center">
                 <div class="col-auto">
                   {{-- <form class="row g-3">

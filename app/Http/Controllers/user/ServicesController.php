@@ -108,12 +108,12 @@ public function asc(){
         // ->join('services', 'services.id', '=', 'worker_service.service_id')
         // ->select('worker_service.id as id','worker_service.rate as rate','worker_service.fixed_price','worker_id','users.img as img','users.name as name','services.name as service_name','services.description')
         // ->get();
-        $users=$service->worker_service;
-        foreach($users as $item){
-            $price=WorkerService::where("service_id",$id)->where("worker_id",$item->id)->first();
-            // $item =$item->users;
-            $item->fixed_price=$price;
-        }
+        // $users=$service->worker_service;
+        // foreach($users as $item){
+        //     $price=WorkerService::where("service_id",$id)->where("worker_id",$item->id)->first();
+        //     // $item =$item->users;
+        //     $item->fixed_price=$price;
+        // }
         // $users = WorkerService :: all();
 
         return view("user.services",['services'=>$services,'user' => $users,'service'=>$service]);

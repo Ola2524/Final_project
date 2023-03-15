@@ -167,7 +167,6 @@ i{
         <div class="center">
             <img src="{{asset('img/'.$worker->users->img)}}" style="width:150px;height:auto;padding-top:10px; border-radius: 100px;">
         </div>
-            
         <h1>{{$worker->users->name}}</h1>
         <p class="title">{{$service->name}}</p>
         <p class="title">${{$worker->fixed_price->fixed_price}}</p>

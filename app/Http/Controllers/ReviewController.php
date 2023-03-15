@@ -53,7 +53,7 @@ public function index()
     $rate = ($worker_service->rate+$rate)/$jobs_num;
 
     $worker_service->update([
-      'rate'=> $rate,
+      'rate'=> (int)$rate,
     ]);
 
     return redirect('homepage')->with('success','Reviewing has been successfully');
