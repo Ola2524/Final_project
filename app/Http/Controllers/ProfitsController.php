@@ -12,7 +12,7 @@ use App\Models\Service;
 class ProfitsController extends Controller
 {
     public function index(){
-        $payments = Payment :: all();
+        $payments = Payment :: latest()->paginate(7);
         return view("admin.profits.index",['payments'=>$payments]);
     }
 

@@ -55,6 +55,8 @@
               </div>
             </div>
         </div>
+<div class="ms-3">{{ $payments->links() }}</div>
+
         <!-- end main contnet -->
     </div>
 </body>

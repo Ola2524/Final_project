@@ -10,7 +10,7 @@ use App\Models\WorkerService;
 class WorkerServController extends Controller
 {
     public function index(){
-      $worker_services = WorkerService::all();
+      $worker_services = WorkerService::paginate(7);
       
         return view('admin.worker-services.index',['worker_services'=>$worker_services]);
     }

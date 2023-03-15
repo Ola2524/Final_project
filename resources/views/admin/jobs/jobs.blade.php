@@ -79,6 +79,8 @@
               </table>
             </div>
           </div>
+        <div class="ms-2">{{$jobs->links()}}</div>
+
         </div>
         <!-- end main contnet -->
     </div>

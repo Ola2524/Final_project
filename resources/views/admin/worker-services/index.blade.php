@@ -75,25 +75,19 @@
         
                       
                       <td>
-                      <a href="{{route('worker.services.delete',['id'=>$worker_service->id])}}" class="btn btn-danger ms-3">Delete</a> 
+                      <a href="{{route('worker.services.delete',['id'=>$worker_service->id])}}" class="btn btn-light ms-3"><i class="fa-solid fa-trash-can " style="color: red;font-size:30px"></i></a> 
                       <td>
                         
                               
                             
-                        </td>                  
+                        </td>        
+                                  
                       @endforeach
                     </tr>
         </tbody>
       </table>
-      <div class="float-end">
-        @if(request()->has('trashed'))
-            {{-- <a href="{{ route('posts.index') }}" class="btn btn-info">View All posts</a> --}}
-            <a href="{{ route('AdminWorkerserv.restoreAll') }}" class="btn btn-success">Restore All</a>
-    
-            {{-- <a href="{{ route('posts.index', ['trashed' => 'post']) }}" class="btn btn-primary">View Deleted posts</a> --}}
-        @endif
-    </div>
-{{-- {!! $worker_services->links() !!} --}}
+      
+<div class="ms-5">{{ $worker_services->links() }}</div>
     </div>
     <!-- end main contnet -->
   </div>
