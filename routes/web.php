@@ -252,4 +252,19 @@ Route::get('/filter/services/asc', [ServicesController::class, 'asc']);
 
 //Route::post('/{AdminWorkerserv}/restore', [WorkerServController::class, 'restore'])->name('AdminWorkerserv.restore');
 //Route::delete('/{user}/force-delete', 'UsersController@forceDelete')->name('users.force-delete');
-//Route::post('/restore-all',  [WorkerServController::class, 'restoreAll'])->name('AdminWorkerserv.restore-all');
+Route::post('/restore-all',  [WorkerServController::class, 'restoreAll'])->name('AdminWorkerserv.restore-all');
+
+
+
+
+
+
+// Route::get('posts', [PostController::class, 'index'])->name('posts.index');
+// Route::delete('posts/{id}', [PostController::class, 'destroy'])->name('posts.destroy');
+// Route::delete('posts/{id}', [PostController::class, 'forceDelete'])->name('posts.forceDelete');
+// Route::get('posts/restore/{id}', [PostController::class, 'restore'])->name('posts.restore');
+// Route::get('posts/restore-all', [PostController::class, 'restoreAll'])->name('posts.restoreAll');
+Route::get('workers-services-all', [PostController::class, 'restoreAll'])->name('AdminWorkerserv.restoreAll');
+
+// Route::get('AdminWorkerserv', [WorkerServController::class,'index'])->name('AdminWorkerserv');
+// Route::get('workers-services/{id}', [WorkerServController::class,'delete'])->name('worker.services.delete');

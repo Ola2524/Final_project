@@ -26,7 +26,7 @@ class ContactController extends Controller
 
          Contact::create($request->all());
 
-         return redirect('contact')->with('message', 'Thanks for contacting us! We will be in touch with you shortly.');
+         return redirect('contact')->with('success', 'Thanks for contacting us! We will be in touch with you shortly.');
     }
 
     public function get_messages(){
@@ -37,8 +37,9 @@ class ContactController extends Controller
     }
 
     public function delete_message($id){
-        Contact::destroy($id);
+        Contact::findOrfail($id)->delete();
         // echo "deleted";
+        // post::findOrfail($postId)->delete();
 
         return redirect('get_messages')->with('message', 'Message Deleted Successfully');
     }
@@ -73,4 +74,12 @@ class ContactController extends Controller
             }
              
      }
+
+     public function restore(){
+        Contact::withTrashed()->restore();
+
+        return redirect('/contact');
+
+
+    }
 }

@@ -30,17 +30,18 @@
             <th class="d-none d-xl-table-cell"> Date</th>
             <th class="d-none d-xl-table-cell">Name of service</th>
             <th>Status</th>
+            <th>Action</th>
             {{-- <th class="d-none d-md-table-cell">Assignee</th> --}}
           </tr>
         </thead>
            <tbody class="table-group-divider"class="alldata" id="Content">
 
-          @foreach ($user as $users )
+          @foreach ($user as $users)
           {{-- @dd($user) --}}
           <tr>
-            <td>{{$users->name}}</td>
+            <td>{{$users->users->name}}</td>
             <td class="d-none d-xl-table-cell">{{$users->date}}</td>
-            <td class="d-none d-xl-table-cell">{{$users->service}}</td>
+            <td class="d-none d-xl-table-cell">{{$users->services->name}}</td>
             @if($users->status == 'Rejected')
             <td><span class="badge bg-danger ">{{$users->status}}</span></td>
 
@@ -54,6 +55,8 @@
 <td><div class="badge bg-success ms-1 me-1 ps-2 pe-2">{{$users->status}}</div></td>
 
 @endif
+<td><a href="/chatify/{{$users->user_id}}" class="btn btn-secondary ms-3">contact</a></td>
+
             {{-- <td><span class="badge bg-warning">{{$users->status}}</span></td> --}}
             {{-- <td class="d-none d-md-table-cell">Vanessa Tucker</td> --}}
           </tr>
@@ -108,7 +111,7 @@
             <td class="d-none d-md-table-cell">William Harris</td>
           </tr> --}}
         </tbody>
-        <tbody  class="searchdata"></tbody>
+        <tbody class="searchdata"></tbody>
 
       </table>
     </div>

@@ -35,6 +35,8 @@
                         </div>
                 @endif
                         <div class="row g-3">
+                            <input type="hidden" class="form-control" id="name" name="user_id" placeholder="Your Name" value="{{ auth()->user()->id }}">
+
                             <div class="col-md-6">
                                 <div class="form-floating">
                                     <input type="text" class="form-control" id="name" name="name" placeholder="Your Name" value="{{ old('name') }}">
@@ -83,6 +85,7 @@
     </div>
     <!-- Contact End -->
 
+    @include('sweetalert::alert')
 
     <!-- Google Map Start -->
     {{-- <div class="container-xxl pt-5 px-0 wow fadeIn" data-wow-delay="0.1s">

@@ -85,6 +85,15 @@
                     </tr>
         </tbody>
       </table>
+      <div class="float-end">
+        @if(request()->has('trashed'))
+            {{-- <a href="{{ route('posts.index') }}" class="btn btn-info">View All posts</a> --}}
+            <a href="{{ route('AdminWorkerserv.restoreAll') }}" class="btn btn-success">Restore All</a>
+    
+            {{-- <a href="{{ route('posts.index', ['trashed' => 'post']) }}" class="btn btn-primary">View Deleted posts</a> --}}
+        @endif
+    </div>
+{{-- {!! $worker_services->links() !!} --}}
     </div>
     <!-- end main contnet -->
   </div>

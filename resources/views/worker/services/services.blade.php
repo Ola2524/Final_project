@@ -50,14 +50,14 @@
                      <td>{{ $service->services->name }}</td>                     
                      <td>{{ $service->fixed_price }}</td>                     
                      <td>
-                       <a href="{{route('worker.services.edit',['service'=>$service->id])}}" class="btn btn-outline-success">Edit</a>
+                       <a href="{{route('worker.services.edit',['service'=>$service->id])}}" class="btn btn-outline-success"><i class="fa-solid fa-pen-to-square"></i></a>
                        <form style="display: inline" method="POST" action="{{route('worker.services.destroy',['service'=>$service->id])}}" >
                              
                     
                          @method('delete')
                                @csrf
 
-                               <button type="submit" class="btn btn-outline-danger delete" data-confirm="Are you sure to delete this item?">Delete</button>
+                               <button type="submit" class="btn btn-outline-light delete" data-confirm="Are you sure to delete this item?"><i class="fa-solid fa-trash-can " style="color: red;font-size:30px"></i></button>
 
                      </form>
                      </td>

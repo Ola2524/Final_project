@@ -15,13 +15,14 @@ class WorkerJobHistortyController extends Controller
     {
     //   $users = User::all();
     //   return view('worker.jobHistory', ['user' => $users]);
-      $users = DB::table('users')
-      ->join('jobs', 'jobs.user_id', '=', 'users.id')
-      ->join('services', 'services.id', '=', 'jobs.service_id')
-      ->join('workers', 'workers.id', '=', 'jobs.worker_id')
-      ->where('worker_id',Auth::user()->workers->id)
-      ->select('users.name' ,'services.name as service','jobs.rate','jobs.price','jobs.date','jobs.status')
-      ->get();
+      // $users = DB::table('users')
+      // ->join('jobs', 'jobs.user_id', '=', 'users.id')
+      // ->join('services', 'services.id', '=', 'jobs.service_id')
+      // ->join('workers', 'workers.id', '=', 'jobs.worker_id')
+      // ->where('worker_id',Auth::user()->workers->id)
+      // ->select('users.name','users.id as user_id' ,'services.name as service','jobs.rate','jobs.price','jobs.date','jobs.status')
+      // ->get();
+      $users = Job :: where('worker_id',Auth::user()->workers->id)->get();
     //   dd($user);
 
       return view('worker.jobHistory', ['user' => $users]);

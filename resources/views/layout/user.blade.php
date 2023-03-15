@@ -113,9 +113,9 @@
                                 @if (auth()->user()->role == 'user')
                                 <li><a href="{{ route('user.profile') }}" class="dropdown-item" type="button">Profile</a></li>                                
                                  @endif
-                                @if (auth()->user()->role == 'user' || auth()->user()->role == 'worker')
+                                {{-- @if (auth()->user()->role == 'user' || auth()->user()->role == 'worker') --}}
                                     <li><a href="{{ route('requset') }}" class="dropdown-item" type="button">Requests</a></li>                                
-                                @endif
+                                {{-- @endif --}}
                               <li><form action="{{ route("logout") }}" method="POST">
                                 @csrf
                                 <input type="submit" class="dropdown-item" value="Logout">

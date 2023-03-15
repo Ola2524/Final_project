@@ -17,9 +17,27 @@ class WorkerServController extends Controller
 
     public function delete($id){
         WorkerService::findOrFail($id)->delete();
-        return redirect('/AdminWorkerserv');
+        return redirect('/AdminWorkerserv')->withSuccess(__('worker Servrice deleted successfully.'));
     }
 
-    
+    public function restore($id) 
+    {
+        WorkerService::where('id', $id)->withTrashed()->restore();
+
+        return redirect()->route('admin.worker-services.index', ['status' => 'archived'])
+            ->withSuccess(__('User restored successfully.'));
+
+}
+public function restoreAll() 
+{
+    WorkerService::onlyTrashed()->restore();
+
+    return redirect('/AdminWorkerserv')->withSuccess(__('All users restored successfully.'));
+}
+
+
+
+
+
 
 }

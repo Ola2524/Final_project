@@ -19,6 +19,7 @@ return new class extends Migration
             $table->float('rate')->default(0);
             $table->foreign('service_id')->references('id')->on('services')->onDelete('cascade')->onUpdate('cascade');
             $table->foreign('worker_id')->references('id')->on('workers')->onDelete('cascade')->onUpdate('cascade');
+            $table->softDeletes();
             $table->timestamps();
         });
     }

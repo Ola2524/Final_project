@@ -41,11 +41,12 @@
                       <th scope="col">Email</th>
                       <th scope="col">Subject</th>
                       <th scope="col">Message</th>
+                      <th scope="col">Action</th>
                     </tr>
                   </thead>
                   <tbody class="table-group-divider"class="alldata" id="Content">
 
-                    @foreach ($contacts as $contact )
+                    @foreach ($contacts as $contact)
                       {{-- @dd($services) --}}
                     <tr>
                       <th scope="row">{{$contact['id']}}</th>
@@ -53,6 +54,7 @@
                       <td>{{$contact->email}}</td>
                       <td>{{$contact->subject}}</td>
                       <td>{{$contact->message}}</td>
+                      <td><a href="/chatify/{{$contact->users->id}}" class="btn btn-secondary ms-3">contact</a></td>
                         {{-- <button  class="btn btn-outline-danger">Delete</button> --}}
                       </form>
                       </td>
