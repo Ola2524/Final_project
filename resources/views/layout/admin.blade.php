@@ -30,7 +30,7 @@
     </div>
 
         <ul class="nav-links">
-            <li class="active"><a href="{{ route('admin') }}"><i class='bx bx-grid-small'></i><span>Dashboard</span></a></li>
+            <li><a href="{{ route('admin') }}"><i class='bx bx-grid-small'></i><span>Dashboard</span></a></li>
             <li><a href="{{ route('services') }}"><i class="fa-solid fa-briefcase"></i><span>Services</span></a></li>
             <li><a href="{{ route('profits') }}"><i class="fa-solid fa-sack-dollar"></i><span>Profits</span></a></li>
             <li><a href="{{ route('jobs') }}"><i class="fa-solid fa-list-ul"></i><span>Job list</span></a></li>

@@ -126,14 +126,13 @@ i{
     <section class="services">
         <div class="container">
             <header class="services__header text-center">
-                <h2>What we do?
-                    Why will you choces this</h2>
-                <p>Our services
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo nesciunt quae quis magnam dolores
-                    excepturi, laudantium maxime, molestias fugiat accusantium error adipisci voluptas similique
-                    officiis! Alias nihil provident labore veniam?
-                </p>
-                <div class="card mt-3">
+                <div class="text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s">
+                    <h6 class="section-title bg-white text-center text-primary px-3" style="font-size: 20px">{{ $service->name }}</h6>
+                    <h1 class="mb-4" style="font-size: 30px">{{ $service->description }}</h1>
+                </div>
+
+
+                {{-- <div class="card mt-3">
                     <div class="card-header">
                         <h4>Price</h4>
                     </div>
@@ -145,7 +144,7 @@ i{
                             <input type="radio" id="low" name="priceSort" wire:model="priceInput" value="low-to-high"/>Low to High
                         </label>
                     </div>
-                </div>
+                </div> --}}
             </header>
         </section>
 

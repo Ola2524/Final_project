@@ -26,7 +26,7 @@ class ServiceController extends Controller
     {
         $request->validate([
             'name' => 'required',
-            'img' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'img' => 'required|image',
             'description' => 'required',
         ]);
         $input = $request->all();
@@ -73,7 +73,7 @@ class ServiceController extends Controller
     $Service = Service::findOrFail($service);
     $request->validate([
       'name' => 'required',
-      'img' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+      'img' => 'required|image',
       'description' => 'required',
   ]);
   $input = $request->all();

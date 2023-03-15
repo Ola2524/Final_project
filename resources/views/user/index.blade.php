@@ -13,11 +13,12 @@
             </div>
             <div class="carousel-inner">
                 <div class="carousel-item active">
-                    <img class="w-100" src="img/cleaning (1).jpg" alt="Image">
+                    <img class="w-100" src="img/" alt="Image">
                     <div class="carousel-caption">
                         <div class="p-3" style="max-width: 900px;">
-                            <h4 class="text-white text-uppercase mb-4 animated zoomIn">Lorem ipsum dolor sit amet consectetur adipisicing elit.</h4>
-                            <h1 class="display-1 text-white mb-0 animated zoomIn">Lorem ipsum dolor sit amet consectetur adipisicing elit.</h1>
+                            <h1 class="display-3 text-white mb-0 animated zoomIn mb-3">Home care.</h1>
+
+                            <h4 class="text-white text-uppercase mb-4 animated zoomIn">There is no place like home & HOME CARE coregivers help you remain there.</h4>
                         </div>
                     </div>
                 </div>
@@ -26,8 +27,8 @@
                     <img class="w-100" src="{{asset('img/'.$service->img)}}" alt="Image">
                     <div class="carousel-caption">
                         <div class="p-3" style="max-width: 900px;">
-                            <h4 class="text-white text-uppercase mb-4 animated zoomIn">Lorem ipsum dolor sit amet consectetur adipisicing elit.</h4>
-                            <h1 class="display-1 text-white mb-0 animated zoomIn">Lorem ipsum dolor sit amet consectetur adipisicing elit.</h1>
+                            <h4 class="text-white text-uppercase mb-4 animated zoomIn">{{ $service->description }}</h4>
+                            {{-- <h1 class="display-1 text-white mb-0 animated zoomIn">Lorem ipsum dolor sit amet consectetur adipisicing elit.</h1> --}}
                         </div>
                     </div>
                 </div>

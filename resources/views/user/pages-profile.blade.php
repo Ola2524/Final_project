@@ -132,7 +132,7 @@
                                             <h6>Today</h6>
                                         </div>
                                     </div>
-                                    @if ($workers->verify == 1)                                        
+                                    @if ($user==0 && $workers->verify == 1)                                        
                                     <div class="row mt-3">
                                         <div class="col-md-6 mt-3 text-end">
                                             <h6 class="fs-4">Verified</h6>
@@ -179,7 +179,6 @@
                                     <div class="mt-3 d-flex">
                                         <div class="col-md-4">
                                             <h6>
-
                                                 {{$wservices->services->name}}
                                             </h6>
                                         </div>
@@ -252,6 +251,9 @@
                                 @endif
                             </div>
                         </div>
+                        @if ($user == 0)
+                            
+                       
                         <div class="card">
                         <div class="mx-3 mb-2">
                         <h4 class="pt-3">Reviews</h4>
@@ -311,6 +313,7 @@
                         @endforeach
                         </div>
                     </div>
+                    @endif
                     </div>
                     <!-- Column -->
                 </div>
