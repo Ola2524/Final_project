@@ -9,7 +9,7 @@ use App\Models\Job;
 class ReqController extends Controller
 {
     public function index(){
-        $jobs = Job::where('status','pending')->get();
+        $jobs = Job::where('status','pending')->where('worker_id',auth()->user()->workers->id)->get();
         return view('worker.req.index',['jobs'=>$jobs]);
     }
 

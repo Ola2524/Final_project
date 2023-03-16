@@ -17,7 +17,7 @@ class AdminController extends Controller
         $users = User::where('role','!=','worker')->get();
         $users = count($users);
 
-        $workers = Worker::all()->take(5);
+        $workers = Worker::all()->take(6);
         $worker = Worker::all();
         $workers_count = count($worker);
 
@@ -27,7 +27,7 @@ class AdminController extends Controller
         // ->join('workers', 'workers.id', '=', 'jobs.worker_id')
         // ->select('jobs.id as id','users.name','services.name as service','jobs.rate','jobs.price','jobs.date','jobs.status')
         // ->get();
-        $jobs = Job :: all()->take(5);
+        $jobs = Job :: all()->take(6);
         $job = Job :: where('status','Done')->get();
 
         $payments = Payment :: all("profit");

@@ -148,10 +148,10 @@
                 <p class="mb-2 text-light"><i class="fa fa-phone-alt me-3 text-light"></i>+011 111 11111</p>
                 <p class="mb-2 text-light"><i class="fa fa-envelope me-3 text-light"></i>HomeCare@yahoo.com</p>
                 <div class="d-flex pt-2">
-                    <a class="btn btn-square btn-outline-secondary rounded-circle ms-5" href="https://freewebsitecode.com/"><i class="fab fa-twitter"></i></a>
+                    <a class="btn btn-square btn-outline-secondary rounded-circle ms-5" href="{{asset('https://twitter.com/HomeCar99567726')}}"><i class="fab fa-twitter"></i></a>
                     {{-- <a class="btn btn-square btn-outline-secondary rounded-circle me-1" href="https://youtube.com/freewebsitecode/"><i class="fab fa-youtube"></i></a> --}}
                     {{-- <a class="btn btn-square btn-outline-secondary rounded-circle me-0" href="https://freewebsitecode.com/"><i class="fab fa-linkedin-in"></i></a> --}}
-                    <a class="btn btn-square btn-outline-secondary rounded-circle ms-3" href="https://facebook.com/freewebsitecode/"><i class="fab fa-facebook-f"></i></a>
+                    <a class="btn btn-square btn-outline-secondary rounded-circle ms-3" href="{{asset('https://www.facebook.com/profile.php?id=100090895399924&is_tour_dismissed=true')}}"><i class="fab fa-facebook-f"></i></a>
 
                 </div>
             </div>

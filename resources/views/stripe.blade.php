@@ -36,7 +36,7 @@ body{
 }
 .wrapper h2{
   background-color: #fcfcfc;
-  color: #7ed321;
+  /* color: #7ed321; */
   font-size: 24px;
   padding: 10px;
   margin-bottom: 20px;
@@ -74,12 +74,12 @@ body{
   border-radius: 3px;
   color: #333;
 }
-.name:focus, .dob:focus{
+/* .name:focus, .dob:focus{
   -webkit-box-shadow:0 0 2px 1px #7ed32180;
   -moz-box-shadow:0 0 2px 1px #7ed32180;
   box-shadow: 0 0 2px 1px #7ed32180;
   border: 1px solid #7ed321;
-}
+} */
 .input-box .icon{
   width: 48px;
   display: flex;
@@ -99,9 +99,9 @@ body{
   border-right: none;
 }
 .name:focus + .icon{
-  background-color: #7ed321;
+  /* background-color: #7ed321; */
   color: #fff;
-  border-right: 1px solid #7ed321;
+  /* border-right: 1px solid #7ed321; */
   border: none;
   transition: 1s;
 }
@@ -137,7 +137,7 @@ body{
   border-bottom-right-radius: 3px;
 }
 .radio:checked + label{
-  background-color: #7ed321;
+  /* background-color: #7ed321; */
   color: #fff;
   transition: 0.5s;
 }
@@ -155,7 +155,7 @@ body{
   transition: all 0.2s ease;
 }
 .input-box select:focus{
-  background-color: #7ed321;
+  /* background-color: #7ed321; */
   color: #fff;
   text-align: center;
 }
@@ -172,7 +172,7 @@ button{
 }
 button:hover{
   cursor: pointer;
-  background: #5eb105;
+  /* background: #5eb105; */
 }
 </style>
     
@@ -280,7 +280,7 @@ button:hover{
    
                         <div class="row">
                             <div class="col-xs-12 my-3">
-                                <div class="btn btn-success btn-lg btn-block w-100" type="submit">Price: (${{$job->price}}) </div><br>
+                                <div class="btn-lg btn-block w-100" type="submit" style="color: #008dde">Price: (${{$job->price}}) </div><br>
                             </div>
                         </div>
                         <div class="row">

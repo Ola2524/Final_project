@@ -34,7 +34,7 @@ class WorkerRegistrationController extends Controller
         'national_id'=>['required', 'string', 'max:14'],
         'age'=>['required', 'string', 'max:14'],
         'phone_number'=>['required', 'string', 'max:12'],
-        'bio'=>['required', 'string', 'max:255']
+        'bio'=>['required', 'string']
 
     ]);
        $input = $request->all();

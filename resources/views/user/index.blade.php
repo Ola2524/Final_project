@@ -133,7 +133,9 @@
                 <h1 class="display-6 mb-4">What Our Clients Say!</h1>
             </div>
             <div class="owl-carousel testimonial-carousel wow fadeInUp" data-wow-delay="0.1s" >
-                @foreach ($jobs as $job)                    
+                @foreach ($jobs as $job)   
+                @if($job->review!=Null)
+
                 <div class="testimonial-item bg-light rounded p-4" >
                     <div class="d-flex align-items-center mb-4" >
                         <img class="flex-shrink-0 rounded-circle border p-1" src="{{asset('img/'.$job->users->img)}}" alt="">
@@ -186,9 +188,9 @@
                             <span class="review-stars mb-5" style="color: yellow;"><i class="fa-solid fa-star"></i></span> --}}
                         </div>
                     </div>
-                    
                     <p class="mb-0">{{$job->review}}</p>
                 </div>
+                @endif
                 @endforeach
 
                 {{-- <div class="testimonial-item bg-light rounded p-4">

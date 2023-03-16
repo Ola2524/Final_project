@@ -21,6 +21,7 @@ class RequestController extends Controller
         // ->get('');
 
         $users = Job:: where('user_id',Auth::user()->id)->get();
+        
         // $users = DB::table('workers')
         // ->join('worker_service', 'worker_service.worker_id', '=', 'workers.id')
         // ->join('users', 'users.id', '=', 'workers.user_id')
@@ -37,6 +38,7 @@ class RequestController extends Controller
     public function show($id){
         $services = Service :: all();
         $users = Job:: where('user_id',Auth::user()->id)->get();
+
         // $users = WorkerService::where('service_id',$id)->get();
         return view("user.request",['services'=>$services,'user' => $users]);
     }
